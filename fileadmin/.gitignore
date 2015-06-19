@@ -1,0 +1,8 @@
+# Ignore everything
+*.*
+
+# But not these files...
+!.gitignore
+!.gitkeep
+!index.html
+!.htaccess
