@@ -1,0 +1,49 @@
+{
+    "name" : "dmk/typo3-composer-webroot",
+    "description" : "The TYPO3 Project webroot",
+    "type" : "project",
+    "license" : "proprietary",
+    "version" : "0.1.0",
+    "authors" : [
+        {
+            "name" : "Michael Wagner",
+            "email" : "michael.wagner@dmk-ebusiness.de",
+            "role" : "Developer"
+        }
+    ],
+    "support": {
+        "email" : "dev@dmk-ebusiness.de",
+        "source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
+        "issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
+    },
+    "repositories" : {
+        "typo3" : {
+            "type" : "composer",
+            "url" : "http://composer.typo3.org/"
+        },
+        "dmknet" : {
+            "type" : "composer",
+            "url" : "http://packages.dmknet.de"
+        }
+    },
+    "require" : {
+        "typo3/cms" : "~6.2@stable",
+
+        "typo3-ter/be-secure-pw" : "~6.2@stable",
+        "typo3-ter/devlog" : "@stable",
+        "typo3-ter/phpmyadmin" : "@stable",
+        "typo3-ter/realurl" : "~1@stable",
+
+        "caretaker/caretaker_instance" : "dev-master",
+        "dmk/phpunit" : "dev-master-6.2",
+
+        "digedag/rn-base" : "*",
+
+        "dmk/mklib" : "*",
+        "dmk/mklog" : "*",
+        "dmk/mkphpids" : "*",
+        "dmk/mksanitizedparameters" : "*",
+        "dmk/mktools" : "*"
+    },
+    "minimum-stability" : "dev"
+}
