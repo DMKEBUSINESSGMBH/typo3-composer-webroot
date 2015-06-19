@@ -1,0 +1,37 @@
+!.gitignore
+!.gitkeep
+!index.html
+
+### eclipse files
+/.buildpath
+/.project
+/.settings
+
+### netbeans files
+/nbproject/
+
+### mac os x files
+*.DS_Store
+.idea
+
+### serverfiles
+/.bash_history
+/.ssh
+/.viminfo
+
+### composer files
+/vendor
+/typo3
+/typo3_src
+/typo3conf/RealurlConfiguration.php
+/typo3conf/ext
+/typo3conf/ext/*
+/index.php
+
+### typo3 files
+/typo3conf/ENABLE_INSTALL_TOOL
+/typo3conf/temp_CACHED*
+/typo3conf/deprecation*
+/typo3conf/Credentials.php
+.htaccess
+MAINTENACE_MODE
