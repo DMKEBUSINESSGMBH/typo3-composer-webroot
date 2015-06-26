@@ -67,20 +67,20 @@ and push the project to the repo
 ### Add Extensions
 
 To install an extension from the [TER](https://typo3.org/extensions/repository/),
-for example static_info_tables, you can simply perform the folowing command:
+for example static_info_tables, you can simply perform the following command:
 
 	composer require typo3-ter/static-info-tables:~6.2@stable
 
 Pay attention to replace underscores "_" by a dash "-" in the extension key.
 
 
-To apend an extension from a own repository,
+To append an extension from a own repository,
 you has to add the repository to the composer.json first.
-To add the powerful MKSEACRH extension yopu has to perform the folowing command:
+To add the powerful MKSEACRH extension you has to perform the following command:
 
 	$ composer config repositories.mksearch vcs https://github.com/DMKEBUSINESSGMBH/typo3-mksearch.git
 
-Be sure, tah tere is an composer.json in the repository like this one:
+Be sure, that there is an composer.json in the repository like this one:
 
 	{
 		"name" : "dmk/mksearch",
@@ -97,6 +97,6 @@ Now you can install the Extension with the require command:
 
 	composer require dmk/mksearch:dev-master
 
-Finaly install the extension with the TYPO3 Extension Manager in the TYPO3 Backend
+Finlay install the extension with the TYPO3 Extension Manager in the TYPO3 Backend
 add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3conf/PackageStates.php
 to the git and commit and push the changes.
