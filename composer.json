@@ -27,7 +27,7 @@
         }
     },
     "require" : {
-        "typo3/cms-composer-installers" : "^1.2.2",
+        "typo3/cms-composer-installers" : "1.2.2 as 1.1.4",
         "typo3/cms" : "~6.2@stable",
 
         "typo3-ter/be-secure-pw" : "~6.2@stable",
