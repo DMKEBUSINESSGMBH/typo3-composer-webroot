@@ -65,6 +65,17 @@ and push the project to the repo
 
     $ git push --set-upstream origin master
 
+### Specific DocRoot
+
+In a lot of cases it will be usefull to define a DocRoot for the projekt.
+So the public files will be stored there and all other, like vendor, are outside.
+
+This feature is new in the CmsComposerInstaller since 1.2.2.
+
+To use this Feature, you has to create the project from the htdocs62 branch like this:
+
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot htdocs62
+
 ### Add Extensions
 
 To install an extension from the [TER](https://typo3.org/extensions/repository/),
