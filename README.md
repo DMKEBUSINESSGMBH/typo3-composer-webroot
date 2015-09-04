@@ -74,7 +74,7 @@ This feature is new in the CmsComposerInstaller since 1.2.2.
 
 To use this Feature, you has to create the project from the htdocs62 branch like this:
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot htdocs62
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-htdocs62
 
 ### Add Extensions
 
