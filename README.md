@@ -75,8 +75,8 @@ Pay attention to replace underscores "_" by a dash "-" in the extension key.
 
 
 To apend an extension from a own repository,
-you has to add the repository to the composer.json first.
-To add the powerful MKSEACRH extension yopu has to perform the folowing command:
+you have to add the repository to the composer.json first.
+To add the powerful MKSEACRH extension you have to perform the folowing command:
 
 	$ composer config repositories.mksearch vcs https://github.com/DMKEBUSINESSGMBH/typo3-mksearch.git
 
