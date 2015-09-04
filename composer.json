@@ -27,7 +27,7 @@
         }
     },
     "require" : {
-		"typo3/cms-composer-installers" : "^1.2.2",
+        "typo3/cms-composer-installers" : "^1.2.2",
         "typo3/cms" : "~6.2@stable",
 
         "typo3-ter/be-secure-pw" : "~6.2@stable",
@@ -47,10 +47,10 @@
         "dmk/mktools" : "*"
     },
     "minimum-stability" : "dev",
-	"extra" : {
-		"typo3/cms" : {
-			"cms-package-dir" : "{$vendor-dir}/typo3/cms",
-			"web-dir" : "web"
-		}
-	}
+    "extra" : {
+        "typo3/cms" : {
+            "cms-package-dir" : "{$vendor-dir}/typo3/cms",
+            "web-dir" : "./htdocs"
+        }
+    }
 }
