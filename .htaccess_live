@@ -163,13 +163,15 @@ AddDefaultCharset utf-8
 	RewriteCond %{SCRIPT_FILENAME} -f
 	RewriteRule "(^|/)\." - [F]
 
-	RewriteRule ^typo3conf/.*\.(html|htm)$ /*Hier z.B. die Startseite; www.myhost.de*/ [L]
+	### NOTE: please replace the ###PUT_HOMEPAGE_HERE### Markers with the Home Page (www.bysite.com)
+
+	RewriteRule ^typo3conf/.*\.(html|htm)$ ###PUT_HOMEPAGE_HERE### [L]
 	### im doc Verzeichnis liegen u.U. Dateien mit einer Endung, die nicht vor Zugriff
 	### außer in diesem Ordner, geschützt werden soll
-	RewriteRule ^typo3conf/.*/doc/.*$ /*Hier z.B. die Startseite; www.myhost.de### [L]
-	RewriteRule ^typo3conf/.*/Documentation/.*$ /*Hier z.B. die Startseite; www.myhost.de### [L]
-	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ /*Hier z.B. die Startseite; www.myhost.de*/ [L]
-	RewriteRule ^typo3_src.*$ /*Hier z.B. die Startseite; www.myhost.de*/ [L]
+	RewriteRule ^typo3conf/.*/doc/.*$ ###PUT_HOMEPAGE_HERE### [L]
+	RewriteRule ^typo3conf/.*/Documentation/.*$ ###PUT_HOMEPAGE_HERE### [L]
+	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ ###PUT_HOMEPAGE_HERE### [L]
+	RewriteRule ^typo3_src.*$ ###PUT_HOMEPAGE_HERE### [L]
 	### auch evtl. Symlinks wie typo3_src bedenken!
 	RewriteRule ^(typo3_src|typo3|t3lib|tslib|fileadmin|typo3conf|typo3temp|uploads|showpic\.php|favicon\.ico) - [L]
 </IfModule>
@@ -215,6 +217,20 @@ AddDefaultCharset utf-8
 									  text/xml
 	</IfModule>
 </IfModule>
+
+# Compressing resource files will save bandwidth and so improve loading speed especially for users
+# with slower internet connections. TYPO3 can compress the .js and .css files for you.
+# *) Uncomment the following lines and
+# *) Set $TYPO3_CONF_VARS['BE']['compressionLevel'] = '9' for the Backend
+# *) Set $TYPO3_CONF_VARS['FE']['compressionLevel'] = '9' together with the TypoScript properties
+#    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
+<FilesMatch "\.js\.gzip$">
+	AddType "text/javascript" .gzip
+</FilesMatch>
+<FilesMatch "\.css\.gzip$">
+	AddType "text/css" .gzip
+</FilesMatch>
+AddEncoding gzip .gzip
 
 
 # ------------------------------------------------------------------------------
