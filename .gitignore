@@ -18,3 +18,5 @@
 /.bash_history
 /.ssh
 /.viminfo
+
+/vendor
