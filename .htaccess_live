@@ -106,6 +106,16 @@ AddDefaultCharset utf-8
 	# Using mod_rewrite in .htaccess files without knowing the RewriteBase
 	# http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
 	RewriteBase /
+	
+	### WARTUNGSMODUS VIA .htaccess
+	RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
+	### statische Dateien weiter ausliefern
+	RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
+	RewriteCond %{REMOTE_ADDR} !^178.15.114.146
+	RewriteCond %{REQUEST_URI} !^/unavailable/
+	### immer ohne HTTPS weiterleiten (alternativ immer mit HTTPS weiterleiten.
+	### es muss auf jeden Fall darauf geachtet werden wegen der baseUrl in der Wartungsseite.
+	RewriteRule ^(.*) http://%{HTTP_HOST}/unavailable/?referer=$1 [R=307,L]
 
 	# Store the current location in an environment variable CWD
 	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
