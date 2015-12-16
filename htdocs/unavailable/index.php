@@ -25,7 +25,7 @@ $imgData = ('data:' . 'image/jpg' . ';base64,' . $base64);
 					die Seite befindet sich im Moment im Wartungsmodus. <br />
 					Sie wird in Kürze wieder erreichbar sein.
 					<br /><br />
-					<a href="<?php echo $referrer ?>">Versuchen Sie es erneut</a>
+					<a href="/<?php echo $referrer ?>">Versuchen Sie es erneut</a>
 				</p>
 				<div style="clear:both"></div>
 			</div>
