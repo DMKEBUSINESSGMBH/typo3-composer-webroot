@@ -113,9 +113,7 @@ AddDefaultCharset utf-8
 	RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
 	RewriteCond %{REMOTE_ADDR} !^178.15.114.146
 	RewriteCond %{REQUEST_URI} !^/unavailable/
-	### immer ohne HTTPS weiterleiten (alternativ immer mit HTTPS weiterleiten)
-	### es muss auf jeden Fall darauf geachtet werden wegen der baseUrl in der Wartungsseite.
-	RewriteRule ^(.*) http://%{HTTP_HOST}/unavailable/ [QSA,NC,L]
+	RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
 
 	# Store the current location in an environment variable CWD
 	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
