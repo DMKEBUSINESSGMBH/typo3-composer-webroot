@@ -13,6 +13,7 @@ $imgData = ('data:' . 'image/jpg' . ';base64,' . $base64);
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Serverwartung</title>
+		<meta name="robots" content="NOINDEX,NOFOLLOW" />
 	</head>
 	<body style="color:#FFF;background:#333 none;font:normal 68.75%/136.36% arial,sans-serif;margin:0;padding:0;">
 		<div style="background:#0063AF none;border-bottom:20px solid #fff;">
