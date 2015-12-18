@@ -112,3 +112,14 @@ Now you can install the Extension with the require command:
 Finally install the extension with the TYPO3 Extension Manager in the TYPO3 Backend
 add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3conf/PackageStates.php
 to the git and commit and push the changes.
+
+### Customization
+On every deployment you should copy the file .htaccess_typo3_install to the folder typo3/sysext/install/Start. Before that you should define the IPs which can access the install tool.
+
+Replace every occurence of example@example.com by a suitable email address that should receive mails when errors occur.
+
+Let the install tool generate a new encryption key.
+
+Use .htaccess_live as .htaccess file for your environments. Before that you should replace ###PUT_HOMEPAGE_HERE### inside the htaccess file with the domain of the environment. Afterwards adjust the DMK_APP_ENV environment variable for your desired environment. This way the configuration for this envirnoment will be loaded automatically. Possible is ALPHA, BETA and LOCAL. Everything else means production. Feel free to extend that.
+
+Create the file typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices. Inside add the variable $isLocal = TRUE;, $isAlpha = TRUE; oder $isBeta = TRUE; depending on your enviroment.
