@@ -116,7 +116,7 @@ to the git and commit and push the changes.
 ### Customization
 On every deployment you should copy the file .htaccess_typo3_install to the folder typo3/sysext/install/Start. Before that you should define the IPs which can access the install tool.
 
-Replace every occurence of example@example.com by a suitable email address that should receive mails when errors occur.
+Replace every occurence of example@example.com by a suitable email address that should receive mails when errors occur. The same goes for noreply@domain.de
 
 Let the install tool generate a new encryption key.
 
