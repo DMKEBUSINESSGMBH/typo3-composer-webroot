@@ -1,0 +1,8 @@
+Order deny,allow
+Deny from all
+
+Allow from 127.0.0.1
+### Hier weitere IPs eintragen, die Zugriff bekommen
+#Allow from XXX.XXX.XXX.XXX
+
+Satisfy Any
