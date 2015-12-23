@@ -1,7 +1,7 @@
 <?php
 return array(
 	'BE' => array(
-		'compressionLevel' => '9',
+		'compressionLevel' => 5,
 		'debug' => FALSE,
 		'explicitADmode' => 'explicitAllow',
 		'fileCreateMask' => '0660',
@@ -37,7 +37,7 @@ return array(
 	),
 	'FE' => array(
 		'activateContentAdapter' => FALSE,
-		'compressionLevel' => '9',
+		'compressionLevel' => 5,
 		'debug' => FALSE,
 		'lifetime' => '3600',
 		'lockIP' => '4',
