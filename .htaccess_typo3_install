@@ -5,4 +5,7 @@ Allow from 127.0.0.1
 ### Hier weitere IPs eintragen, die Zugriff bekommen
 #Allow from XXX.XXX.XXX.XXX
 
-Satisfy Any
+### wenn vorher ein htaccess auth Schutz geschaltet ist,
+### würde man bei Any auch Zugriff bekommen wenn man die richtigen Zugangsdaten hat
+### aber nicht die richtige IP. Daher muss man alle Zugriffsbeschränkungen erfüllen
+Satisfy All
