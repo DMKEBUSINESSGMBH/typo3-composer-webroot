@@ -111,7 +111,8 @@ AddDefaultCharset utf-8
 	RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
 	### statische Dateien weiter ausliefern
 	RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
-	RewriteCond %{REMOTE_ADDR} !^178.15.114.146
+	### Hier weitere IPs eintragen, die keinen Wartungsmodus sehen
+	RewriteCond %{REMOTE_ADDR} !^XXX.XXX.XXX.XXX
 	RewriteCond %{REQUEST_URI} !^/unavailable/
 	RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
 
