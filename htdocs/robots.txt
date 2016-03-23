@@ -2,31 +2,3 @@ User-agent: *
 
 Disallow: /uploads/users/
 Disallow: /uploads/users_t/
-
-#Disallow: /suchen.html
-#Disallow: /suchen/jobsuche.html
-#Disallow: /suchen/branchensuche.html
-#Disallow: /suchen/einsatzortsuche.html
-
-Disallow: /allgemeinedienste/job-weiterleiten.html
-Disallow: /allgemeinedienste/nachricht-weiterleiten.html
-Disallow: /allgemeinedienste/gesuch-weiterleiten.html
-Disallow: /allgemeinedienste/pdf-generierung.html
-
-Disallow: /hogapage/kontakt.html
-Disallow: /hogapage/kontakt/allgemeines.html
-Disallow: /hogapage/kontakt/lob-tadel.html
-Disallow: /hogapage/kontakt/service.html
-Disallow: /hogapage/preise.html
-Disallow: /hogapage/service/hilfe.html
-Disallow: /hogapage/philosophie.html
-Disallow: /hogapage/vorteile.html
-Disallow: /hogapage/newsletter.html
-
-Disallow: /arbeitgeber/arbeitgeberinfos.html
-
-Disallow: /bewerber/bewerberinfos.html
-
-Disallow: /service/agb.html
-Disallow: /service/impressum.html
-Disallow: /service/seite-empfehlen.html
