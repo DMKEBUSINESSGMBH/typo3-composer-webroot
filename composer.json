@@ -19,11 +19,11 @@
     "repositories" : {
         "typo3" : {
             "type" : "composer",
-            "url" : "http://composer.typo3.org/"
+            "url" : "https://composer.typo3.org/"
         },
         "dmknet" : {
             "type" : "composer",
-            "url" : "http://packages.dmknet.de"
+            "url" : "https://packages.dmknet.de"
         }
     },
     "require" : {
