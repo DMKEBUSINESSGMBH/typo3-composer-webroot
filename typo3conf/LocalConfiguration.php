@@ -53,6 +53,10 @@ return array(
 		'jpg_quality' => '90',
 		'png_truecolor' => '1',
 	),
+	'MAIL' => array(
+		'transport' => 'sendmail',
+		'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
+	),
 	'SYS' => array(
 		'UTF8filesystem' => '1',
 		'belogErrorReporting' => 0,
