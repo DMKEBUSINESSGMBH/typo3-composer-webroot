@@ -17,13 +17,13 @@
         "issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
     },
     "repositories" : {
-        "typo3" : {
-            "type" : "composer",
-            "url" : "https://composer.typo3.org/"
-        },
         "dmknet" : {
             "type" : "composer",
             "url" : "https://packages.dmknet.de"
+        },
+        "typo3" : {
+            "type" : "composer",
+            "url" : "https://composer.typo3.org/"
         }
     },
     "require" : {
