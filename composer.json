@@ -31,11 +31,9 @@
 
         "typo3-ter/be-secure-pw" : "~6.2@stable",
         "typo3-ter/devlog" : "@stable",
-        "typo3-ter/phpmyadmin" : "@stable",
         "typo3-ter/realurl" : "~1@stable",
 
         "caretaker/caretaker_instance" : "dev-master",
-        "dmk/phpunit" : "dev-master-6.2",
 
         "digedag/rn-base" : "*",
 
@@ -45,5 +43,10 @@
         "dmk/mksanitizedparameters" : "*",
         "dmk/mktools" : "*"
     },
-    "minimum-stability" : "dev"
+    "minimum-stability" : "dev",
+	"_prefer-stable" : "true",
+	"require-dev" : {
+	    "typo3-ter/phpmyadmin" : "@stable",
+		"typo3-ter/phpunit": "*"
+	}
 }
