@@ -31,11 +31,9 @@
 
         "typo3-ter/be-secure-pw" : "~6.2@stable",
         "typo3-ter/devlog" : "@stable",
-        "typo3-ter/phpmyadmin" : "@stable",
         "typo3-ter/realurl" : "~1@stable",
 
         "caretaker/caretaker_instance" : "dev-master",
-        "dmk/phpunit" : "dev-master-6.2",
 
         "digedag/rn-base" : "*",
 
@@ -51,5 +49,10 @@
             "cms-package-dir" : "{$vendor-dir}/typo3/cms",
             "web-dir" : "./htdocs"
         }
-    }
+    },
+	"_prefer-stable" : "true",
+	"require-dev" : {
+	    "typo3-ter/phpmyadmin" : "@stable",
+		"typo3-ter/phpunit": "*"
+	}
 }
