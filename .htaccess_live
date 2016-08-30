@@ -2,6 +2,7 @@
 # | Enviroment Variables                                                       |
 # ------------------------------------------------------------------------------
 SetEnv DMK_APP_ENV PRODUCTION
+SetEnv TYPO3_CONTEXT Production/Live
 
 
 # ------------------------------------------------------------------------------
@@ -106,7 +107,7 @@ AddDefaultCharset utf-8
 	# Using mod_rewrite in .htaccess files without knowing the RewriteBase
 	# http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
 	RewriteBase /
-	
+
 	### WARTUNGSMODUS VIA .htaccess
 	RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
 	### statische Dateien weiter ausliefern
@@ -133,15 +134,6 @@ AddDefaultCharset utf-8
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteRule ^.*$ %{ENV:CWD}index.php [QSA,L]
-</IfModule>
-
-# ------------------------------------------------------------------------------
-# | robots for https                                                           |
-# ------------------------------------------------------------------------------
-<IfModule mod_rewrite.c>
-	RewriteCond %{HTTP:X-Forwarded-Protocol} https
-	RewriteCond %{ENV:HTTP_X_FORWARDED_PROTOCOL} https [or]
-	RewriteRule ^robots\.txt$ robots-https.txt
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -177,7 +169,7 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 # | lock access to backup and source files.                                    |
 # ------------------------------------------------------------------------------
-<FilesMatch "(^#.*#|\.(bak|.ts|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op]|tss|tsc|ts|tar|gz|bz2|config|old|sql|dump|yaml|properties|haml|sass|tmpl|tpl|jar|xml|csv|txt)|~)$">
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op]|tss|tsc|ts|tar|gz|bz2|config|old|sql|dump|yaml|properties|haml|sass|tmpl|tpl|jar)|~)$">
 	Order allow,deny
 	Deny from all
 	Satisfy All

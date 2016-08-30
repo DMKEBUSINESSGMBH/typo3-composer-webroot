@@ -27,7 +27,6 @@ return array(
 		'extConf' => array(
 			'be_secure_pw' => 'a:7:{s:14:"passwordLength";s:1:"8";s:13:"lowercaseChar";s:1:"1";s:11:"capitalChar";s:1:"1";s:5:"digit";s:1:"1";s:11:"specialChar";s:1:"1";s:8:"patterns";s:1:"3";s:10:"validUntil";s:0:"";}',
 			'css_styled_content' => 'a:2:{s:15:"setPageTSconfig";s:1:"1";s:19:"removePositionTypes";s:1:"1";}',
-			'devlog' => 'a:11:{s:10:"maxLogRuns";s:2:"15";s:14:"entriesPerPage";s:2:"25";s:7:"maxRows";s:6:"100000";s:8:"optimize";s:1:"0";s:8:"dumpSize";s:7:"2000000";s:11:"minLogLevel";s:2:"-1";s:11:"excludeKeys";s:0:"";s:14:"highlightStyle";s:60:"padding: 2px; background-color: #fc3; border: 1px solid #666";s:16:"refreshFrequency";s:1:"2";s:13:"prototypePath";s:0:"";s:11:"autoCleanup";s:1:"0";}',
 			'mktools' => 'a:13:{s:20:"contentReplaceActive";s:1:"0";s:25:"ajaxContentRendererActive";s:1:"0";s:20:"pageNotFoundHandling";s:1:"1";s:13:"realUrlXclass";s:1:"0";s:22:"seoRobotsMetaTagActive";s:1:"1";s:32:"shouldFalImagesBeAddedToCalEvent";s:1:"0";s:30:"shouldFalImagesBeAddedToTtNews";s:1:"0";s:13:"exceptionPage";s:26:"FILE:unavailable/index.php";s:22:"tableFixedPostVarTypes";s:1:"0";s:24:"realUrlConfigurationFile";s:0:"";s:28:"realUrlConfigurationTemplate";s:0:"";s:27:"tcaPostProcessingExtensions";s:0:"";s:22:"systemLogLockThreshold";s:2:"60";}',
 			'phpmyadmin' => 'a:5:{s:12:"hideOtherDBs";s:1:"1";s:9:"uploadDir";s:21:"uploads/tx_phpmyadmin";s:10:"allowedIps";s:0:"";s:12:"useDevIpMask";s:1:"1";s:10:"ajaxEnable";s:1:"0";}',
 			'phpunit' => 'a:6:{s:17:"excludeextensions";s:8:"lib, div";s:12:"composerpath";s:0:"";s:13:"selenium_host";s:9:"localhost";s:13:"selenium_port";s:4:"4444";s:16:"selenium_browser";s:8:"*firefox";s:19:"selenium_browserurl";s:0:"";}',
@@ -80,7 +79,7 @@ return array(
 		'sqlDebug' => 0,
 		'syslogErrorReporting' => 0,
 		'systemLocale' => 'de_DE.utf8',
-		'systemLog' => 'mail,example@example.com,4;error_log,,2;syslog,LOCAL0,,3',
+		'systemLog' => 'error_log,,2;syslog,LOCAL0,,3',
 		'systemLogLevel' => 3,
 		't3lib_cs_convMethod' => 'mbstring',
 		't3lib_cs_utils' => 'mbstring',

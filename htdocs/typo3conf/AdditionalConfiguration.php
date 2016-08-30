@@ -17,7 +17,7 @@ foreach (
 		'Credentials',
 		'ConfigurationLive',
 		'ConfigurationBeta',
-		'ConfigurationDev',
+		'ConfigurationAlpha',
 		'ConfigurationLocal',
 		'Credentials',
 	) as $confFile

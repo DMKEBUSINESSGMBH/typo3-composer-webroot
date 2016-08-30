@@ -1,58 +1,60 @@
 {
-    "name" : "dmk/typo3-composer-webroot",
-    "description" : "The TYPO3 Project webroot",
-    "type" : "project",
-    "license" : "proprietary",
-    "version" : "0.1.0",
-    "authors" : [
-        {
-            "name" : "Michael Wagner",
-            "email" : "michael.wagner@dmk-ebusiness.de",
-            "role" : "Developer"
-        }
-    ],
-    "support": {
-        "email" : "dev@dmk-ebusiness.de",
-        "source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
-        "issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
-    },
-    "repositories" : {
-        "dmknet" : {
-            "type" : "composer",
-            "url" : "https://packages.dmknet.de"
-        },
-        "typo3" : {
-            "type" : "composer",
-            "url" : "https://composer.typo3.org/"
-        }
-    },
-    "require" : {
-        "typo3/cms" : "~6.2@stable",
+	"name" : "dmk/typo3-composer-webroot",
+	"description" : "The TYPO3 Project webroot",
+	"type" : "project",
+	"license" : "proprietary",
+	"version" : "0.1.0",
+	"authors" : [
+		{
+			"name" : "Michael Wagner",
+			"email" : "michael.wagner@dmk-ebusiness.de",
+			"role" : "Developer"
+		}
+	],
+	"support": {
+		"email" : "dev@dmk-ebusiness.de",
+		"source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
+		"issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
+	},
+	"repositories" : {
+		"dmknet" : {
+			"type" : "composer",
+			"url" : "https://packages.dmknet.de"
+		},
+		"typo3" : {
+			"type" : "composer",
+			"url" : "https://composer.typo3.org/"
+		}
+	},
+	"require" : {
+		"typo3/cms" : "~7.6@stable",
 
-        "typo3-ter/be-secure-pw" : "~6.2@stable",
-        "typo3-ter/devlog" : "@stable",
-        "typo3-ter/realurl" : "~1@stable",
+		"typo3-ter/be-secure-pw" : "~7@stable",
+		"typo3-ter/realurl" : "~2@stable",
+		"typo3-ter/gridelements" : "~7@stable",
+		"typo3-ter/static-info-tables" : "~6.3@stable",
+		"typo3-ter/static-info-tables-de" : "~6.4@stable",
 
-        "caretaker/caretaker_instance" : "dev-master",
+		"caretaker/caretaker_instance" : "dev-master",
 
-        "digedag/rn-base" : "*",
+		"digedag/rn-base" : "*",
 
-        "dmk/mklib" : "*",
-        "dmk/mklog" : "*",
-        "dmk/mkphpids" : "*",
-        "dmk/mksanitizedparameters" : "*",
-        "dmk/mktools" : "*"
-    },
-    "minimum-stability" : "dev",
-    "extra" : {
-        "typo3/cms" : {
-            "cms-package-dir" : "{$vendor-dir}/typo3/cms",
-            "web-dir" : "./htdocs"
-        }
-    },
+		"dmk/mklib" : "*",
+		"dmk/mklog" : "*",
+		"dmk/mkphpids" : "*",
+		"dmk/mksanitizedparameters" : "*",
+		"dmk/mktools" : "*"
+	},
+	"minimum-stability" : "dev",
+	"extra" : {
+		"typo3/cms" : {
+			"cms-package-dir" : "{$vendor-dir}/typo3/cms",
+			"web-dir" : "./htdocs"
+		}
+	},
 	"_prefer-stable" : "true",
 	"require-dev" : {
-	    "typo3-ter/phpmyadmin" : "@stable",
+		"typo3-ter/phpmyadmin" : "@stable",
 		"typo3-ter/phpunit": "*"
 	}
 }

@@ -10,7 +10,7 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-htdocs76
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
@@ -70,11 +70,7 @@ and push the project to the repo
 In a lot of cases it will be usefull to define a DocRoot for the projekt.
 So the public files will be stored there and all other, like vendor, are outside.
 
-This feature is new in the CmsComposerInstaller since 1.2.2.
-
-To use this Feature, you has to create the project from the htdocs62 branch like this:
-
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-htdocs62
+This feature is new in the CmsComposerInstaller since 1.2.2. and enabled by default.
 
 ### Add Extensions
 
@@ -114,7 +110,7 @@ add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3con
 to the git and commit and push the changes.
 
 ### Customization
-On every deployment you should copy the file .htaccess_typo3_install to the folder htdocs/typo3/sysext/install/Start. Before that you should define the IPs which can access the install tool.
+On every deployment you should copy the file .htaccess_typo3_install to the folder typo3/sysext/install/Start. Before that you should define the IPs which can access the install tool.
 
 Replace every occurence of example@example.com by a suitable email address that should receive mails when errors occur. The same goes for noreply@domain.de
 
@@ -122,4 +118,4 @@ Let the install tool generate a new encryption key.
 
 Use .htaccess_live as .htaccess file for your environments. Before that you should replace ###PUT_HOMEPAGE_HERE### inside the htaccess file with the domain of the environment. Afterwards adjust the DMK_APP_ENV environment variable for your desired environment. This way the configuration for this envirnoment will be loaded automatically. Possible is ALPHA, BETA and LOCAL. Everything else means production. Feel free to extend that.
 
-Create the file htdocs/typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices. Inside add the variable $isLocal = TRUE;, $isAlpha = TRUE; oder $isBeta = TRUE; depending on your enviroment.
+Create the file typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices. Inside add the variable $isLocal = TRUE;, $isAlpha = TRUE; oder $isBeta = TRUE; depending on your enviroment.

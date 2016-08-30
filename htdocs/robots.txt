@@ -1,4 +1,6 @@
-User-agent: * 
+User-agent: *
 
-Disallow: /uploads/users/
-Disallow: /uploads/users_t/
+Disallow: /uploads/
+Disallow: /fileadmin/
+Disallow: /typo3conf/
+Disallow: /typo3temp/

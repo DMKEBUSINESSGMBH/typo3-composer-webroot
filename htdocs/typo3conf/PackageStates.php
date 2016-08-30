@@ -471,15 +471,6 @@ return array (
       array (
       ),
     ),
-    'devlog' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/devlog/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'caretaker_instance' => 
     array (
       'state' => 'active',
