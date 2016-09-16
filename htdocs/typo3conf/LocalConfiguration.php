@@ -54,7 +54,7 @@ return [
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
         'noPHPscriptInclude ' => '1',
-        'pageNotFoundOnCHashError' => false,
+        'pageNotFoundOnCHashError' => true,
         'pageNotFound_handling' => 'MKTOOLS_TYPOSCRIPT:typo3conf/ext/[projectextension]/Configuration/TypoScript/Extensions/mktools.tss',
         'pageNotFound_handling_statheader' => 'HTTP/1.1 404 Not Found',
         'pageUnavailable_handling' => 'unavailable/',
