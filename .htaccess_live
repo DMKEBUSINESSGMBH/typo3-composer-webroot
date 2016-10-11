@@ -190,6 +190,11 @@ AddDefaultCharset utf-8
 	RedirectMatch 404 /\.(?:git|svn|hg)/
 </IfModule>
 
+# Zugriff auf versteckte und composer Dateien unterbinden
+<IfModule mod_alias.c>
+	RedirectMatch 404 /\..*$
+</IfModule>
+
 
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
@@ -289,3 +294,43 @@ FileETag None
 	ExpiresByType image/svg+xml                         "access plus 1 month"
 
 </IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Error Documents                                                            |
+# ------------------------------------------------------------------------------
+# die verwendeten Seiten müssen angelegt werden!
+# /fehler ist eine TYPO3 interne Seite und fehler.html eine statische
+# da bei 5xx Fehler das ganze TYPO3 nicht funktionieren könnte!
+# Die fehler.html enthält keinerlei Menüs etc. damit der Nutzer nicht unnütze Links bekommt.
+ErrorDocument 400 /fehler
+# 401 bedeutet authentifizierung angefordert und das muss nicht behandelt werden!
+ErrorDocument 402 /404
+ErrorDocument 403 /404
+# 404 handling wird in erster instanz von TYPO3 übernommen und ist damit nur ein Fallback
+# und für andere Applikationen, die evtl. im gleichen webroot laufen
+ErrorDocument 404 /404
+ErrorDocument 405 /fehler
+ErrorDocument 406 /fehler
+ErrorDocument 407 /fehler
+ErrorDocument 408 /fehler
+ErrorDocument 409 /fehler
+ErrorDocument 410 /fehler
+ErrorDocument 411 /fehler
+ErrorDocument 412 /fehler
+ErrorDocument 413 /fehler
+ErrorDocument 414 /fehler
+ErrorDocument 415 /fehler
+ErrorDocument 416 /fehler
+ErrorDocument 417 /fehler
+ErrorDocument 421 /fehler
+ErrorDocument 422 /fehler
+ErrorDocument 423 /fehler
+ErrorDocument 424 /fehler
+ErrorDocument 426 /fehler
+ErrorDocument 500 /fehler.html
+ErrorDocument 501 /fehler.html
+ErrorDocument 502 /fehler.html
+ErrorDocument 503 /fehler.html
+ErrorDocument 504 /fehler.html
+ErrorDocument 505 /fehler.html
