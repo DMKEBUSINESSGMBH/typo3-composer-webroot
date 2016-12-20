@@ -30,10 +30,10 @@
 		"typo3/cms" : "~7.6@stable",
 
 		"typo3-ter/be-secure-pw" : "~7@stable",
-		"typo3-ter/realurl" : "~2@stable",
 		"typo3-ter/gridelements" : "~7@stable",
 		"typo3-ter/static-info-tables" : "~6.3@stable",
 		"typo3-ter/static-info-tables-de" : "~6.4@stable",
+		"dmitryd/typo3-realurl" : "~2@stable",
 
 		"caretaker/caretaker_instance" : "dev-master",
 
