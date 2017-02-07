@@ -50,6 +50,7 @@ return [
         'activateContentAdapter' => false,
         'compressionLevel' => 5,
         'debug' => false,
+        'disableNoCacheParameter' => true,
         'lifetime' => '3600',
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
