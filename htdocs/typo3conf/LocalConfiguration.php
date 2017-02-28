@@ -48,6 +48,7 @@ return [
     ],
     'FE' => [
         'activateContentAdapter' => false,
+        'cHashIncludePageId' => true,
         'compressionLevel' => 5,
         'debug' => false,
         'disableNoCacheParameter' => true,
