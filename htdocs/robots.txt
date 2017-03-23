@@ -1,6 +1,58 @@
+###Grunsätzliche Erlaubnis für alle Verzeichnisse/Ordner/Pfade
+# beinhaltet auch Seitenstruktur im Frontend
 User-agent: *
+Allow: /
 
-Disallow: /uploads/
-Disallow: /fileadmin/
+# TYPO3-Pfade ausschließen
+Disallow: /typo3_src/
+Disallow: /typo3/
+Disallow: /t3lib/
 Disallow: /typo3conf/
+
+# Speicher und Uploadpfade ausschließen
 Disallow: /typo3temp/
+Disallow: /uploads/
+
+# Dateien nach Endung ausschließen (php, Typoscript, ...)
+Disallow: /*.php
+Disallow: /*.tss
+Disallow: /*.tsc
+Disallow: /*.csv
+Disallow: /*.xls
+Disallow: /*.xlsx
+
+# Ausschließen, dass Seiten ohne realurl indiziert werden (duplicate content!)
+Disallow: /*?id=*
+
+# Zugriff auf die Extension und TMPFiles, welche die CSS und JS Dateien beinhalten, erlauben
+#(Google MobileFriendlyTest - Sichtbarkeit Styles + Scripts: https://www.google.com/webmasters/tools/mobile-friendly/).
+Allow: /typo3conf/ext/*/Resources/Public/
+Allow: /*.js
+Allow: /*.js.*
+Allow: /*.css
+Allow: /*.css.*
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.svg
+Allow: /*.gif
+Allow: /*.png
+### in typo3temp und uploads explizit freigeben da der Ordner ansich verboten ist
+Allow: /typo3temp/*.jpg
+Allow: /typo3temp/*.png
+Allow: /typo3temp/*.gif
+Allow: /typo3temp/*.svg
+Allow: /typo3temp/*.js
+Allow: /typo3temp/*.css
+Allow: /typo3temp/*.js.*
+Allow: /typo3temp/*.css.*
+Allow: /uploads/*.jpg
+Allow: /uploads/*.png
+Allow: /uploads/*.gif
+Allow: /uploads/*.svg
+Allow: /uploads/*.js
+Allow: /uploads/*.css
+Allow: /uploads/*.js.*
+Allow: /uploads/*.css.*
+
+# falls die Wartungsseite in wartung liegt
+Disallow: /wartung/
