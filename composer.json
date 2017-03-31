@@ -3,7 +3,7 @@
 	"description" : "The TYPO3 Project webroot",
 	"type" : "project",
 	"license" : "proprietary",
-	"version" : "0.1.0",
+	"version" : "0.8.7",
 	"authors" : [
 		{
 			"name" : "Michael Wagner",
@@ -27,15 +27,11 @@
 		}
 	},
 	"require" : {
-		"typo3/cms" : "~7.6@stable",
+		"typo3/cms" : "~8.7@stable",
 
-		"typo3-ter/be-secure-pw" : "~7@stable",
-		"typo3-ter/gridelements" : "~7@stable",
-		"typo3-ter/static-info-tables" : "~6.3@stable",
-		"typo3-ter/static-info-tables-de" : "~6.4@stable",
-		"dmitryd/typo3-realurl" : "~2@stable",
-
-		"caretaker/caretaker_instance" : "dev-master",
+		"typo3-ter/be-secure-pw" : "~7.1@stable",
+		"typo3-ter/static-info-tables" : "~6.4@stable",
+		"dmitryd/typo3-realurl" : "~2.1@stable",
 
 		"digedag/rn-base" : "*",
 
@@ -44,6 +40,10 @@
 		"dmk/mkphpids" : "*",
 		"dmk/mksanitizedparameters" : "*",
 		"dmk/mktools" : "*"
+	},
+	"require_but_not_typo3_8lts_compatible" : {
+		"typo3-ter/gridelements" : "~8@stable",
+		"typo3-ter/static-info-tables-de" : "~6.5@stable"
 	},
 	"minimum-stability" : "dev",
 	"extra" : {
@@ -55,6 +55,8 @@
 	"_prefer-stable" : "true",
 	"require-dev" : {
 		"typo3-ter/phpmyadmin" : "@stable",
-		"typo3-ter/phpunit": "*"
+		"typo3-ter/phpunit": "*",
+		"phpunit/phpunit-selenium" : "^1",
+		"mikey179/vfsStream" : "^1"
 	}
 }

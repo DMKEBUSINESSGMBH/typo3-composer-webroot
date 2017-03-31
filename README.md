@@ -10,15 +10,15 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-htdocs76
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-typo3-87
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
 
 The installation process should look like this:
 
-    Installing dmk/typo3-composer-webroot (dev-htdocs76)
-    - Installing dmk/typo3-composer-webroot (dev-htdocs76 htdocs76)
+    Installing dmk/typo3-composer-webroot (dev-typo3-87)
+    - Installing dmk/typo3-composer-webroot (dev-typo3-87 typo3-87)
 
 
     Created project in my-project-webroot
