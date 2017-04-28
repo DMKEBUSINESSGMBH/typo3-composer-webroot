@@ -9,7 +9,7 @@ if (!empty($_SERVER['HTTP_X_FORWARDED_PROTOCOL']) &&  $_SERVER['HTTP_X_FORWARDED
 
 // check Credentials
 is_readable(dirname(__FILE__).'/Credentials.php')
-	|| exit('FATAL ERROR: Credentials missed for TYPO3 configuration!');
+	|| exit('FATAL ERROR: Credentials missed for TYPO3 configuration! <br />Please add Credentials.php in '.dirname(__FILE__).' based on '.dirname(__FILE__).'/Credentials.php.dist');
 
 call_user_func(
 	function () {
