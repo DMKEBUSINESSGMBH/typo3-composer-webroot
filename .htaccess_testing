@@ -322,7 +322,6 @@ ErrorDocument 414 /fehler
 ErrorDocument 415 /fehler
 ErrorDocument 416 /fehler
 ErrorDocument 417 /fehler
-ErrorDocument 421 /fehler
 ErrorDocument 422 /fehler
 ErrorDocument 423 /fehler
 ErrorDocument 424 /fehler
