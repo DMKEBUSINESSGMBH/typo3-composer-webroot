@@ -106,6 +106,10 @@ Replace every occurence of example@example.com by a suitable email address that 
 
 Let the install tool generate a new encryption key.
 
-Use .htaccess_live as .htaccess file for your environments. Before that you should replace ###PUT_HOMEPAGE_HERE### inside the htaccess file with the domain of the environment. Afterwards adjust the DMK_APP_ENV environment variable for your desired environment. This way the configuration for this envirnoment will be loaded automatically. Possible is ALPHA, BETA and LOCAL. Everything else means production. Feel free to extend that.
+Use .htaccess_* as .htaccess file for your environments. Before that you should replace ###PUT_HOMEPAGE_HERE### inside the htaccess file with the domain of the environment. 
 
-Create the file typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices.
+Create the file typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices. A example is given in typo3conf/Credentials.php.inst
+
+Adjust pageNotFound_handling in LocalConfiguration.php.
+
+
