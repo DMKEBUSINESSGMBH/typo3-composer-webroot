@@ -102,14 +102,18 @@ to the git and commit and push the changes.
 
 ### Customization
 
-Replace every occurence of example@example.com by a suitable email address that should receive mails when errors occur. The same goes for noreply@domain.de
-
-Let the install tool generate a new encryption key.
-
-Use .htaccess_* as .htaccess file for your environments. Before that you should replace ###PUT_HOMEPAGE_HERE### inside the htaccess file with the domain of the environment. 
-
-Create the file typo3conf/Credentials.php in each environment manually which should contain the credentials for connecting to the database or other sensitive credentials like passwords for webservices. A example is given in typo3conf/Credentials.php.inst
-
-Adjust pageNotFound_handling in LocalConfiguration.php.
+  * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the LocalConfiguration.php.
+  * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
+  * Replace `XXX.XXX.XXX.XXX` in the `.htaccess*` files with the IP that can access the System in maintenance mode.
+  * Replace `###PUT_HOMEPAGE_HERE###` in the `.htaccess*` files with the domain of the environment. 
+  * Use .htaccess_* as .htaccess file for your environments.
+  * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
+    A example is given in typo3conf/Credentials.php.inst
+  * Create an encryption key and insert the key in the Credentials.php (don't store security critical data in git).
+  * Optionaly enable some improvements in the extension configuration of MK TOOLS.
+    we recommend to enable the following features:
+      * pageNotFoundHandling
+        Adjust pageNotFound_handling in LocalConfiguration.php. See [MK TOOLS Documentation](https://github.com/DMKEBUSINESSGMBH/typo3-mktools/blob/master/Documentation/Utilities/PageNotFoundHandling/Index.md)
+      * seoRobotsMetaTagActive
 
 

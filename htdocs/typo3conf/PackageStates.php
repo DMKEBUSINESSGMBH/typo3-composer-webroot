@@ -89,9 +89,6 @@ return [
         'lowlevel' => [
             'packagePath' => 'typo3/sysext/lowlevel/',
         ],
-        'opendocs' => [
-            'packagePath' => 'typo3/sysext/opendocs/',
-        ],
         'recordlist' => [
             'packagePath' => 'typo3/sysext/recordlist/',
         ],
@@ -145,9 +142,6 @@ return [
         ],
         'be_secure_pw' => [
             'packagePath' => 'typo3conf/ext/be_secure_pw/',
-        ],
-        'phpmyadmin' => [
-            'packagePath' => 'typo3conf/ext/phpmyadmin/',
         ],
         'phpunit' => [
             'packagePath' => 'typo3conf/ext/phpunit/',

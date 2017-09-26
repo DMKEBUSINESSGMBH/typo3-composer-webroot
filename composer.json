@@ -54,7 +54,6 @@
 	},
 	"_prefer-stable" : "true",
 	"require-dev" : {
-		"typo3-ter/phpmyadmin" : "@stable",
 		"typo3-ter/phpunit": "*",
 		"phpunit/phpunit-selenium" : "^1",
 		"mikey179/vfsStream" : "^1"
