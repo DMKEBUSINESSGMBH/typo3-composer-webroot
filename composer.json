@@ -34,7 +34,6 @@
 		"typo3/cms" : "~8.7@stable",
 
 		"typo3-ter/be-secure-pw" : "~7.1@stable",
-		"typo3-ter/static-info-tables" : "~6.4@stable",
 		"dmitryd/typo3-realurl" : "~2.1@stable",
 
 		"digedag/rn-base" : "*",

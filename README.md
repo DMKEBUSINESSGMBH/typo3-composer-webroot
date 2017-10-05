@@ -115,5 +115,7 @@ to the git and commit and push the changes.
       * pageNotFoundHandling
         Adjust pageNotFound_handling in LocalConfiguration.php. See [MK TOOLS Documentation](https://github.com/DMKEBUSINESSGMBH/typo3-mktools/blob/master/Documentation/Utilities/PageNotFoundHandling/Index.md)
       * seoRobotsMetaTagActive
+  * install gridelements or a similar extension
+  * install static_info_tables if needed. The current version 6.4.3 is buggy as the static import fails as soon as a extension is installed, that enhances the static_countries database table (@see https://forge.typo3.org/issues/82132) like mklib does. As a workaround deinstall mklib temporarily for inserting the static data of static_info_tables.
 
 

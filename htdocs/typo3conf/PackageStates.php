@@ -134,9 +134,6 @@ return [
         'mklog' => [
             'packagePath' => 'typo3conf/ext/mklog/',
         ],
-        'static_info_tables' => [
-            'packagePath' => 'typo3conf/ext/static_info_tables/',
-        ],
         'realurl' => [
             'packagePath' => 'typo3conf/ext/realurl/',
         ],
