@@ -24,6 +24,10 @@
 		"typo3" : {
 			"type" : "composer",
 			"url" : "https://composer.typo3.org/"
+		},
+		"phpunit" : {
+			"type" : "vcs",
+			"url" : "git@github.com:TYPO3-extensions/phpunit.git"
 		}
 	},
 	"require" : {
@@ -54,7 +58,7 @@
 	},
 	"_prefer-stable" : "true",
 	"require-dev" : {
-		"typo3-ter/phpunit": "*",
+		"oliverklee/phpunit": "*",
 		"phpunit/phpunit-selenium" : "^1",
 		"mikey179/vfsStream" : "^1"
 	}
