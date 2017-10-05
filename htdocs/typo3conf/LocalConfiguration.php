@@ -6,7 +6,6 @@ return [
         'compressionLevel' => 5,
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
-        'fileDenyPattern' => '\\.(php[3-6]?|phpsh|phtml)(\\..*)?$|^\\.htaccess$',
         'installToolPassword' => '$P$CNaH/LW2rfie4iPuknHRTjyYIoxx1p0',
         'lockIP' => '4',
         'lockSSL' => true,
