@@ -32,7 +32,7 @@ return [
             'filemetadata' => 'a:0:{}',
             'gridelements' => 'a:2:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"1";}',
             'mklib' => 'a:7:{s:13:"proxyBeUserId";s:1:"0";s:18:"picturesUploadPath";s:25:"uploads/tx_mklib/pictures";s:12:"portalPageId";s:1:"0";s:12:"logDbHandler";s:1:"0";s:17:"logDbIgnoreTables";s:0:"";s:17:"specialCharMarker";s:12:"SPECIALCHAR_";s:13:"tableWordlist";s:1:"0";}',
-            'mklog' => 'a:7:{s:13:"enable_devlog";s:1:"1";s:13:"min_log_level";s:1:"4";s:16:"exclude_ext_keys";s:7:"extbase";s:8:"max_logs";s:5:"10000";s:11:"gelf_enable";s:1:"1";s:16:"gelf_credentials";s:0:"";s:18:"gelf_min_log_level";s:1:"1";}',
+            'mklog' => 'a:7:{s:13:"enable_devlog";s:1:"1";s:13:"min_log_level";s:1:"5";s:16:"exclude_ext_keys";s:7:"extbase";s:8:"max_logs";s:5:"10000";s:11:"gelf_enable";s:1:"1";s:16:"gelf_credentials";s:0:"";s:18:"gelf_min_log_level";s:1:"1";}',
             'mkphpids' => 'a:0:{}',
             'mksanitizedparameters' => 'a:4:{s:11:"stealthMode";s:1:"0";s:21:"stealthModeStoragePid";s:1:"1";s:9:"debugMode";s:1:"0";s:7:"logMode";s:1:"0";}',
             'mktools' => 'a:13:{s:20:"contentReplaceActive";s:1:"0";s:25:"ajaxContentRendererActive";s:1:"0";s:20:"pageNotFoundHandling";s:1:"0";s:13:"realUrlXclass";s:1:"0";s:22:"seoRobotsMetaTagActive";s:1:"0";s:32:"shouldFalImagesBeAddedToCalEvent";s:1:"0";s:30:"shouldFalImagesBeAddedToTtNews";s:1:"0";s:13:"exceptionPage";s:0:"";s:22:"tableFixedPostVarTypes";s:1:"0";s:24:"realUrlConfigurationFile";s:0:"";s:28:"realUrlConfigurationTemplate";s:0:"";s:27:"tcaPostProcessingExtensions";s:7:"mktools";s:22:"systemLogLockThreshold";s:2:"60";}',
