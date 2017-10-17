@@ -117,5 +117,6 @@ to the git and commit and push the changes.
       * seoRobotsMetaTagActive
   * install gridelements or a similar extension
   * install static_info_tables if needed. The current version 6.4.3 is buggy as the static import fails as soon as a extension is installed, that enhances the static_countries database table (@see https://forge.typo3.org/issues/82132) like mklib does. As a workaround deinstall mklib temporarily for inserting the static data of static_info_tables.
+  * set up scheduler tasks for mklog DevLog WatchDog (recommended: check for errors and above every 5 minutes, check for notices and above two times a day)
 
 
