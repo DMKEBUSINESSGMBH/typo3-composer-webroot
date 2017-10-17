@@ -53,5 +53,8 @@ call_user_func(
             strlen($warningMail),
             $warningMail
         );
+        
+        // we're using mklog as log writer, so we don't need the file log.
+        unset($GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::WARNING]['TYPO3\\CMS\\Core\\Log\\Writer\\FileWriter']);
     }
 );
