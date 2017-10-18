@@ -56,12 +56,12 @@ return [
         'noPHPscriptInclude' => true,
         'noPHPscriptInclude ' => '1',
         'pageNotFoundOnCHashError' => true,
-        'pageNotFound_handling' => 'MKTOOLS_READFILE:/unavailable/',
+        'pageNotFound_handling' => 'MKTOOLS_READFILE:/404/',
         // optionaly, use special configuration from typoscript.
         // see https://github.com/DMKEBUSINESSGMBH/typo3-mktools/blob/master/Documentation/Utilities/PageNotFoundHandling/Index.md
         // 'pageNotFound_handling' => 'MKTOOLS_TYPOSCRIPT:typo3conf/ext/[projectextension]/Configuration/TypoScript/Extensions/mktools.tss',
         'pageNotFound_handling_statheader' => 'HTTP/1.1 404 Not Found',
-        'pageUnavailable_handling' => 'unavailable/',
+        'pageUnavailable_handling' => 'fehler.html',
     ],
     'GFX' => [
         'jpg_quality' => '80',
