@@ -55,4 +55,4 @@ Allow: /uploads/*.js.*
 Allow: /uploads/*.css.*
 
 # falls die Wartungsseite in wartung liegt
-Disallow: /wartung/
+Disallow: /unavailable/
