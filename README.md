@@ -120,5 +120,6 @@ to the git and commit and push the changes.
   * set up scheduler tasks for mklog DevLog WatchDog (recommended: check for errors and above every 5 minutes, check for notices and above two times a day)
   * adjust content of fehler.html (used as ErrorDocument for 5xx errors and in case of pageUnavailable handling of TYPO3)
   * provide the following pages in TYPO3: 404.html (used as ErrorDocument in htaccess and as 404 page for default page not found handling) and /fehler (used in htaccess as ErrorDocuments)
+  * copy .htaccess_typo3 to your typo3 folder to have access restriction for the install tool (you need to configure the IPs that are whitelisted, htpasswd etc. as you like inside the htaccess file)
 
 
