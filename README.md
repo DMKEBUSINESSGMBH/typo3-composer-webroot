@@ -106,7 +106,7 @@ to the git and commit and push the changes.
   * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
   * Replace `XXX.XXX.XXX.XXX` in the `.htaccess*` files with the IP that can access the System in maintenance mode.
   * Replace `###PUT_HOMEPAGE_HERE###` in the `.htaccess*` files with the domain of the environment. 
-  * Use .htaccess_* as .htaccess file for your environments.
+  * Use .htaccess_* as .htaccess file for your environments. If needed add authentication
   * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
     A example is given in typo3conf/Credentials.php.inst
   * Create an encryption key and insert the key in the Credentials.php (don't store security critical data in git).
