@@ -1,0 +1,11 @@
+### Install Tool
+<Files "install.php">
+    Order deny,allow
+    Deny from all
+
+    SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
+    Allow from env=AllowIP
+    Allow from xxx.xxx.xxx.xxx
+
+    Satisfy All
+</Files>
