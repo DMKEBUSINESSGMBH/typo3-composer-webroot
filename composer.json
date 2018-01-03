@@ -35,27 +35,26 @@
 
 		"typo3-ter/be-secure-pw" : "~7.1@stable",
 		"dmitryd/typo3-realurl" : "~2.1@stable",
+		"typo3-ter/gridelements" : "~8@stable",
 
-		"digedag/rn-base" : "*",
+		"digedag/rn-base" : "@dev",
 
-		"dmk/mklib" : "*",
-		"dmk/mklog" : "*",
-		"dmk/mkphpids" : "*",
-		"dmk/mksanitizedparameters" : "*",
-		"dmk/mktools" : "*"
+		"dmk/mklib" : "@dev",
+		"dmk/mklog" : "@dev",
+		"dmk/mkphpids" : "@dev",
+		"dmk/mksanitizedparameters" : "@dev",
+		"dmk/mktools" : "@dev"
 	},
 	"require_but_not_typo3_8lts_compatible" : {
-		"typo3-ter/gridelements" : "~8@stable",
 		"typo3-ter/static-info-tables-de" : "~6.5@stable"
 	},
-	"minimum-stability" : "dev",
+	"minimum-stability" : "stable",
 	"extra" : {
 		"typo3/cms" : {
 			"cms-package-dir" : "{$vendor-dir}/typo3/cms",
 			"web-dir" : "./htdocs"
 		}
 	},
-	"_prefer-stable" : "true",
 	"require-dev" : {
 		"oliverklee/phpunit": "*",
 		"phpunit/phpunit-selenium" : "^1",
