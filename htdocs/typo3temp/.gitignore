@@ -1,5 +1,9 @@
-# Ignore everything
-*
+# Ignore everything with a file extension
+*.*
+# and everything inside here
+var/InstallToolSessions*
+var/Cache/*
+var/locks/*
 
 # But not these files...
 !.gitignore
