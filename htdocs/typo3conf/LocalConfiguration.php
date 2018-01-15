@@ -73,6 +73,11 @@ return [
         'processor_path' => '/usr/bin',
         'processor_path_lzw' => '/usr/bin',
     ],
+    'MAIL' => [
+        'defaultMailFromAddress' => 'noreply@tld.de',
+        'transport' => 'sendmail',
+        'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
+    ],
     'SYS' => [
         'UTF8filesystem' => '1',
         'belogErrorReporting' => 0,

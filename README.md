@@ -104,6 +104,7 @@ to the git and commit and push the changes.
 
   * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the LocalConfiguration.php.
   * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
+  * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the LocalConfiguration.php.
   * Replace `XXX.XXX.XXX.XXX` in the `.htaccess*` files with the IP that can access the System in maintenance mode.
   * Replace `###PUT_HOMEPAGE_HERE###` in the `.htaccess*` files with the domain of the environment. 
   * Use .htaccess_* as .htaccess file for your environments. If needed add authentication
