@@ -86,6 +86,7 @@ return [
         'devIPmask' => 'XXX.XXX.XXX.XXX',
         'displayErrors' => -1,
         'enableDeprecationLog' => false,
+        'enable_DLOG' => 1,
         'enable_errorDLOG' => 1,
         'enable_exceptionDLOG' => 1,
         'encryptionKey' => '[the key should be written in the credentials.php]',
