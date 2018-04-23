@@ -27,6 +27,9 @@ call_user_func(
                 $applicationContext->isProduction() ? 'ConfigurationProduction' : '',
                 $applicationContext->isTesting() ? 'ConfigurationTesting' : '',
                 $applicationContext->isDevelopment() ? 'ConfigurationDevelopment' : '',
+                // includes for example "ConfigurationProductionStaging" 
+                // if a parent context was set like TYPO3_CONTEXT="Production/Staging"
+                $applicationContext->getParent() !== null ? 'Configuration' . str_replace('/', '', (string) $applicationContext) : '',
                 'Credentials',
             ) as $confFile) {
             $confFile = empty($confFile) ? false : dirname(__FILE__) . '/' . $confFile . '.php';
