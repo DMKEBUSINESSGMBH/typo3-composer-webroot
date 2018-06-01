@@ -34,8 +34,8 @@ $TYPO3_CONF_VARS['MAIL'] = array_merge(
         'transport' => 'smtp',
         'transport_smtp_server' => 'mailhog:1025',
         'transport_smtp_encrypt' => '',
-		'transport_smtp_password' => '',
-		'transport_smtp_username' => '',
+        'transport_smtp_password' => '',
+        'transport_smtp_username' => '',
         'defaultMailFromAddress' => $TYPO3_CONF_VARS['BE']['warning_email_addr'],
         'defaultMailFromName' => $TYPO3_CONF_VARS['SYS']['sitename'],
     )
