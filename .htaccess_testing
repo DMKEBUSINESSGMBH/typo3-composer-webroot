@@ -166,9 +166,17 @@ AddDefaultCharset utf-8
 </IfModule>
 
 <FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|phpsh|sh|sql|sw[op]|tss|tsc|ts|tar|gz|bz2|config|old|sql|dump|yaml|properties|haml|sass|tmpl|tpl|jar)|~)$">
-	Order allow,deny
-	Deny from all
-	Satisfy All
+	# Apache < 2.3
+	<IfModule !mod_authz_core.c>
+		Order allow,deny
+		Deny from all
+		Satisfy All
+	</IfModule>
+
+	# Apache ≥ 2.3
+	<IfModule mod_authz_core.c>
+		Require all denied
+	</IfModule>
 </FilesMatch>
 
 <FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|dist|fla|in[ci]|log|phpsh|sh|sql(?:\..*)?|sw[op]|git.*)|.*(?:~|rc))$">
