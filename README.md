@@ -110,7 +110,7 @@ to the git and commit and push the changes.
   * Replace `###PUT_HOMEPAGE_HERE###` in the `.htaccess*` files with the domain of the environment. 
   * Use .htaccess_* as .htaccess file for your environments. If needed add authentication
   * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
-    A example is given in typo3conf/Credentials.php.inst
+    A example is given in Credentials.php.inst in the repo root.
   * Create an encryption key and insert the key in the Credentials.php (don't store security critical data in git).
   * Optionaly enable some improvements in the extension configuration of MK TOOLS.
     we recommend to enable the following features:
