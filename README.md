@@ -103,6 +103,8 @@ to the git and commit and push the changes.
 ### Customization
 
   * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the LocalConfiguration.php.
+      * don't forget to create the adress
+      * best practise is to have a mailing list where everyone is added who is involved in the project
   * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the LocalConfiguration.php.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = 'XXX.XXX.XXX.XXX' in the LocalConfiguration.php. 
