@@ -1,0 +1,347 @@
+# ------------------------------------------------------------------------------
+# | Enviroment Variables                                                       |
+# ------------------------------------------------------------------------------
+SetEnv TYPO3_CONTEXT Production/Staging
+
+
+# ------------------------------------------------------------------------------
+# | CORS-enabled images                                                        |
+# ------------------------------------------------------------------------------
+<IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(gif|ico|jpe?g|png|svgz?|webp)$">
+            SetEnvIf Origin ":" IS_CORS
+            Header set Access-Control-Allow-Origin "*" env=IS_CORS
+        </FilesMatch>
+    </IfModule>
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Web fonts access                                                           |
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    <FilesMatch "\.(eot|svg|otf|ttc|ttf|woff|woff2)$">
+        Header set Access-Control-Allow-Origin "https://www.uni-leipzig.de"
+        Header set Vary "Origin"
+    </FilesMatch>
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | 404 error prevention for non-existing redirected folders                   |
+# ------------------------------------------------------------------------------
+Options -MultiViews
+
+
+# ------------------------------------------------------------------------------
+# | Force IE to render pages in the highest available mode in the various      |
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=edge"
+    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+        Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Proper MIME types for all files                                            |
+# ------------------------------------------------------------------------------
+<IfModule mod_mime.c>
+
+    AddType audio/mp4                                   m4a f4a f4b
+    AddType audio/ogg                                   oga ogg
+
+    AddType application/javascript                      js
+    AddType application/json                            json
+
+    AddType video/mp4                                   mp4 m4v f4v f4p
+    AddType video/ogg                                   ogv
+    AddType video/webm                                  webm
+    AddType video/x-flv                                 flv
+
+    AddType application/font-woff                       woff
+    AddType application/vnd.ms-fontobject               eot
+
+    AddType application/x-font-ttf                      ttc ttf
+    AddType font/opentype                               otf
+
+    AddType     image/svg+xml                           svg svgz
+    AddEncoding gzip                                    svgz
+
+    AddType application/octet-stream                    safariextz
+    AddType application/x-chrome-extension              crx
+    AddType application/x-opera-extension               oex
+    AddType application/x-shockwave-flash               swf
+    AddType application/x-web-app-manifest+json         webapp
+    AddType application/x-xpinstall                     xpi
+    AddType application/xml                             atom rdf rss xml
+    AddType image/webp                                  webp
+    AddType image/x-icon                                ico
+    AddType text/cache-manifest                         appcache manifest
+    AddType text/vtt                                    vtt
+    AddType text/x-component                            htc
+    AddType text/x-vcard                                vcf
+
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | UTF-8 encoding                                                             |
+# ------------------------------------------------------------------------------
+AddDefaultCharset utf-8
+<IfModule mod_mime.c>
+    AddCharset utf-8 .atom .css .js .json .rss .vtt .webapp .xml
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Rewrite engine                                                             |
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+
+    # Enable URL rewriting
+    RewriteEngine On
+
+    # Using mod_rewrite in .htaccess files without knowing the RewriteBase
+    # http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
+    RewriteBase /
+
+    ### WARTUNGSMODUS VIA .htaccess
+    RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
+    ### statische Dateien weiter ausliefern
+    RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
+    ### Hier weitere IPs eintragen, die keinen Wartungsmodus sehen
+    RewriteCond %{REMOTE_ADDR} !^XXX.XXX.XXX.XXX
+    RewriteCond %{REQUEST_URI} !^/unavailable/
+    RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
+
+    # Store the current location in an environment variable CWD
+    RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+    RewriteRule ^.*$ - [E=CWD:%2]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ $1.$3 [L]
+    RewriteRule ^fileadmin/(.*/)?_recycler_/ - [F]
+    RewriteRule ^fileadmin/templates/.*(\.txt|\.ts)$ - [F]
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Styleguide\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Start\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/SubWithSidebar\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Newsportal\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Personenprofil\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Suchergebnis\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Studiengang\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Datenbank\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Sitemap\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/modules\.html$
+    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/index\.html$
+
+    RewriteRule ^typo3conf/ext/[^/]+/Resources/Private/ - [F]
+    RewriteRule ^(typo3/|t3lib/|fileadmin/|typo3conf/|typo3temp/|uploads/|favicon\.ico) - [L]
+
+    # Just by prefixing the environment variable, we can safely rewrite anything now
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule ^.*$ %{ENV:CWD}index.php [QSA,L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | Block access to directories without a default document.                    |
+# ------------------------------------------------------------------------------
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Block access to hidden files and directories.                              |
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+
+    ### NOTE: please replace the ###PUT_HOMEPAGE_HERE### Markers with the Home Page (www.bysite.com)
+
+    RewriteRule ^typo3conf/.*\.(html|htm)$ ###PUT_HOMEPAGE_HERE### [L]
+    ### im doc Verzeichnis liegen u.U. Dateien mit einer Endung, die nicht vor Zugriff
+    ### außer in diesem Ordner, geschützt werden soll
+    RewriteRule ^typo3conf/.*/doc/.*$ ###PUT_HOMEPAGE_HERE### [L]
+    RewriteRule ^typo3conf/.*/Documentation/.*$ ###PUT_HOMEPAGE_HERE### [L]
+    RewriteRule ^fileadmin/templates/.*\.(html|htm)$ ###PUT_HOMEPAGE_HERE### [L]
+    RewriteRule ^typo3_src.*$ ###PUT_HOMEPAGE_HERE### [L]
+    ### auch evtl. Symlinks wie typo3_src bedenken!
+    RewriteRule ^(typo3_src|typo3|t3lib|tslib|fileadmin|typo3conf|typo3temp|uploads|showpic\.php|favicon\.ico) - [L]
+</IfModule>
+
+<FilesMatch "(^#.*#|\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|sw[op]|tss|tsc|ts|tar|gz|bz2|config|old|sql|dump|yaml|properties|haml|sass|tmpl|tpl|jar)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sw[op]|git.*)|.*(?:~|rc))$">
+    # Apache < 2.3
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+        Satisfy All
+    </IfModule>
+
+    # Apache ≥ 2.3
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+</FilesMatch>
+
+# Block access to vcs directories
+<IfModule mod_alias.c>
+    RedirectMatch 404 /\.(?:git|svn|hg)/
+</IfModule>
+
+# Zugriff auf versteckte und composer Dateien unterbinden
+<IfModule mod_alias.c>
+    RedirectMatch 404 /\..*$
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Compression                                                                |
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/atom+xml \
+                                      application/javascript \
+                                      application/json \
+                                      application/rss+xml \
+                                      application/vnd.ms-fontobject \
+                                      application/x-font-ttf \
+                                      application/x-web-app-manifest+json \
+                                      application/xhtml+xml \
+                                      application/xml \
+                                      font/opentype \
+                                      image/svg+xml \
+                                      image/x-icon \
+                                      text/css \
+                                      text/html \
+                                      text/plain \
+                                      text/x-component \
+                                      text/xml
+    </IfModule>
+</IfModule>
+
+# Compressing resource files will save bandwidth and so improve loading speed especially for users
+# with slower internet connections. TYPO3 can compress the .js and .css files for you.
+# *) Uncomment the following lines and
+# *) Set $TYPO3_CONF_VARS['BE']['compressionLevel'] = '9' for the Backend
+# *) Set $TYPO3_CONF_VARS['FE']['compressionLevel'] = '9' together with the TypoScript properties
+#    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
+<FilesMatch "\.js\.gzip$">
+    AddType "text/javascript" .gzip
+</FilesMatch>
+<FilesMatch "\.css\.gzip$">
+    AddType "text/css" .gzip
+</FilesMatch>
+AddEncoding gzip .gzip
+
+
+# ------------------------------------------------------------------------------
+# | ETag removal                                                               |
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
+
+
+# ------------------------------------------------------------------------------
+# | Expires headers (for better cache control)                                 |
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+    ExpiresByType text/css                              "access plus 1 year"
+
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+    ExpiresByType text/x-component                      "access plus 1 month"
+
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+    ExpiresByType application/javascript                "access plus 1 year"
+
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+    ExpiresByType audio/ogg                             "access plus 1 month"
+    ExpiresByType image/gif                             "access plus 1 month"
+    ExpiresByType image/jpeg                            "access plus 1 month"
+    ExpiresByType image/png                             "access plus 1 month"
+    ExpiresByType video/mp4                             "access plus 1 month"
+    ExpiresByType video/ogg                             "access plus 1 month"
+    ExpiresByType video/webm                            "access plus 1 month"
+
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+    ExpiresByType application/font-woff                 "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType image/svg+xml                         "access plus 1 month"
+
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
+# | Error Documents                                                            |
+# ------------------------------------------------------------------------------
+# die verwendeten Seiten müssen angelegt werden!
+# /fehler ist eine TYPO3 interne Seite und fehler.html eine statische
+# da bei 5xx Fehler das ganze TYPO3 nicht funktionieren könnte!
+# Die fehler.html enthält keinerlei Menüs etc. damit der Nutzer nicht unnütze Links bekommt.
+ErrorDocument 400 /fehler
+# 401 bedeutet authentifizierung angefordert und das muss nicht behandelt werden!
+ErrorDocument 402 /404
+ErrorDocument 403 /404
+# 404 handling wird in erster instanz von TYPO3 übernommen und ist damit nur ein Fallback
+# und für andere Applikationen, die evtl. im gleichen webroot laufen
+ErrorDocument 404 /404
+ErrorDocument 405 /fehler
+ErrorDocument 406 /fehler
+ErrorDocument 407 /fehler
+ErrorDocument 408 /fehler
+ErrorDocument 409 /fehler
+ErrorDocument 410 /fehler
+ErrorDocument 411 /fehler
+ErrorDocument 412 /fehler
+ErrorDocument 413 /fehler
+ErrorDocument 414 /fehler
+ErrorDocument 415 /fehler
+ErrorDocument 416 /fehler
+ErrorDocument 417 /fehler
+ErrorDocument 422 /fehler
+ErrorDocument 423 /fehler
+ErrorDocument 424 /fehler
+ErrorDocument 426 /fehler
+ErrorDocument 500 /fehler.html
+ErrorDocument 501 /fehler.html
+ErrorDocument 502 /fehler.html
+ErrorDocument 503 /fehler.html
+ErrorDocument 504 /fehler.html
+ErrorDocument 505 /fehler.html

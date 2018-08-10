@@ -1,18 +1,31 @@
 <?php
+call_user_func(
+    function () {
+        // skip ssl redirect on beta enviroment
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
 
-global $TYPO3_CONF_VARS;
+        //6135 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED)
+        //alles behandeln außer unkritische Meldungen
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = 6135;
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'];
+        //alles als Exception behandeln (Fehlerseite ausgeben, Logging)
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '1';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLogLevel'] = '0';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['sqlDebug'] = '1';
 
-// skip ssl redirect on beta enviroment
-$TYPO3_CONF_VARS['BE']['lockSSL'] = '0';
+        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog']);
+        $extConfig['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::DEBUG;
+        $extConfig['max_logs'] = 1000000;
+        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog'] = serialize($extConfig);
 
-//6135 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED)
-//alles behandeln außer unkritische Meldungen
-$TYPO3_CONF_VARS['SYS']['errorHandlerErrors'] = 6135;
-$TYPO3_CONF_VARS['SYS']['exceptionalErrors'] = $TYPO3_CONF_VARS['SYS']['errorHandlerErrors'];
-//alles als Exception behandeln (Fehlerseite ausgeben, Logging)
-$TYPO3_CONF_VARS['SYS']['displayErrors'] = '1';
-$TYPO3_CONF_VARS['SYS']['systemLogLevel'] = '0';
-$TYPO3_CONF_VARS['SYS']['sqlDebug'] = '1';
+        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base']);
+        $extConfig['verboseMayday'] = 1;
+        $extConfig['dieOnMayday'] = 1;
+        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base'] = serialize($extConfig);
 
-$TYPO3_CONF_VARS['SYS']['systemLog'] = 'mail,%2$s,4;error_log,,2;syslog,LOCAL0,,3';
-$TYPO3_CONF_VARS['EXT']['extConf']['rn_base'] = 'a:11:{s:13:"verboseMayday";s:1:"1";s:11:"dieOnMayday";s:1:"1";s:21:"forceException4Mayday";s:1:"1";s:16:"exceptionHandler";s:27:"tx_rnbase_exception_Handler";s:20:"sendEmailOnException";s:%1$d:"%2$s";s:9:"fromEmail";s:17:"noreply@domain.de";s:24:"send503HeaderOnException";s:1:"1";s:17:"loadHiddenObjects";s:1:"0";s:13:"activateCache";s:1:"0";s:18:"activateSubstCache";s:1:"0";s:8:"debugKey";s:9:"dmkhp2014";}';
+        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mksanitizedparameters']);
+        $extConfig['debugMode'] = 1;
+        $extConfig['logMode'] = 1;
+        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mksanitizedparameters'] = serialize($extConfig);
+    }
+);
