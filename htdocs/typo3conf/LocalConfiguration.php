@@ -2,7 +2,6 @@
 
 return [
     'BE' => [
-        'adminOnly' => 1,
         'compressionLevel' => 5,
         'debug' => false,
         'explicitADmode' => 'explicitAllow',
