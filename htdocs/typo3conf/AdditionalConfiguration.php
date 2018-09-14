@@ -24,16 +24,16 @@ call_user_func(
         $warningMail = $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'];
 
         // Load Config Files
+        // having a parent context means we are in a subcontext like Production/Staging
+        // and not just Production etc.
+        $environmentConfigurationKey = $applicationContext->getParent() !== null ?
+            str_replace('/', '', (string) $applicationContext) :
+            (string) $applicationContext;
         foreach (array(
-                'Credentials',
-                $applicationContext->isProduction() ? 'ConfigurationProduction' : '',
-                $applicationContext->isTesting() ? 'ConfigurationTesting' : '',
-                $applicationContext->isDevelopment() ? 'ConfigurationDevelopment' : '',
-                // includes for example "ConfigurationProductionStaging"
-                // if a parent context was set like TYPO3_CONTEXT="Production/Staging"
-                $applicationContext->getParent() !== null ? 'Configuration' . str_replace('/', '', (string) $applicationContext) : '',
-                'Credentials',
-            ) as $confFile) {
+            'Credentials',
+            'Configuration' . $environmentConfigurationKey,
+            'Credentials',
+        ) as $confFile) {
             $confFile = empty($confFile) ? false : dirname(__FILE__) . '/' . $confFile . '.php';
             if ($confFile && is_readable($confFile)) {
                 require $confFile;
