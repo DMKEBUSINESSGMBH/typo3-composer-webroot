@@ -24,10 +24,6 @@
 		"typo3" : {
 			"type" : "composer",
 			"url" : "https://composer.typo3.org/"
-		},
-		"phpunit" : {
-			"type" : "vcs",
-			"url" : "git@github.com:TYPO3-extensions/phpunit.git"
 		}
 	},
 	"require" : {
