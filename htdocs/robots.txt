@@ -6,7 +6,6 @@ Allow: /
 # TYPO3-Pfade ausschließen
 Disallow: /typo3_src/
 Disallow: /typo3/
-Disallow: /t3lib/
 Disallow: /typo3conf/
 
 # Speicher und Uploadpfade ausschließen

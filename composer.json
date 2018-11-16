@@ -1,59 +1,54 @@
 {
-	"name" : "dmk/typo3-composer-webroot",
-	"description" : "The TYPO3 Project webroot",
-	"type" : "project",
-	"license" : "proprietary",
-	"version" : "0.8.7",
-	"authors" : [
-		{
-			"name" : "Michael Wagner",
-			"email" : "michael.wagner@dmk-ebusiness.de",
-			"role" : "Developer"
-		}
-	],
-	"support": {
-		"email" : "dev@dmk-ebusiness.de",
-		"source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
-		"issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
-	},
-	"repositories" : {
-		"dmknet" : {
-			"type" : "composer",
-			"url" : "https://packages.dmknet.de"
-		},
-		"typo3" : {
-			"type" : "composer",
-			"url" : "https://composer.typo3.org/"
-		}
-	},
-	"require" : {
-		"typo3/cms" : "~8.7@stable",
+    "name" : "dmk/typo3-composer-webroot",
+    "description" : "The TYPO3 Project webroot",
+    "type" : "project",
+    "license" : "proprietary",
+    "version" : "0.9.5",
+    "authors" : [
+        {
+            "name" : "Michael Wagner",
+            "email" : "michael.wagner@dmk-ebusiness.de",
+            "role" : "Developer"
+        }
+    ],
+    "support": {
+        "email" : "dev@dmk-ebusiness.de",
+        "source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
+        "issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
+    },
+    "repositories" : {
+        "dmknet" : {
+            "type" : "composer",
+            "url" : "https://packages.dmknet.de"
+        },
+        "typo3" : {
+            "type" : "composer",
+            "url" : "https://composer.typo3.org/"
+        }
+    },
+    "require" : {
+        "typo3/minimal" : "~9.5@stable",
+        "typo3/cms-core" : "~9.5",
+        "typo3/minimal": "~9.5",
+        "typo3/cms-tstemplate": "~9.5",
+        "typo3/cms-seo": "~9.5",
+        "typo3/cms-form": "~9.5",
+        "typo3/cms-beuser": "~9.5",
+        "typo3/cms-redirects": "~9.5",
+        "typo3/cms-viewpage": "~9.5",
 
-		"typo3-ter/be-secure-pw" : "~7.1@stable",
-		"dmitryd/typo3-realurl" : "~2.1@stable",
-		"typo3-ter/gridelements" : "~8@stable",
-
-		"digedag/rn-base" : "@dev",
-
-		"dmk/mklib" : "@dev",
-		"dmk/mklog" : "@dev",
-		"dmk/mkphpids" : "@dev",
-		"dmk/mksanitizedparameters" : "@dev",
-		"dmk/mktools" : "@dev"
-	},
-	"require_but_not_typo3_8lts_compatible" : {
-		"typo3-ter/static-info-tables-de" : "~6.5@stable"
-	},
-	"minimum-stability" : "stable",
-	"extra" : {
-		"typo3/cms" : {
-			"cms-package-dir" : "{$vendor-dir}/typo3/cms",
-			"web-dir" : "./htdocs"
-		}
-	},
-	"require-dev" : {
-		"oliverklee/phpunit": "*",
-		"phpunit/phpunit-selenium" : "^1",
-		"mikey179/vfsStream" : "^1"
-	}
+        "gridelementsteam/gridelements" : "@dev",
+        "sjbr/static-info-tables" : "~6.7@stable"
+        
+    },
+    "minimum-stability" : "stable",
+    "extra" : {
+        "typo3/cms" : {
+            "cms-package-dir" : "{$vendor-dir}/typo3/cms",
+            "web-dir" : "./htdocs"
+        }
+    },
+    "require-dev" : {
+        "mikey179/vfsStream" : "^1"
+    }
 }

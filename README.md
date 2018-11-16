@@ -10,15 +10,15 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-typo3-87
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-typo3-95
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
 
 The installation process should look like this:
 
-    Installing dmk/typo3-composer-webroot (dev-typo3-87)
-    - Installing dmk/typo3-composer-webroot (dev-typo3-87 typo3-87)
+    Installing dmk/typo3-composer-webroot (dev-typo3-95)
+    - Installing dmk/typo3-composer-webroot (dev-typo3-95 typo3-95)
 
 
     Created project in my-project-webroot
@@ -26,9 +26,7 @@ The installation process should look like this:
     Installing dependencies (including require-dev)
       - Installing typo3/cms-composer-installers (dev-master)
 
-      - Installing typo3/cms (7.6.10)
-
-      - Installing typo3-ter/be-secure-pw (7.0.6)
+      - Installing typo3/cms (9.5)
 
     Writing lock file
     Generating autoload files
@@ -114,13 +112,9 @@ to the git and commit and push the changes.
   * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
     A example is given in Credentials.php.inst in the repo root.
   * Create an encryption key and insert the key in the Credentials.php (don't store security critical data in git).
-  * Optionaly enable some improvements in the extension configuration of MK TOOLS.
-    we recommend to enable the following features:
-      * pageNotFoundHandling
-        Adjust pageNotFound_handling in LocalConfiguration.php. See [MK TOOLS Documentation](https://github.com/DMKEBUSINESSGMBH/typo3-mktools/blob/master/Documentation/Utilities/PageNotFoundHandling/Index.md)
-      * seoRobotsMetaTagActive
+  * Optionaly enable some improvements in the extension configuration of MKTOOLS.
   * install gridelements or a similar extension
-  * install static_info_tables if needed. The current version 6.4.3 is buggy as the static import fails as soon as a extension is installed, that enhances the static_countries database table (@see https://forge.typo3.org/issues/82132) like mklib does. As a workaround deinstall mklib temporarily for inserting the static data of static_info_tables.
+  * install static_info_tables if needed. The current version 6.4.3 is buggy as the static import fails as soon as a extension is installed, that enhances the static_countries database table (@see https://forge.typo3.org/issues/82132) like mklib does. As a workaround uninstall mklib temporarily for inserting the static data of static_info_tables.
   * set up scheduler tasks for mklog DevLog WatchDog (recommended: check for errors and above every 5 minutes, check for notices and above two times a day)
   * adjust content of fehler.html (used as ErrorDocument for 5xx errors and in case of pageUnavailable handling of TYPO3)
   * provide the following pages in TYPO3: 404.html (used as ErrorDocument in htaccess and as 404 page for default page not found handling) and /fehler (used in htaccess as ErrorDocuments)
