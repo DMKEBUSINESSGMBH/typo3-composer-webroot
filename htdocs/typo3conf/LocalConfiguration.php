@@ -68,8 +68,8 @@ return [
         'processor_colorspace' => 'RGB',
         'processor_effects' => -1,
         'processor_enabled' => 1,
-        'processor_path' => '/usr/bin',
-        'processor_path_lzw' => '/usr/bin',
+        'processor_path' => '/usr/bin/',
+        'processor_path_lzw' => '/usr/bin/',
     ],
     'MAIL' => [
         'defaultMailFromAddress' => 'noreply@tld.de',
