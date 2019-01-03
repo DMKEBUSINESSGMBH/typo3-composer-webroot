@@ -26,12 +26,12 @@ call_user_func(
         // Load Config Files
         // having a parent context means we are in a subcontext like Production/Staging
         // and not just Production etc.
-        $environmentConfigurationKey = $applicationContext->getParent() !== null ?
-            str_replace('/', '', (string) $applicationContext) :
-            (string) $applicationContext;
+        $subApplicationContext = $applicationContext->getParent() !== null ?
+            str_replace('/', '', (string) $applicationContext) : '';
         foreach (array(
             'Credentials',
-            'Configuration' . $environmentConfigurationKey,
+            'Configuration' . (string) $applicationContext,
+            'Configuration' . $subApplicationContext,
             'Credentials',
         ) as $confFile) {
             $confFile = empty($confFile) ? false : dirname(__FILE__) . '/' . $confFile . '.php';
