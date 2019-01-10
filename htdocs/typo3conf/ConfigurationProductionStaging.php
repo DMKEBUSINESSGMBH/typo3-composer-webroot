@@ -1,6 +1,6 @@
 <?php
 call_user_func(
-    function () {
+    function () use (&$warningMail) {
         $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog']);
         $extConfig['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::INFO;
         $extConfig['max_logs'] = 1000000;

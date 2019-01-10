@@ -1,6 +1,6 @@
 <?php
 call_user_func(
-    function () {
+    function () use (&$warningMail) {
         // skip ssl redirect on beta enviroment
         $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
 
