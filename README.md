@@ -107,7 +107,6 @@ to the git and commit and push the changes.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the LocalConfiguration.php.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = 'XXX.XXX.XXX.XXX' in the LocalConfiguration.php. 
   * Replace `XXX.XXX.XXX.XXX` in the `.htaccess*` files with the IP that can access the System in maintenance mode.
-  * Replace `###PUT_HOMEPAGE_HERE###` in the `.htaccess*` files with the domain of the environment. 
   * Use .htaccess_* as .htaccess file for your environments. If needed add authentication
   * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
     A example is given in Credentials.php.inst in the repo root.
