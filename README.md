@@ -41,7 +41,7 @@ Now we should initialize a new repo
 
     $ git init
 
-do the initial commit
+After the customization is done (see below), we do the initial commit
 
     $ git add --all
     $ git commit -m "initial commit"
