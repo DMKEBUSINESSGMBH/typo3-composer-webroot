@@ -17,8 +17,7 @@ call_user_func(
             $_SERVER['HTTPS'] = 1;
         }
 
-        $bootstrap = \TYPO3\CMS\Core\Core\Bootstrap::getInstance();
-        $applicationContext = $bootstrap->getApplicationContext();
+        $applicationContext = \TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext();
 
         // can be used in the conf files
         $warningMail = $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'];
