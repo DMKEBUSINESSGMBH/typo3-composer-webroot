@@ -55,6 +55,9 @@ return [
             'automaticInstallation' => '1',
             'offlineMode' => '0',
         ],
+	'rsaauth' => [
+            'temporaryDirectory' => '',
+        ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
