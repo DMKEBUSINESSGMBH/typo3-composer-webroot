@@ -29,7 +29,6 @@
     "require" : {
         "typo3/minimal" : "~9.5@stable",
         "typo3/cms-core" : "~9.5",
-        "typo3/minimal": "~9.5",
         "typo3/cms-tstemplate": "~9.5",
         "typo3/cms-seo": "~9.5",
         "typo3/cms-form": "~9.5",
