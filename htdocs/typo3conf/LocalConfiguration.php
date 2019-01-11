@@ -106,7 +106,7 @@ return [
         'encryptionKey' => '[the key should be written in the credentials.php]',
         'errorHandler' => 'tx_mktools_util_ErrorHandler',
         'errorHandlerErrors' => 6135,
-        'exceptionalErrors' => 30205,
+        'exceptionalErrors' => 13821,
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
         'productionExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
