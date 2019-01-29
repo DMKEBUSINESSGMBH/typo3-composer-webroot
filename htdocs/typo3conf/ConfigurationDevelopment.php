@@ -44,5 +44,7 @@ call_user_func(
         $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['extensionmanager']);
         $extConfig['offlineMode'] = 0;
         $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['extensionmanager'] = serialize($extConfig);
+        
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] = 1;
     }
 );
