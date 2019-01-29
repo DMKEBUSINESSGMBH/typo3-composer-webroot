@@ -105,7 +105,9 @@ return [
         'displayErrors' => -1,
         'encryptionKey' => '[the key should be written in the credentials.php]',
         'errorHandler' => 'tx_mktools_util_ErrorHandler',
+	// 6135 = E_ALL & ~( E_STRICT | E_NOTICE |  E_USER_DEPRECATED| E_DEPRECATED)
         'errorHandlerErrors' => 6135,
+        // 13821 = E_ALL & ~(E_WARNING | E_STRICT | E_USER_WARNING | E_USER_DEPRECATED)
         'exceptionalErrors' => 13821,
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
