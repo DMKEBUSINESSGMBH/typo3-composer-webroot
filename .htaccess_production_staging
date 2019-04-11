@@ -126,17 +126,6 @@ AddDefaultCharset utf-8
     RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ $1.$3 [L]
     RewriteRule ^fileadmin/(.*/)?_recycler_/ - [F]
     RewriteRule ^fileadmin/templates/.*(\.txt|\.ts)$ - [F]
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Styleguide\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Start\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/SubWithSidebar\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Newsportal\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Personenprofil\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Suchergebnis\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Studiengang\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Datenbank\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/Sitemap\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/Private/Prototypes/modules\.html$
-    RewriteCond %{REQUEST_URI} !^/typo3conf/ext/mkunileipzig/Resources/index\.html$
 
     RewriteRule ^typo3conf/ext/[^/]+/Resources/Private/ - [F]
     RewriteRule ^(typo3/|t3lib/|fileadmin/|typo3conf/|typo3temp/|uploads/|favicon\.ico) - [L]
@@ -201,12 +190,6 @@ AddDefaultCharset utf-8
 <IfModule mod_alias.c>
     RedirectMatch 404 /\.(?:git|svn|hg)/
 </IfModule>
-
-# Zugriff auf versteckte und composer Dateien unterbinden
-<IfModule mod_alias.c>
-    RedirectMatch 404 /\..*$
-</IfModule>
-
 
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
