@@ -151,6 +151,8 @@ AddDefaultCharset utf-8
     RewriteCond %{SCRIPT_FILENAME} -d [OR]
     RewriteCond %{SCRIPT_FILENAME} -f
     RewriteRule (?:^|/)\. - [F]
+    # When Let's Encrypt is used, the well-known should be accessible. Aktivate this rule and remove the rule above!
+    #RewriteRule "(?:^|/)((?!\.well-known\/acme\-challeng)\.)" - [F]
 
     # Stop rewrite processing, if we are in the typo3/ directory or any other known directory
     # NOTE: Add your additional local storages here
