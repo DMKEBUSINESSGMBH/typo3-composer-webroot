@@ -52,11 +52,7 @@ call_user_func(
             $warningMail
         );
 
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base'] = sprintf(
-            $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base'],
-            strlen($warningMail),
-            $warningMail
-        );
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['sendEmailOnException'] = $warningMail;
 
         // we're using mklog as log writer, so we don't need the file log.
         unset($GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::WARNING]['TYPO3\\CMS\\Core\\Log\\Writer\\FileWriter']);

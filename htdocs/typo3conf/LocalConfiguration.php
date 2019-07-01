@@ -23,26 +23,17 @@ return [
     ],
     'EXT' => [
         'allowLocalInstall' => '0',
-        'extConf' => [
-            'be_secure_pw' => 'a:7:{s:14:"passwordLength";s:1:"8";s:13:"lowercaseChar";s:1:"1";s:11:"capitalChar";s:1:"1";s:5:"digit";s:1:"1";s:11:"specialChar";s:1:"1";s:8:"patterns";s:1:"3";s:10:"validUntil";s:0:"";}',
-            'extensionmanager' => 'a:2:{s:21:"automaticInstallation";s:1:"0";s:11:"offlineMode";s:1:"1";}',
-            'filemetadata' => 'a:0:{}',
-            'gridelements' => 'a:2:{s:20:"additionalStylesheet";s:0:"";s:19:"nestingInListModule";s:1:"1";}',
-            'mklib' => 'a:7:{s:13:"proxyBeUserId";s:1:"0";s:18:"picturesUploadPath";s:25:"uploads/tx_mklib/pictures";s:12:"portalPageId";s:1:"0";s:12:"logDbHandler";s:1:"0";s:17:"logDbIgnoreTables";s:0:"";s:17:"specialCharMarker";s:12:"SPECIALCHAR_";s:13:"tableWordlist";s:1:"0";}',
-            'mklog' => 'a:7:{s:13:"enable_devlog";s:1:"1";s:13:"min_log_level";s:1:"5";s:16:"exclude_ext_keys";s:99:"extbase,TYPO3\\CMS\\Sv\\AuthenticationService,TYPO3\\CMS\\Core\\Authentication\\AbstractUserAuthentication";s:8:"max_logs";s:5:"10000";s:11:"gelf_enable";s:1:"1";s:16:"gelf_credentials";s:0:"";s:18:"gelf_min_log_level";s:1:"1";}',
-            'mkphpids' => 'a:0:{}',
-            'mksanitizedparameters' => 'a:4:{s:11:"stealthMode";s:1:"0";s:21:"stealthModeStoragePid";s:1:"1";s:9:"debugMode";s:1:"0";s:7:"logMode";s:1:"1";}',
-            'mktools' => 'a:13:{s:20:"contentReplaceActive";s:1:"0";s:25:"ajaxContentRendererActive";s:1:"0";s:20:"pageNotFoundHandling";s:1:"0";s:13:"realUrlXclass";s:1:"0";s:22:"seoRobotsMetaTagActive";s:1:"0";s:32:"shouldFalImagesBeAddedToCalEvent";s:1:"0";s:30:"shouldFalImagesBeAddedToTtNews";s:1:"0";s:13:"exceptionPage";s:0:"";s:22:"tableFixedPostVarTypes";s:1:"0";s:24:"realUrlConfigurationFile";s:0:"";s:28:"realUrlConfigurationTemplate";s:0:"";s:27:"tcaPostProcessingExtensions";s:7:"mktools";s:22:"systemLogLockThreshold";s:2:"60";}',
-            'phpunit' => 'a:6:{s:17:"excludeextensions";s:8:"lib, div";s:12:"composerpath";s:0:"";s:13:"selenium_host";s:9:"localhost";s:13:"selenium_port";s:4:"4444";s:16:"selenium_browser";s:8:"*firefox";s:19:"selenium_browserurl";s:0:"";}',
-            'realurl' => 'a:5:{s:10:"configFile";s:0:"";s:14:"enableAutoConf";s:1:"1";s:14:"autoConfFormat";s:1:"0";s:12:"enableDevLog";s:1:"0";s:19:"enableChashUrlDebug";s:1:"0";}',
-            'rn_base' => 'a:11:{s:13:"verboseMayday";s:1:"0";s:11:"dieOnMayday";s:1:"0";s:21:"forceException4Mayday";s:1:"1";s:16:"exceptionHandler";s:0:"";s:20:"sendEmailOnException";s:%1$d:"%2$s";s:9:"fromEmail";s:17:"noreply@domain.de";s:24:"send503HeaderOnException";s:1:"1";s:17:"loadHiddenObjects";s:1:"0";s:13:"activateCache";s:1:"0";s:18:"activateSubstCache";s:1:"0";s:8:"debugKey";s:0:"";}',
-            'rsaauth' => 'a:1:{s:18:"temporaryDirectory";s:0:"";}',
-            'saltedpasswords' => 'a:2:{s:3:"BE.";a:4:{s:21:"saltedPWHashingMethod";s:41:"TYPO3\\CMS\\Saltedpasswords\\Salt\\PhpassSalt";s:11:"forceSalted";i:0;s:15:"onlyAuthService";i:0;s:12:"updatePasswd";i:1;}s:3:"FE.";a:5:{s:7:"enabled";i:1;s:21:"saltedPWHashingMethod";s:41:"TYPO3\\CMS\\Saltedpasswords\\Salt\\PhpassSalt";s:11:"forceSalted";i:0;s:15:"onlyAuthService";i:0;s:12:"updatePasswd";i:1;}}',
-            'scheduler' => 'a:4:{s:11:"maxLifetime";s:4:"1440";s:11:"enableBELog";s:1:"1";s:15:"showSampleTasks";s:1:"1";s:11:"useAtdaemon";s:1:"0";}',
-            'static_info_tables' => 'a:1:{s:13:"enableManager";s:1:"0";}',
-        ],
     ],
     'EXTENSIONS' => [
+        'be_secure_pw' => [
+            'passwordLength' => '8',
+            'lowercaseChar' => '1',
+            'capitalChar' => '1',
+            'digit' => '1',
+            'specialChar' => '1',
+            'patterns' => '3',
+            'validUntil' => '',
+        ],
         'backend' => [
             'backendFavicon' => '',
             'backendLogo' => '',
@@ -52,15 +43,75 @@ return [
             'loginLogo' => '',
         ],
         'extensionmanager' => [
-            'automaticInstallation' => '1',
-            'offlineMode' => '0',
+            'automaticInstallation' => '0',
+            'offlineMode' => '1',
         ],
-	'rsaauth' => [
+        'mklib' => [
+            'logDbHandler' => '0',
+            'logDbIgnoreTables' => '',
+            'picturesUploadPath' => 'uploads/tx_mklib/pictures',
+            'portalPageId' => '0',
+            'proxyBeUserId' => '0',
+            'specialCharMarker' => 'SPECIALCHAR_',
+            'tableWordlist' => '0',
+        ],
+        'mklog' => [
+            'enable_devlog' => '1',
+            'exclude_ext_keys' => 'extbase,TYPO3\\CMS\\Sv\\AuthenticationService,TYPO3\\CMS\\Core\\Authentication\\AbstractUserAuthentication',
+            'gelf_credentials' => '',
+            'gelf_enable' => '1',
+            'gelf_min_log_level' => \DMK\Mklog\Utility\SeverityUtility::CRITICAL,
+            'gelf_transport' => '',
+            'host' => '',
+            'max_logs' => '10000',
+            'min_log_level' => \DMK\Mklog\Utility\SeverityUtility::NOTICE,
+        ],
+        'mksanitizedparameters' => [
+            'debugMode' => '0',
+            'logMode' => '1',
+            'stealthMode' => '0',
+            'stealthModeStoragePid' => '1',
+        ],
+        'mktools' => [
+            'ajaxContentRendererActive' => '0',
+            'contentReplaceActive' => '0',
+            'exceptionPage' => '',
+            'pageNotFoundHandling' => '0',
+            'realUrlConfigurationFile' => '',
+            'realUrlConfigurationTemplate' => '',
+            'realUrlXclass' => '0',
+            'seoRobotsMetaTagActive' => '0',
+            'shouldFalImagesBeAddedToCalEvent' => '0',
+            'shouldFalImagesBeAddedToTtNews' => '0',
+            'systemLogLockThreshold' => '60',
+            'tableFixedPostVarTypes' => '0',
+        ],
+        'rn_base' => [
+            'activateCache' => '0',
+            'activateSubstCache' => '0',
+            'debugKey' => '',
+            'dieOnMayday' => '0',
+            'exceptionHandler' => '',
+            'forceException4Mayday' => '1',
+            'fromEmail' => 'noreply@domain.de',
+            'loadHiddenObjects' => '0',
+            'send503HeaderOnException' => '1',
+            // will be replaced in AdditionalConfiguration.php with $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr']
+            'sendEmailOnException' => '',
+            'verboseMayday' => '0',
+        ],
+	    'rsaauth' => [
             'temporaryDirectory' => '',
+        ],
+        'saltedpasswords' => [
+            'maxLifetime' => '1440',
+            'showSampleTasks' => '1',
+            'enableBELog' => '1'
         ],
         'scheduler' => [
             'maxLifetime' => '1440',
             'showSampleTasks' => '1',
+            'enableBELog' => '1'
          ],
     ],
     'FE' => [
@@ -72,7 +123,6 @@ return [
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
         'noPHPscriptInclude' => true,
-        'noPHPscriptInclude ' => '1',
         'pageNotFoundOnCHashError' => true,
         'pageNotFound_handling' => '/404/',
         'pageNotFound_handling_statheader' => 'HTTP/1.1 404 Not Found',
@@ -94,7 +144,6 @@ return [
         'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
     ],
     'SYS' => [
-        'UTF8filesystem' => '1',
         'belogErrorReporting' => 0,
         'compat_version' => '8.7',
         'debugExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
@@ -102,7 +151,7 @@ return [
         'displayErrors' => -1,
         'encryptionKey' => '[the key should be written in the credentials.php]',
         'errorHandler' => 'tx_mktools_util_ErrorHandler',
-	// 6135 = E_ALL & ~( E_STRICT | E_NOTICE |  E_USER_DEPRECATED| E_DEPRECATED)
+	    // 6135 = E_ALL & ~( E_STRICT | E_NOTICE |  E_USER_DEPRECATED| E_DEPRECATED)
         'errorHandlerErrors' => 6135,
         // 13821 = E_ALL & ~(E_WARNING | E_STRICT | E_USER_WARNING | E_USER_DEPRECATED)
         'exceptionalErrors' => 13821,
@@ -114,6 +163,5 @@ return [
         'systemLocale' => 'de_DE.utf8',
         'systemLog' => 'mail,%1$s,4;error_log,,2;syslog,LOCAL0,,3',
         'systemLogLevel' => 3,
-        'useCachingFramework' => 1,
     ],
 ];

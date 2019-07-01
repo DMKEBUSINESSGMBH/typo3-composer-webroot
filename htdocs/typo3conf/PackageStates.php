@@ -11,6 +11,9 @@ return [
         'core' => [
             'packagePath' => 'typo3/sysext/core/',
         ],
+        'scheduler' => [
+            'packagePath' => 'typo3/sysext/scheduler/',
+        ],
         'extbase' => [
             'packagePath' => 'typo3/sysext/extbase/',
         ],
@@ -23,92 +26,47 @@ return [
         'fluid_styled_content' => [
             'packagePath' => 'typo3/sysext/fluid_styled_content/',
         ],
-        'info' => [
-            'packagePath' => 'typo3/sysext/info/',
-        ],
-        'info_pagetsconfig' => [
-            'packagePath' => 'typo3/sysext/info_pagetsconfig/',
-        ],
-        'extensionmanager' => [
-            'packagePath' => 'typo3/sysext/extensionmanager/',
-        ],
-        'lang' => [
-            'packagePath' => 'typo3/sysext/lang/',
-        ],
-        'rsaauth' => [
-            'packagePath' => 'typo3/sysext/rsaauth/',
-        ],
-        'saltedpasswords' => [
-            'packagePath' => 'typo3/sysext/saltedpasswords/',
-        ],
-        'func' => [
-            'packagePath' => 'typo3/sysext/func/',
-        ],
-        'wizard_crpages' => [
-            'packagePath' => 'typo3/sysext/wizard_crpages/',
-        ],
-        'wizard_sortpages' => [
-            'packagePath' => 'typo3/sysext/wizard_sortpages/',
-        ],
-        'backend' => [
-            'packagePath' => 'typo3/sysext/backend/',
-        ],
-        'belog' => [
-            'packagePath' => 'typo3/sysext/belog/',
-        ],
-        'beuser' => [
-            'packagePath' => 'typo3/sysext/beuser/',
-        ],
-        'context_help' => [
-            'packagePath' => 'typo3/sysext/context_help/',
-        ],
-        'cshmanual' => [
-            'packagePath' => 'typo3/sysext/cshmanual/',
-        ],
-        'documentation' => [
-            'packagePath' => 'typo3/sysext/documentation/',
-        ],
-        'felogin' => [
-            'packagePath' => 'typo3/sysext/felogin/',
-        ],
-        'filelist' => [
-            'packagePath' => 'typo3/sysext/filelist/',
-        ],
-        'filemetadata' => [
-            'packagePath' => 'typo3/sysext/filemetadata/',
-        ],
-        'form' => [
-            'packagePath' => 'typo3/sysext/form/',
-        ],
-        'impexp' => [
-            'packagePath' => 'typo3/sysext/impexp/',
-        ],
         'install' => [
             'packagePath' => 'typo3/sysext/install/',
-        ],
-        'lowlevel' => [
-            'packagePath' => 'typo3/sysext/lowlevel/',
         ],
         'recordlist' => [
             'packagePath' => 'typo3/sysext/recordlist/',
         ],
-        'reports' => [
-            'packagePath' => 'typo3/sysext/reports/',
+        'backend' => [
+            'packagePath' => 'typo3/sysext/backend/',
         ],
-        'scheduler' => [
-            'packagePath' => 'typo3/sysext/scheduler/',
+        'filelist' => [
+            'packagePath' => 'typo3/sysext/filelist/',
         ],
-        'setup' => [
-            'packagePath' => 'typo3/sysext/setup/',
+        'form' => [
+            'packagePath' => 'typo3/sysext/form/',
         ],
-        'sv' => [
-            'packagePath' => 'typo3/sysext/sv/',
+        'recycler' => [
+            'packagePath' => 'typo3/sysext/recycler/',
         ],
-        'sys_note' => [
-            'packagePath' => 'typo3/sysext/sys_note/',
+        'beuser' => [
+            'packagePath' => 'typo3/sysext/beuser/',
         ],
-        't3editor' => [
-            'packagePath' => 'typo3/sysext/t3editor/',
+        'extensionmanager' => [
+            'packagePath' => 'typo3/sysext/extensionmanager/',
+        ],
+        'info' => [
+            'packagePath' => 'typo3/sysext/info/',
+        ],
+        'lowlevel' => [
+            'packagePath' => 'typo3/sysext/lowlevel/',
+        ],
+        'redirects' => [
+            'packagePath' => 'typo3/sysext/redirects/',
+        ],
+        'rsaauth' => [
+            'packagePath' => 'typo3/sysext/rsaauth/',
+        ],
+        'rte_ckeditor' => [
+            'packagePath' => 'typo3/sysext/rte_ckeditor/',
+        ],
+        'seo' => [
+            'packagePath' => 'typo3/sysext/seo/',
         ],
         'tstemplate' => [
             'packagePath' => 'typo3/sysext/tstemplate/',
@@ -122,9 +80,6 @@ return [
         'mklib' => [
             'packagePath' => 'typo3conf/ext/mklib/',
         ],
-        'mkphpids' => [
-            'packagePath' => 'typo3conf/ext/mkphpids/',
-        ],
         'mksanitizedparameters' => [
             'packagePath' => 'typo3conf/ext/mksanitizedparameters/',
         ],
@@ -134,14 +89,8 @@ return [
         'mklog' => [
             'packagePath' => 'typo3conf/ext/mklog/',
         ],
-        'realurl' => [
-            'packagePath' => 'typo3conf/ext/realurl/',
-        ],
         'be_secure_pw' => [
             'packagePath' => 'typo3conf/ext/be_secure_pw/',
-        ],
-        'phpunit' => [
-            'packagePath' => 'typo3conf/ext/phpunit/',
         ],
     ],
     'version' => 5,

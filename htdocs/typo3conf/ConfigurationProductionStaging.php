@@ -1,10 +1,8 @@
 <?php
 call_user_func(
     function () use (&$warningMail) {
-        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog']);
-        $extConfig['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::INFO;
-        $extConfig['max_logs'] = 1000000;
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog'] = serialize($extConfig);
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::INFO;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['max_logs'] = 1000000;
 
         //6135 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED)
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = 6135;//alles behandeln außer unkritische Meldungen

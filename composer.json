@@ -34,18 +34,23 @@
         "typo3/cms-form": "~9.5",
         "typo3/cms-beuser": "~9.5",
         "typo3/cms-redirects": "~9.5",
-	"typo3/cms-rsaauth": "~9.5",
+	    "typo3/cms-rsaauth": "~9.5",
         "typo3/cms-saltedpasswords": "~9.5",
         "typo3/cms-recycler": "~9.5",
         "typo3/cms-lowlevel": "~9.5",
         "typo3/cms-info": "~9.5",
+        "typo3/cms-rte-ckeditor": "~9.5@stable",
         "typo3/cms-fluid-styled-content": "~9.5",
-	"typo3/cms-scheduler": "~9.5",
+	    "typo3/cms-scheduler": "~9.5",
         "typo3/cms-viewpage": "~9.5",
 
-        "gridelementsteam/gridelements" : "@dev",
-        "sjbr/static-info-tables" : "~6.7@stable"
-        
+        "spooner-web/be_secure_pw" : "~9.0@stable",
+
+        "digedag/rn-base": "@dev",
+        "dmk/mklog": "@dev",
+        "dmk/mklib": "@dev",
+        "dmk/mksanitizedparameters": "@dev",
+        "dmk/mktools": "@dev"
     },
     "minimum-stability" : "stable",
     "extra" : {
@@ -53,8 +58,5 @@
             "cms-package-dir" : "{$vendor-dir}/typo3/cms",
             "web-dir" : "./htdocs"
         }
-    },
-    "require-dev" : {
-        "mikey179/vfsStream" : "^1"
     }
 }

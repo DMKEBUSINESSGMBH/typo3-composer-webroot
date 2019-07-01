@@ -25,26 +25,18 @@ call_user_func(
             )
         );
 
-        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog']);
-        $extConfig['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::DEBUG;
-        $extConfig['gelf_enable'] = 0;
-        $extConfig['max_logs'] = 1000000;
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mklog'] = serialize($extConfig);
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::DEBUG;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_enable'] = 0;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['max_logs'] = 1000000;
 
-        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base']);
-        $extConfig['verboseMayday'] = 1;
-        $extConfig['dieOnMayday'] = 1;
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rn_base'] = serialize($extConfig);
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['verboseMayday'] = 1;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['dieOnMayday'] = 1;
 
-        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mksanitizedparameters']);
-        $extConfig['debugMode'] = 1;
-        $extConfig['logMode'] = 1;
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['mksanitizedparameters'] = serialize($extConfig);
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mksanitizedparameters']['debugMode'] = 1;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mksanitizedparameters']['logMode'] = 1;
 
-        $extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['extensionmanager']);
-        $extConfig['offlineMode'] = 0;
-        $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['extensionmanager'] = serialize($extConfig);
-        
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['extensionmanager']['offlineMode'] = 0;
+
         $GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] = 1;
     }
 );
