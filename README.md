@@ -119,7 +119,7 @@ to the git and commit and push the changes.
   * provide the following pages in TYPO3: 404.html (used as ErrorDocument in htaccess and as 404 page for default page not found handling) and /fehler (used in htaccess as ErrorDocuments)
   * When Let's Encrypt is used, switch the deny RewriteRule for the well-known folder in .htaccess
   * copy .htaccess_typo3 to your typo3 folder to have access restriction for the install tool (you need to configure the IPs that are whitelisted, htpasswd etc. as you like inside the htaccess file)
-  * Do not forget to set the application context for the CLI. This includes setting it for the scheduler cron command: `TYPO3_CONTEXT="Production/Staging" htdocs/typo3/cli_dispatch.phpsh scheduler`. Addtionally you need to set it globally like descriped [here](https://unix.stackexchange.com/questions/21598/how-do-i-set-a-user-environment-variable-permanently-not-session). Both is required to have the correct context in any case.
+  * Do not forget to set the application context for the CLI. This includes setting it for the scheduler cron command: `TYPO3_CONTEXT="Production/Staging" ! test -e $pathToHtdocs/MAINTENACE_MODE && $pathToHtdocs/typo3/sysext/core/bin/typo3 scheduler:run`. Addtionally you need to set it globally like descriped [here](https://unix.stackexchange.com/questions/21598/how-do-i-set-a-user-environment-variable-permanently-not-session). Both is required to have the correct context in any case.
       * the context in the WEB is set through the .htaccess file of the environment
       * default is Production. So you normally only have to set the context on CLI in Production/Staging environment. All other environments should be fine.
 
