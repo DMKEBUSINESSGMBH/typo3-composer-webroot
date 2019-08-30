@@ -40,7 +40,7 @@ call_user_func(
         }
 
         // set the sitename, depending on TYPO3_CONTEXT
-        if (!$applicationContext->isProduction()) {
+        if (!$applicationContext->isProduction() || $applicationContext->getParent()) {
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] .= ' [' . (string) $applicationContext . ']';
         }
 
