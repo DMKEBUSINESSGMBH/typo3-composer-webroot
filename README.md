@@ -122,5 +122,6 @@ to the git and commit and push the changes.
   * Do not forget to set the application context for the CLI. This includes setting it for the scheduler cron command: `TYPO3_CONTEXT="Production/Staging" ! test -e $pathToHtdocs/MAINTENACE_MODE && $pathToHtdocs/typo3/sysext/core/bin/typo3 scheduler:run`. Addtionally you need to set it globally like descriped [here](https://unix.stackexchange.com/questions/21598/how-do-i-set-a-user-environment-variable-permanently-not-session). Both is required to have the correct context in any case.
       * the context in the WEB is set through the .htaccess file of the environment
       * default is Production. So you normally only have to set the context on CLI in Production/Staging environment. All other environments should be fine.
+  * when the site is hosted on a Mittwald server it might be necessary to remove $GLOBALS['TYPO3_CONF_VARS']['BE']['fileCreateMask'] and $GLOBALS['TYPO3_CONF_VARS']['BE']['folderCreateMask'] from LocalConfiguration.php and use the default values.
 
 
