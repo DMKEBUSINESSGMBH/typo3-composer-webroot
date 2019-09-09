@@ -115,6 +115,8 @@ to the git and commit and push the changes.
   * install gridelements or a similar extension
   * install static_info_tables if needed. The current version 6.4.3 is buggy as the static import fails as soon as a extension is installed, that enhances the static_countries database table (@see https://forge.typo3.org/issues/82132) like mklib does. As a workaround uninstall mklib temporarily for inserting the static data of static_info_tables.
   * set up scheduler tasks for mklog DevLog WatchDog (recommended: check for errors and above every 5 minutes, check for notices and above two times a day)
+  * set up scheduler tasks for maintenance like mklib tasks for detecting failed and frozen tasks, anonymize IPs in the database, garbage collection for tables and caching framework
+  * set up monitoring with caretaker_instance extension
   * adjust content of fehler.html (used as ErrorDocument for 5xx errors and in case of pageUnavailable handling of TYPO3)
   * provide the following pages in TYPO3: 404.html (used as ErrorDocument in htaccess and as 404 page for default page not found handling) and /fehler (used in htaccess as ErrorDocuments)
   * When Let's Encrypt is used, switch the deny RewriteRule for the well-known folder in .htaccess
@@ -123,5 +125,6 @@ to the git and commit and push the changes.
       * the context in the WEB is set through the .htaccess file of the environment
       * default is Production. So you normally only have to set the context on CLI in Production/Staging environment. All other environments should be fine.
   * when the site is hosted on a Mittwald server it might be necessary to remove $GLOBALS['TYPO3_CONF_VARS']['BE']['fileCreateMask'] and $GLOBALS['TYPO3_CONF_VARS']['BE']['folderCreateMask'] from LocalConfiguration.php and use the default values.
+  * think about using Redis as caching backend
 
 
