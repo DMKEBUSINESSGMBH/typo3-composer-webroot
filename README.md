@@ -36,8 +36,12 @@ Then you'll be asked if you want to remove the GIT history.
 This we should do!
 
     Do you want to remove the existing VCS (.git, .svn..) history? [Y,n]? Y
+    
+Now let's enter the project directory
 
-Now we should initialize a new repo
+    $ cd my-project-webroot
+
+Then we should initialize a new repo
 
     $ git init
 
@@ -57,7 +61,7 @@ and push the project to the repo
 ### Specific DocRoot
 
 In a lot of cases it will be usefull to define a DocRoot for the projekt.
-So the public files will be stored there and all other, like vendor, are outside.
+So the public files will be stored there and all others, like vendor, are outside.
 
 This feature is new in the CmsComposerInstaller since 1.2.2. and enabled by default.
 
@@ -71,13 +75,13 @@ for example static_info_tables, you can simply perform the following command:
 Pay attention to replace underscores "_" by a dash "-" in the extension key.
 
 
-To append an extension from a own repository,
-you has to add the repository to the composer.json first.
-To add the powerful MKSEACRH extension you has to perform the following command:
+To append an extension from your own repository, you have to add the repository to 
+the composer.json first.
+To add the powerful MKSEARCH extension, you have to perform the following command:
 
     $ composer config repositories.mksearch vcs https://github.com/DMKEBUSINESSGMBH/typo3-mksearch.git
 
-Be sure, that there is an composer.json in the repository like this one:
+Be sure, that there is a composer.json in the repository like this one:
 
     {
         "name" : "dmk/mksearch",
@@ -94,7 +98,7 @@ Now you can install the Extension with the require command:
 
     composer require dmk/mksearch:dev-master
 
-Finally install the extension with the TYPO3 Extension Manager in the TYPO3 Backend
+Finally install the extension with the TYPO3 Extension Manager in the TYPO3 Backend,
 add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3conf/PackageStates.php
 to the git and commit and push the changes.
 
@@ -102,7 +106,7 @@ to the git and commit and push the changes.
 
   * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the LocalConfiguration.php.
       * don't forget to create the adress
-      * best practise is to have a mailing list where everyone is added who is involved in the project
+      * best practise is to have a mailing list, where everyone, who is involved in the project, is added
   * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the LocalConfiguration.php.
   * Replace $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = 'XXX.XXX.XXX.XXX' in the LocalConfiguration.php. 
