@@ -1,62 +1,62 @@
 {
-    "name" : "dmk/typo3-composer-webroot",
-    "description" : "The TYPO3 Project webroot",
-    "type" : "project",
-    "license" : "proprietary",
-    "version" : "0.9.5",
-    "authors" : [
+    "name": "dmk/typo3-composer-webroot",
+    "description": "The TYPO3 Project webroot",
+    "type": "project",
+    "license": "proprietary",
+    "version": "0.9.5",
+    "authors": [
         {
-            "name" : "Michael Wagner",
-            "email" : "michael.wagner@dmk-ebusiness.de",
-            "role" : "Developer"
+            "name": "Michael Wagner",
+            "email": "michael.wagner@dmk-ebusiness.de",
+            "role": "Developer"
         }
     ],
     "support": {
-        "email" : "dev@dmk-ebusiness.de",
-        "source" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
-        "issues" : "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
+        "email": "dev@dmk-ebusiness.de",
+        "source": "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot",
+        "issues": "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
     },
-    "repositories" : {
-        "dmknet" : {
-            "type" : "composer",
-            "url" : "https://packages.dmknet.de"
+    "repositories": {
+        "dmknet": {
+            "type": "composer",
+            "url": "https://packages.dmknet.de"
         },
-        "typo3" : {
-            "type" : "composer",
-            "url" : "https://composer.typo3.org/"
+        "typo3": {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
         }
     },
-    "require" : {
-        "typo3/minimal" : "~9.5",
-        "typo3/cms-core" : "~9.5",
+    "require": {
+        "typo3/minimal": "~9.5",
+        "typo3/cms-core": "~9.5",
         "typo3/cms-tstemplate": "~9.5",
         "typo3/cms-seo": "~9.5",
         "typo3/cms-form": "~9.5",
         "typo3/cms-beuser": "~9.5",
         "typo3/cms-redirects": "~9.5",
-	    "typo3/cms-rsaauth": "~9.5",
+        "typo3/cms-rsaauth": "~9.5",
         "typo3/cms-saltedpasswords": "~9.5",
         "typo3/cms-recycler": "~9.5",
         "typo3/cms-lowlevel": "~9.5",
         "typo3/cms-info": "~9.5",
         "typo3/cms-rte-ckeditor": "~9.5",
         "typo3/cms-fluid-styled-content": "~9.5",
-	    "typo3/cms-scheduler": "~9.5",
+        "typo3/cms-scheduler": "~9.5",
         "typo3/cms-viewpage": "~9.5",
 
-        "spooner-web/be_secure_pw" : "~9.0",
+        "spooner-web/be_secure_pw": "~9.0",
 
-        "digedag/rn-base" : "^1.10",
+        "digedag/rn-base": "^1.10",
         "dmk/mklog": "^9.5",
         "dmk/mklib": "^9.5",
         "dmk/mksanitizedparameters": "^9.5",
         "dmk/mktools": "^9.5"
     },
-    "minimum-stability" : "stable",
-    "extra" : {
-        "typo3/cms" : {
-            "cms-package-dir" : "{$vendor-dir}/typo3/cms",
-            "web-dir" : "./htdocs"
+    "minimum-stability": "stable",
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "./htdocs"
         }
     }
 }
