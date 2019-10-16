@@ -27,7 +27,7 @@
         }
     },
     "require" : {
-        "typo3/minimal" : "~9.5@stable",
+        "typo3/minimal" : "~9.5",
         "typo3/cms-core" : "~9.5",
         "typo3/cms-tstemplate": "~9.5",
         "typo3/cms-seo": "~9.5",
@@ -39,18 +39,18 @@
         "typo3/cms-recycler": "~9.5",
         "typo3/cms-lowlevel": "~9.5",
         "typo3/cms-info": "~9.5",
-        "typo3/cms-rte-ckeditor": "~9.5@stable",
+        "typo3/cms-rte-ckeditor": "~9.5",
         "typo3/cms-fluid-styled-content": "~9.5",
 	    "typo3/cms-scheduler": "~9.5",
         "typo3/cms-viewpage": "~9.5",
 
-        "spooner-web/be_secure_pw" : "~9.0@stable",
+        "spooner-web/be_secure_pw" : "~9.0",
 
-        "digedag/rn-base": "@dev",
-        "dmk/mklog": "@dev",
-        "dmk/mklib": "@dev",
-        "dmk/mksanitizedparameters": "@dev",
-        "dmk/mktools": "@dev"
+        "digedag/rn-base" : "^1.10",
+        "dmk/mklog": "^9.5",
+        "dmk/mklib": "^9.5",
+        "dmk/mksanitizedparameters": "^9.5",
+        "dmk/mktools": "^9.5"
     },
     "minimum-stability" : "stable",
     "extra" : {
