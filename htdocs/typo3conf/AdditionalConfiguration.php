@@ -56,5 +56,12 @@ call_user_func(
 
         // we're using mklog as log writer, so we don't need the file log.
         unset($GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::WARNING]['TYPO3\\CMS\\Core\\Log\\Writer\\FileWriter']);
+        
+        if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['enable_devlog'])) {
+            $minLogLevel = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level']
+                ?: \DMK\Mklog\Utility\SeverityUtility::DEBUG;
+            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel]['DMK\\Mklog\\Logger\\DevlogLogger']
+                = [];
+        }
     }
 );
