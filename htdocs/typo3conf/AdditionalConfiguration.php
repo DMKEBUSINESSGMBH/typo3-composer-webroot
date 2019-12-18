@@ -55,12 +55,12 @@ call_user_func(
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['sendEmailOnException'] = $warningMail;
 
         // we're using mklog as log writer, so we don't need the file log.
-        unset($GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::WARNING]['TYPO3\\CMS\\Core\\Log\\Writer\\FileWriter']);
-        
+        unset($GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::WARNING][\TYPO3\CMS\Core\Log\Writer\FileWriter::class]);
+
         if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['enable_devlog'])) {
             $minLogLevel = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level']
                 ?: \DMK\Mklog\Utility\SeverityUtility::DEBUG;
-            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel]['DMK\\Mklog\\Logger\\DevlogLogger']
+            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\DevlogLogger::class]
                 = [];
         }
     }
