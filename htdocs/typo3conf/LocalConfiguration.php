@@ -145,7 +145,6 @@ return [
     ],
     'SYS' => [
         'belogErrorReporting' => 0,
-        'compat_version' => '8.7',
         'debugExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
         'devIPmask' => 'XXX.XXX.XXX.XXX',
         'displayErrors' => -1,
