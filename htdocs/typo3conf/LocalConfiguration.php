@@ -64,7 +64,7 @@ return [
             'gelf_transport' => '',
             'host' => '',
             'max_logs' => '10000',
-            'min_log_level' => \DMK\Mklog\Utility\SeverityUtility::NOTICE,
+            'min_log_level' => \DMK\Mklog\Utility\SeverityUtility::WARNING,
         ],
         'mksanitizedparameters' => [
             'debugMode' => '0',
