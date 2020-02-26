@@ -22,6 +22,5 @@
 /vendor
 
 ### ignore the var folder, but allow to committ the translation labels
-!/var
 /var/*
 !/var/labels
