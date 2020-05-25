@@ -44,6 +44,18 @@ Options -MultiViews
 
     # Reducing MIME type security risks
     Header set X-Content-Type-Options "nosniff"
+
+    # Allow frame only on SAMEORIGIN / DENY / ALLOW-FROM
+    Header always append X-Frame-Options SAMEORIGIN
+
+    # XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+
+    # HSTS (HTTP Strict Transport Security) ensure all communication sent over HTTPS
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
+    Header set Content-Security-Policy "default-src 'self';"
 </IfModule>
 
 # ------------------------------------------------------------------------------
