@@ -17,40 +17,47 @@
         "issues": "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
     },
     "repositories": {
-        "dmknet": {
-            "type": "composer",
-            "url": "https://packages.dmknet.de"
-        },
         "typo3": {
             "type": "composer",
             "url": "https://composer.typo3.org/"
         }
     },
     "require": {
-        "typo3/minimal": "~9.5",
-        "typo3/cms-core": "~9.5",
-        "typo3/cms-tstemplate": "~9.5",
-        "typo3/cms-seo": "~9.5",
-        "typo3/cms-form": "~9.5",
-        "typo3/cms-beuser": "~9.5",
-        "typo3/cms-redirects": "~9.5",
-        "typo3/cms-rsaauth": "~9.5",
-        "typo3/cms-saltedpasswords": "~9.5",
-        "typo3/cms-recycler": "~9.5",
-        "typo3/cms-lowlevel": "~9.5",
-        "typo3/cms-info": "~9.5",
-        "typo3/cms-rte-ckeditor": "~9.5",
-        "typo3/cms-fluid-styled-content": "~9.5",
-        "typo3/cms-scheduler": "~9.5",
-        "typo3/cms-viewpage": "~9.5",
+        "typo3/minimal": "^10.4",
+        "typo3/cms-core": "^10.4",
+        "typo3/cms-belog": "^10.4",
+        "typo3/cms-beuser": "^10.4",
+        "typo3/cms-context-help": "^10.4",
+        "typo3/cms-cshmanual": "^10.4",
+        "typo3/cms-felogin": "^10.4",
+        "typo3/cms-filemetadata": "^10.4",
+        "typo3/cms-fluid-styled-content": "^10.4",
+        "typo3/cms-form": "^10.4",
+        "typo3/cms-impexp": "^10.4",
+        "typo3/cms-indexed-search": "^10.4",
+        "typo3/cms-info": "^10.4",
+        "typo3/cms-lowlevel": "^10.4",
+        "typo3/cms-recycler": "^10.4",
+        "typo3/cms-redirects": "^10.4",
+        "typo3/cms-reports": "^10.4",
+        "typo3/cms-rte-ckeditor": "^10.4",
+        "typo3/cms-scheduler": "^10.4",
+        "typo3/cms-setup": "^10.4",
+        "typo3/cms-sv": "^10.4",
+        "typo3/cms-sys-note": "^10.4",
+        "typo3/cms-t3editor": "^10.4",
+        "typo3/cms-tstemplate": "^10.4",
+        "typo3/cms-version": "^10.4",
+        "typo3/cms-viewpage": "^10.4",
+        "typo3/cms-wizard-crpages": "^10.4",
+        "typo3/cms-wizard-sortpages": "^10.4",
+        "typo3/cms-workspaces": "^10.4",
+        "typo3/cms-seo": "^10.4",
 
-        "spooner-web/be_secure_pw": "~9.0",
+        "spooner-web/be_secure_pw": "~9.1",
 
-        "digedag/rn-base": "^1.10",
-        "dmk/mklog": "^9.5",
-        "dmk/mklib": "^9.5",
-        "dmk/mksanitizedparameters": "^9.5",
-        "dmk/mktools": "^9.5"
+        "dmk/mklog": "^10.0",
+        "dmk/mksanitizedparameters": "^10.0"
     },
     "minimum-stability": "stable",
     "extra": {

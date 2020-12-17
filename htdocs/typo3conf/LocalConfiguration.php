@@ -22,7 +22,7 @@ return [
         ],
     ],
     'EXT' => [
-        'allowLocalInstall' => '0',
+        'allowLocalInstall' => false,
     ],
     'EXTENSIONS' => [
         'be_secure_pw' => [
@@ -46,15 +46,6 @@ return [
             'automaticInstallation' => '0',
             'offlineMode' => '1',
         ],
-        'mklib' => [
-            'logDbHandler' => '0',
-            'logDbIgnoreTables' => '',
-            'picturesUploadPath' => 'uploads/tx_mklib/pictures',
-            'portalPageId' => '0',
-            'proxyBeUserId' => '0',
-            'specialCharMarker' => 'SPECIALCHAR_',
-            'tableWordlist' => '0',
-        ],
         'mklog' => [
             'enable_devlog' => '1',
             'exclude_ext_keys' => 'extbase,TYPO3\\CMS\\Sv\\AuthenticationService,TYPO3\\CMS\\Core\\Authentication\\AbstractUserAuthentication',
@@ -62,7 +53,7 @@ return [
             'gelf_enable' => '1',
             'gelf_min_log_level' => \DMK\Mklog\Utility\SeverityUtility::CRITICAL,
             'gelf_transport' => '',
-            'host' => '',
+            'host' => 'www.my-project-webroot.net';,
             'max_logs' => '10000',
             'min_log_level' => \DMK\Mklog\Utility\SeverityUtility::WARNING,
         ],
@@ -71,20 +62,6 @@ return [
             'logMode' => '1',
             'stealthMode' => '0',
             'stealthModeStoragePid' => '1',
-        ],
-        'mktools' => [
-            'ajaxContentRendererActive' => '0',
-            'contentReplaceActive' => '0',
-            'exceptionPage' => '',
-            'pageNotFoundHandling' => '0',
-            'realUrlConfigurationFile' => '',
-            'realUrlConfigurationTemplate' => '',
-            'realUrlXclass' => '0',
-            'seoRobotsMetaTagActive' => '0',
-            'shouldFalImagesBeAddedToCalEvent' => '0',
-            'shouldFalImagesBeAddedToTtNews' => '0',
-            'systemLogLockThreshold' => '60',
-            'tableFixedPostVarTypes' => '0',
         ],
         'rn_base' => [
             'activateCache' => '0',

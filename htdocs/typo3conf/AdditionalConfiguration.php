@@ -17,7 +17,7 @@ call_user_func(
             $_SERVER['HTTPS'] = 1;
         }
 
-        $applicationContext = \TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext();
+        $applicationContext = \TYPO3\CMS\Core\Core\Environment::getContext();
 
         // can be used in the conf files
         $warningMail = $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'];
@@ -60,14 +60,14 @@ call_user_func(
         if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['enable_devlog'])) {
             $minLogLevel = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level']
                 ?: \DMK\Mklog\Utility\SeverityUtility::DEBUG;
-            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\DevlogLogger::class]
-                = [];
+            $minLogLevel = \DMK\Mklog\Utility\SeverityUtility::getPsrLevelConstant($minLogLevel);
+            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\DevlogLogger::class] = [];
         }
         if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_enable'])) {
             $minLogLevel = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_min_log_level']
                 ?: \DMK\Mklog\Utility\SeverityUtility::ALERT;
-            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\GelfLogger::class]
-                = [];
+            $minLogLevel = \DMK\Mklog\Utility\SeverityUtility::getPsrLevelConstant($minLogLevel);
+            $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\GelfLogger::class] = [];
         }
     }
 );

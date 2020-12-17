@@ -10,23 +10,19 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-typo3-95
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-10.4
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
 
 The installation process should look like this:
 
-    Installing dmk/typo3-composer-webroot (dev-typo3-95)
-    - Installing dmk/typo3-composer-webroot (dev-typo3-95 typo3-95)
-
-
     Created project in my-project-webroot
     Loading composer repositories with package information
-    Installing dependencies (including require-dev)
+    Installing dependencies
       - Installing typo3/cms-composer-installers (dev-master)
 
-      - Installing typo3/cms (9.5)
+      - Installing typo3/minimal (v10.4.0)
 
     Writing lock file
     Generating autoload files
@@ -70,9 +66,9 @@ This feature is new in the CmsComposerInstaller since 1.2.2. and enabled by defa
 To install an extension from the [TER](https://typo3.org/extensions/repository/),
 for example static_info_tables, you can simply perform the following command:
 
-    composer require typo3-ter/static-info-tables:~7.6@stable
+    composer require sjbr/static-info-tables:^6.9
 
-Pay attention to replace underscores "_" by a dash "-" in the extension key.
+Pay attention to replace underscores "_" by a dash "-" in the extension key if you are using typo3-ter repository.
 
 
 To append an extension from your own repository, you have to add the repository to 

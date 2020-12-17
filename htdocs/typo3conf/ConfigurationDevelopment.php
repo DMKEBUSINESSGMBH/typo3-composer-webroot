@@ -4,6 +4,8 @@ call_user_func(
         // skip ssl redirect on dev enviroment
         $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
 
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] .= ',127.0.0.1';
+
         //30711 = E_ALL & ~(E_STRICT | E_NOTICE)
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = 30711;
         //alles als Exception behandeln (Fehlerseite ausgeben, Logging)
