@@ -53,7 +53,7 @@ return [
             'gelf_enable' => '1',
             'gelf_min_log_level' => \DMK\Mklog\Utility\SeverityUtility::CRITICAL,
             'gelf_transport' => '',
-            'host' => 'www.my-project-webroot.net';,
+            'host' => 'www.my-project-webroot.net',
             'max_logs' => '10000',
             'min_log_level' => \DMK\Mklog\Utility\SeverityUtility::WARNING,
         ],
