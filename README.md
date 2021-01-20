@@ -10,7 +10,7 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot dev-10.4
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot 10.4.x-dev
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
