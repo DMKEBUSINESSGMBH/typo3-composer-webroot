@@ -46,12 +46,6 @@ call_user_func(
 
         $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'] = $warningMail;
 
-        // remplate the warning mail in configs
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLog'] = sprintf(
-            $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLog'],
-            $warningMail
-        );
-
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['sendEmailOnException'] = $warningMail;
 
         // we're using mklog as log writer, so we don't need the file log.

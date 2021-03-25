@@ -137,7 +137,5 @@ return [
         'reverseProxyHeaderMultiValue' => 'first',
         'sitename' => 'DMK TYPO3',
         'systemLocale' => 'de_DE.utf8',
-        'systemLog' => 'mail,%1$s,4;error_log,,2;syslog,LOCAL0,,3',
-        'systemLogLevel' => 3,
     ],
 ];

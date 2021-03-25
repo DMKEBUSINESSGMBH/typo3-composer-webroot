@@ -11,7 +11,6 @@ call_user_func(
         //alles als Exception behandeln (Fehlerseite ausgeben, Logging)
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'];
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '1';
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemLogLevel'] = '0';
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['sqlDebug'] = '1';
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['enableDeprecationLog'] = 'file';
 
