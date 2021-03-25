@@ -99,11 +99,7 @@ return [
         'lifetime' => '3600',
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
-        'noPHPscriptInclude' => true,
         'pageNotFoundOnCHashError' => true,
-        'pageNotFound_handling' => '/404/',
-        'pageNotFound_handling_statheader' => 'HTTP/1.1 404 Not Found',
-        'pageUnavailable_handling' => 'fehler.html',
     ],
     'GFX' => [
         'jpg_quality' => '80',
