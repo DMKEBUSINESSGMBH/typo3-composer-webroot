@@ -41,7 +41,12 @@ Options -MultiViews
     <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff|woff2|xml|xpi)$">
         Header unset X-UA-Compatible
     </FilesMatch>
+</IfModule>
 
+# ------------------------------------------------------------------------------
+# | Security                                                                   |
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
     # Reducing MIME type security risks
     Header set X-Content-Type-Options "nosniff"
 
@@ -56,6 +61,10 @@ Options -MultiViews
 
     # Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
     Header set Content-Security-Policy "default-src 'self';"
+
+    Header set Referrer-Policy: "same-origin"
+    Header set X-Content-Type-Options: "nosniff"
+    Header set Permissions-Policy: "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
 </IfModule>
 
 # ------------------------------------------------------------------------------
