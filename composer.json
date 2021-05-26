@@ -65,5 +65,10 @@
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": "./htdocs"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cp .htaccess_typo3 htdocs/typo3/.htaccess"
+        ]
     }
 }
