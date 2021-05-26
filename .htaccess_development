@@ -62,9 +62,8 @@ Options -MultiViews
 	# Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
 	Header set Content-Security-Policy "default-src 'self';"
 
-	Header set Referrer-Policy: "same-origin"
-	Header set X-Content-Type-Options: "nosniff"
-	Header set Permissions-Policy: "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
+	Header set Referrer-Policy "same-origin"
+	Header set Permissions-Policy "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
 </IfModule>
 
 # ------------------------------------------------------------------------------
