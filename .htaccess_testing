@@ -8,12 +8,12 @@ SetEnv TYPO3_CONTEXT Testing
 # | CORS-enabled images                                                        |
 # ------------------------------------------------------------------------------
 <IfModule mod_setenvif.c>
-    <IfModule mod_headers.c>
-        <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
-            SetEnvIf Origin ":" IS_CORS
-            Header set Access-Control-Allow-Origin "*" env=IS_CORS
-        </FilesMatch>
-    </IfModule>
+	<IfModule mod_headers.c>
+		<FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
+			SetEnvIf Origin ":" IS_CORS
+			Header set Access-Control-Allow-Origin "*" env=IS_CORS
+		</FilesMatch>
+	</IfModule>
 </IfModule>
 
 
@@ -21,9 +21,9 @@ SetEnv TYPO3_CONTEXT Testing
 # | Web fonts access                                                           |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-    <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff|woff2)$">
-        Header set Access-Control-Allow-Origin "*"
-    </FilesMatch>
+	<FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff|woff2)$">
+		Header set Access-Control-Allow-Origin "*"
+	</FilesMatch>
 </IfModule>
 
 
@@ -37,34 +37,34 @@ Options -MultiViews
 # | Force IE to render pages in the highest available mode in the various      |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-    Header set X-UA-Compatible "IE=edge"
-    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff|woff2|xml|xpi)$">
-        Header unset X-UA-Compatible
-    </FilesMatch>
+	Header set X-UA-Compatible "IE=edge"
+	<FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff|woff2|xml|xpi)$">
+		Header unset X-UA-Compatible
+	</FilesMatch>
 </IfModule>
 
 # ------------------------------------------------------------------------------
 # | Security                                                                   |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-    # Reducing MIME type security risks
-    Header set X-Content-Type-Options "nosniff"
+	# Reducing MIME type security risks
+	Header set X-Content-Type-Options "nosniff"
 
-    # Allow frame only on SAMEORIGIN / DENY / ALLOW-FROM
-    Header always append X-Frame-Options SAMEORIGIN
+	# Allow frame only on SAMEORIGIN / DENY / ALLOW-FROM
+	Header always append X-Frame-Options SAMEORIGIN
 
-    # XSS protection
-    Header set X-XSS-Protection "1; mode=block"
+	# XSS protection
+	Header set X-XSS-Protection "1; mode=block"
 
-    # HSTS (HTTP Strict Transport Security) ensure all communication sent over HTTPS
-    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	# HSTS (HTTP Strict Transport Security) ensure all communication sent over HTTPS
+	Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-    # Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
-    Header set Content-Security-Policy "default-src 'self';"
+	# Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
+	Header set Content-Security-Policy "default-src 'self';"
 
-    Header set Referrer-Policy: "same-origin"
-    Header set X-Content-Type-Options: "nosniff"
-    Header set Permissions-Policy: "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
+	Header set Referrer-Policy: "same-origin"
+	Header set X-Content-Type-Options: "nosniff"
+	Header set Permissions-Policy: "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -72,52 +72,52 @@ Options -MultiViews
 # ------------------------------------------------------------------------------
 <IfModule mod_mime.c>
 
-    # Data interchange
-    AddType application/atom+xml                        atom
-    AddType application/json                            json map topojson
-    AddType application/ld+json                         jsonld
-    AddType application/rss+xml                         rss
-    AddType application/vnd.geo+json                    geojson
-    AddType application/xml                             rdf xml
+	# Data interchange
+	AddType application/atom+xml                        atom
+	AddType application/json                            json map topojson
+	AddType application/ld+json                         jsonld
+	AddType application/rss+xml                         rss
+	AddType application/vnd.geo+json                    geojson
+	AddType application/xml                             rdf xml
 
-    # JavaScript
-    AddType application/javascript                      js
+	# JavaScript
+	AddType application/javascript                      js
 
-    # Manifest files
-    AddType application/manifest+json                   webmanifest
-    AddType application/x-web-app-manifest+json         webapp
-    AddType text/cache-manifest                         appcache
+	# Manifest files
+	AddType application/manifest+json                   webmanifest
+	AddType application/x-web-app-manifest+json         webapp
+	AddType text/cache-manifest                         appcache
 
-    # Media files
+	# Media files
 
-    AddType audio/mp4                                   f4a f4b m4a
-    AddType audio/ogg                                   oga ogg opus
-    AddType image/bmp                                   bmp
-    AddType image/svg+xml                               svg svgz
-    AddType image/webp                                  webp
-    AddType video/mp4                                   f4v f4p m4v mp4
-    AddType video/ogg                                   ogv
-    AddType video/webm                                  webm
-    AddType video/x-flv                                 flv
-    AddType image/x-icon                                cur ico
+	AddType audio/mp4                                   f4a f4b m4a
+	AddType audio/ogg                                   oga ogg opus
+	AddType image/bmp                                   bmp
+	AddType image/svg+xml                               svg svgz
+	AddType image/webp                                  webp
+	AddType video/mp4                                   f4v f4p m4v mp4
+	AddType video/ogg                                   ogv
+	AddType video/webm                                  webm
+	AddType video/x-flv                                 flv
+	AddType image/x-icon                                cur ico
 
-    # Web fonts
-    AddType application/font-woff                       woff
-    AddType application/font-woff2                      woff2
-    AddType application/vnd.ms-fontobject               eot
-    AddType application/x-font-ttf                      ttc ttf
-    AddType font/opentype                               otf
+	# Web fonts
+	AddType application/font-woff                       woff
+	AddType application/font-woff2                      woff2
+	AddType application/vnd.ms-fontobject               eot
+	AddType application/x-font-ttf                      ttc ttf
+	AddType font/opentype                               otf
 
-    # Other
-    AddType application/octet-stream                    safariextz
-    AddType application/x-bb-appworld                   bbaw
-    AddType application/x-chrome-extension              crx
-    AddType application/x-opera-extension               oex
-    AddType application/x-xpinstall                     xpi
-    AddType text/vcard                                  vcard vcf
-    AddType text/vnd.rim.location.xloc                  xloc
-    AddType text/vtt                                    vtt
-    AddType text/x-component                            htc
+	# Other
+	AddType application/octet-stream                    safariextz
+	AddType application/x-bb-appworld                   bbaw
+	AddType application/x-chrome-extension              crx
+	AddType application/x-opera-extension               oex
+	AddType application/x-xpinstall                     xpi
+	AddType text/vcard                                  vcard vcf
+	AddType text/vnd.rim.location.xloc                  xloc
+	AddType text/vtt                                    vtt
+	AddType text/x-component                            htc
 
 </IfModule>
 
@@ -127,7 +127,7 @@ Options -MultiViews
 # ------------------------------------------------------------------------------
 AddDefaultCharset utf-8
 <IfModule mod_mime.c>
-    AddCharset utf-8 .atom .css .js .json .manifest .rdf .rss .vtt .webapp .webmanifest .xml
+	AddCharset utf-8 .atom .css .js .json .manifest .rdf .rss .vtt .webapp .webmanifest .xml
 </IfModule>
 
 
@@ -136,139 +136,139 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 <IfModule mod_rewrite.c>
 
-    # Enable URL rewriting
-    RewriteEngine On
+	# Enable URL rewriting
+	RewriteEngine On
 
-    # Using mod_rewrite in .htaccess files without knowing the RewriteBase
-    # http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
-    RewriteBase /
+	# Using mod_rewrite in .htaccess files without knowing the RewriteBase
+	# http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
+	RewriteBase /
 
-    ### WARTUNGSMODUS VIA .htaccess
-    RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
-    ### statische Dateien weiter ausliefern
-    RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
-    ### Hier weitere IPs eintragen, die keinen Wartungsmodus sehen
-    RewriteCond %{REMOTE_ADDR} !^XXX.XXX.XXX.XXX
-    RewriteCond %{REQUEST_URI} !^/unavailable/
-    RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
+	### WARTUNGSMODUS VIA .htaccess
+	RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
+	### statische Dateien weiter ausliefern
+	RewriteCond %{REQUEST_FILENAME} !(\.css|\.js|\.png|\.jp?g|\.gif|\.ico|\.txt|\.pdf|\.xml).*$
+	### Hier weitere IPs eintragen, die keinen Wartungsmodus sehen
+	RewriteCond %{REMOTE_ADDR} !^XXX.XXX.XXX.XXX
+	RewriteCond %{REQUEST_URI} !^/unavailable/
+	RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
 
-    # Store the current location in an environment variable CWD
-    RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
-    RewriteRule ^.*$ - [E=CWD:%2]
+	# Store the current location in an environment variable CWD
+	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
+	RewriteRule ^.*$ - [E=CWD:%2]
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ %{ENV:CWD}$1.$3 [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ %{ENV:CWD}$1.$3 [L]
 
-    # Access block for folders
-    RewriteRule _(?:recycler|temp)_/ - [F]
-    RewriteRule ^fileadmin/templates/.*(\.txt|\.ts)$ - [F]
-    RewriteRule ^(?:vendor|typo3_src|typo3temp/var) - [F]
-    RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
-    RewriteRule ^typo3conf/.*\.(html|htm)$ - [L]
-    RewriteRule ^fileadmin/templates/.*\.(html|htm)$ - [L]
+	# Access block for folders
+	RewriteRule _(?:recycler|temp)_/ - [F]
+	RewriteRule ^fileadmin/templates/.*(\.txt|\.ts)$ - [F]
+	RewriteRule ^(?:vendor|typo3_src|typo3temp/var) - [F]
+	RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
+	RewriteRule ^typo3conf/.*\.(html|htm)$ - [L]
+	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ - [L]
 
-    # Block access to all hidden files and directories
-    RewriteCond %{SCRIPT_FILENAME} -d [OR]
-    RewriteCond %{SCRIPT_FILENAME} -f
-    RewriteRule (?:^|/)\. - [F]
+	# Block access to all hidden files and directories
+	RewriteCond %{SCRIPT_FILENAME} -d [OR]
+	RewriteCond %{SCRIPT_FILENAME} -f
+	RewriteRule (?:^|/)\. - [F]
 
-    # Stop rewrite processing, if we are in the typo3/ directory or any other known directory
-    # NOTE: Add your additional local storages here
-    RewriteRule ^(?:typo3/|fileadmin/|typo3conf/|typo3temp/|uploads/|favicon\.ico) - [L]
+	# Stop rewrite processing, if we are in the typo3/ directory or any other known directory
+	# NOTE: Add your additional local storages here
+	RewriteRule ^(?:typo3/|fileadmin/|typo3conf/|typo3temp/|uploads/|favicon\.ico) - [L]
 
-    # Just by prefixing the environment variable, we can safely rewrite anything now
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-l
-    RewriteRule ^.*$ %{ENV:CWD}index.php [QSA,L]
+	# Just by prefixing the environment variable, we can safely rewrite anything now
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteRule ^.*$ %{ENV:CWD}index.php [QSA,L]
 </IfModule>
 
 # ------------------------------------------------------------------------------
 # | Block access to directories without a default document.                    |
 # ------------------------------------------------------------------------------
 <IfModule mod_autoindex.c>
-    Options -Indexes
+	Options -Indexes
 </IfModule>
 
 # Access block for files
 # Apache < 2.3
 <IfModule !mod_authz_core.c>
-    <FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$">
-        Order allow,deny
-        Deny from all
-        Satisfy All
-    </FilesMatch>
+	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$">
+		Order allow,deny
+		Deny from all
+		Satisfy All
+	</FilesMatch>
 </IfModule>
 # Apache ≥ 2.3
 <IfModule mod_authz_core.c>
-    <If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$#">
-        Require all denied
-    </If>
+	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$#">
+		Require all denied
+	</If>
 </IfModule>
 
 # Block access to vcs directories
 <IfModule mod_alias.c>
-    RedirectMatch 404 /\.(?:git|svn|hg)/
+	RedirectMatch 404 /\.(?:git|svn|hg)/
 </IfModule>
 
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
 # ------------------------------------------------------------------------------
 <IfModule mod_deflate.c>
-    <IfModule mod_setenvif.c>
-        <IfModule mod_headers.c>
-            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
-            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
-        </IfModule>
-    </IfModule>
-    # Compress all output labeled with one of the following media types.
-    #
-    # (!) For Apache versions below version 2.3.7 you don't need to
-    # enable `mod_filter` and can remove the `<IfModule mod_filter.c>`
-    # and `</IfModule>` lines as `AddOutputFilterByType` is still in
-    # the core directives.
-    #
-    # https://httpd.apache.org/docs/current/mod/mod_filter.html#addoutputfilterbytype
+	<IfModule mod_setenvif.c>
+		<IfModule mod_headers.c>
+			SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+			RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+		</IfModule>
+	</IfModule>
+	# Compress all output labeled with one of the following media types.
+	#
+	# (!) For Apache versions below version 2.3.7 you don't need to
+	# enable `mod_filter` and can remove the `<IfModule mod_filter.c>`
+	# and `</IfModule>` lines as `AddOutputFilterByType` is still in
+	# the core directives.
+	#
+	# https://httpd.apache.org/docs/current/mod/mod_filter.html#addoutputfilterbytype
 
-    <IfModule mod_filter.c>
-        AddOutputFilterByType DEFLATE application/atom+xml \
-            application/javascript \
-            application/json \
-            application/ld+json \
-            application/manifest+json \
-            application/rdf+xml \
-            application/rss+xml \
-            application/schema+json \
-            application/vnd.geo+json \
-            application/vnd.ms-fontobject \
-            application/x-font-ttf \
-            application/x-javascript \
-            application/x-web-app-manifest+json \
-            application/xhtml+xml \
-            application/xml \
-            font/eot \
-            font/opentype \
-            image/bmp \
-            image/svg+xml \
-            image/vnd.microsoft.icon \
-            image/x-icon \
-            text/cache-manifest \
-            text/css \
-            text/html \
-            text/javascript \
-            text/plain \
-            text/vcard \
-            text/vnd.rim.location.xloc \
-            text/vtt \
-            text/x-component \
-            text/x-cross-domain-policy \
-            text/xml
-    </IfModule>
+	<IfModule mod_filter.c>
+		AddOutputFilterByType DEFLATE application/atom+xml \
+			application/javascript \
+			application/json \
+			application/ld+json \
+			application/manifest+json \
+			application/rdf+xml \
+			application/rss+xml \
+			application/schema+json \
+			application/vnd.geo+json \
+			application/vnd.ms-fontobject \
+			application/x-font-ttf \
+			application/x-javascript \
+			application/x-web-app-manifest+json \
+			application/xhtml+xml \
+			application/xml \
+			font/eot \
+			font/opentype \
+			image/bmp \
+			image/svg+xml \
+			image/vnd.microsoft.icon \
+			image/x-icon \
+			text/cache-manifest \
+			text/css \
+			text/html \
+			text/javascript \
+			text/plain \
+			text/vcard \
+			text/vnd.rim.location.xloc \
+			text/vtt \
+			text/x-component \
+			text/x-cross-domain-policy \
+			text/xml
+	</IfModule>
 
-    <IfModule mod_mime.c>
-        AddEncoding gzip svgz
-    </IfModule>
+	<IfModule mod_mime.c>
+		AddEncoding gzip svgz
+	</IfModule>
 </IfModule>
 
 # Compressing resource files will save bandwidth and so improve loading speed especially for users
@@ -278,10 +278,10 @@ AddDefaultCharset utf-8
 # *) Set $TYPO3_CONF_VARS['FE']['compressionLevel'] = '9' together with the TypoScript properties
 #    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
 <FilesMatch "\.js\.gzip$">
-    AddType "text/javascript" .gzip
+	AddType "text/javascript" .gzip
 </FilesMatch>
 <FilesMatch "\.css\.gzip$">
-    AddType "text/css" .gzip
+	AddType "text/css" .gzip
 </FilesMatch>
 AddEncoding gzip .gzip
 
@@ -290,7 +290,7 @@ AddEncoding gzip .gzip
 # | ETag removal                                                               |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-    Header unset ETag
+	Header unset ETag
 </IfModule>
 FileETag None
 
@@ -300,58 +300,58 @@ FileETag None
 # ------------------------------------------------------------------------------
 <IfModule mod_expires.c>
 
-    ExpiresActive on
-    ExpiresDefault                                      "access plus 1 month"
+	ExpiresActive on
+	ExpiresDefault                                      "access plus 1 month"
 
-    ExpiresByType text/css                              "access plus 1 year"
+	ExpiresByType text/css                              "access plus 1 year"
 
-    ExpiresByType application/json                      "access plus 0 seconds"
-    ExpiresByType application/ld+json                   "access plus 0 seconds"
-    ExpiresByType application/schema+json               "access plus 0 seconds"
-    ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
-    ExpiresByType application/xml                       "access plus 0 seconds"
-    ExpiresByType text/xml                              "access plus 0 seconds"
+	ExpiresByType application/json                      "access plus 0 seconds"
+	ExpiresByType application/ld+json                   "access plus 0 seconds"
+	ExpiresByType application/schema+json               "access plus 0 seconds"
+	ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+	ExpiresByType application/xml                       "access plus 0 seconds"
+	ExpiresByType text/xml                              "access plus 0 seconds"
 
-    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
-    ExpiresByType image/x-icon                          "access plus 1 week"
+	ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
+	ExpiresByType image/x-icon                          "access plus 1 week"
 
-    ExpiresByType text/x-component                      "access plus 1 month"
+	ExpiresByType text/x-component                      "access plus 1 month"
 
-    ExpiresByType text/html                             "access plus 0 seconds"
+	ExpiresByType text/html                             "access plus 0 seconds"
 
-    ExpiresByType application/javascript                "access plus 1 year"
-    ExpiresByType application/x-javascript              "access plus 1 year"
-    ExpiresByType text/javascript                       "access plus 1 year"
+	ExpiresByType application/javascript                "access plus 1 year"
+	ExpiresByType application/x-javascript              "access plus 1 year"
+	ExpiresByType text/javascript                       "access plus 1 year"
 
-    ExpiresByType application/manifest+json             "access plus 1 week"
-    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
-    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+	ExpiresByType application/manifest+json             "access plus 1 week"
+	ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+	ExpiresByType text/cache-manifest                   "access plus 0 seconds"
 
-    ExpiresByType audio/ogg                             "access plus 1 month"
-    ExpiresByType image/bmp                             "access plus 1 month"
-    ExpiresByType image/gif                             "access plus 1 month"
-    ExpiresByType image/jpeg                            "access plus 1 month"
-    ExpiresByType image/png                             "access plus 1 month"
-    ExpiresByType image/svg+xml                         "access plus 1 month"
-    ExpiresByType image/webp                            "access plus 1 month"
-    ExpiresByType video/mp4                             "access plus 1 month"
-    ExpiresByType video/ogg                             "access plus 1 month"
-    ExpiresByType video/webm                            "access plus 1 month"
+	ExpiresByType audio/ogg                             "access plus 1 month"
+	ExpiresByType image/bmp                             "access plus 1 month"
+	ExpiresByType image/gif                             "access plus 1 month"
+	ExpiresByType image/jpeg                            "access plus 1 month"
+	ExpiresByType image/png                             "access plus 1 month"
+	ExpiresByType image/svg+xml                         "access plus 1 month"
+	ExpiresByType image/webp                            "access plus 1 month"
+	ExpiresByType video/mp4                             "access plus 1 month"
+	ExpiresByType video/ogg                             "access plus 1 month"
+	ExpiresByType video/webm                            "access plus 1 month"
 
-    ExpiresByType application/atom+xml                  "access plus 1 hour"
-    ExpiresByType application/rdf+xml                   "access plus 1 hour"
-    ExpiresByType application/rss+xml                   "access plus 1 hour"
+	ExpiresByType application/atom+xml                  "access plus 1 hour"
+	ExpiresByType application/rdf+xml                   "access plus 1 hour"
+	ExpiresByType application/rss+xml                   "access plus 1 hour"
 
-    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-    ExpiresByType font/eot                              "access plus 1 month"
-    ExpiresByType font/opentype                         "access plus 1 month"
-    ExpiresByType application/x-font-ttf                "access plus 1 month"
-    ExpiresByType application/font-woff                 "access plus 1 month"
-    ExpiresByType application/x-font-woff               "access plus 1 month"
-    ExpiresByType font/woff                             "access plus 1 month"
-    ExpiresByType application/font-woff2                "access plus 1 month"
+	ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+	ExpiresByType font/eot                              "access plus 1 month"
+	ExpiresByType font/opentype                         "access plus 1 month"
+	ExpiresByType application/x-font-ttf                "access plus 1 month"
+	ExpiresByType application/font-woff                 "access plus 1 month"
+	ExpiresByType application/x-font-woff               "access plus 1 month"
+	ExpiresByType font/woff                             "access plus 1 month"
+	ExpiresByType application/font-woff2                "access plus 1 month"
 
-    ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+	ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
 </IfModule>
 
 

@@ -1,21 +1,21 @@
 ### Install Tool
 <Files "install.php">
-    # Apache < 2.3
+	# Apache < 2.3
 	<IfModule !mod_authz_core.c>
 		Order deny,allow
-        Deny from all
+		Deny from all
 
-        SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
-        Allow from env=AllowIP
-        Allow from xxx.xxx.xxx.xxx
+		SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
+		Allow from env=AllowIP
+		Allow from xxx.xxx.xxx.xxx
 
-        Satisfy All
+		Satisfy All
 	</IfModule>
 
 	# Apache ≥ 2.3
 	<IfModule mod_authz_core.c>
 		SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
-        Require env AllowIP
-        Require ip xxx.xxx.xxx.xxx
+		Require env AllowIP
+		Require ip xxx.xxx.xxx.xxx
 	</IfModule>
 </Files>
