@@ -1,4 +1,5 @@
 ### Install Tool
+### replace "xxx.xxx.xxx.xxx" office/vpn ip with access to typo3 install tool
 <Files "install.php">
 	# Apache < 2.3
 	<IfModule !mod_authz_core.c>
@@ -6,6 +7,8 @@
 		Deny from all
 
 		SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
+		# Local docker environment
+		SetEnvIF X-Forwarded-For "172.18.*" AllowIP
 		Allow from env=AllowIP
 		Allow from xxx.xxx.xxx.xxx
 
@@ -15,6 +18,8 @@
 	# Apache ≥ 2.3
 	<IfModule mod_authz_core.c>
 		SetEnvIF X-Forwarded-For "xxx.xxx.xxx.xxx" AllowIP
+		# Local docker environment
+		SetEnvIF X-Forwarded-For "172.18.*" AllowIP
 		Require env AllowIP
 		Require ip xxx.xxx.xxx.xxx
 	</IfModule>
