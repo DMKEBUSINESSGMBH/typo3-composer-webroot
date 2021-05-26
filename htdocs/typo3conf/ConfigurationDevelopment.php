@@ -1,8 +1,17 @@
 <?php
 call_user_func(
     function () use (&$warningMail) {
-        // skip ssl redirect on dev enviroment
-        $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
+        // the ip can be set in docker-compose.credentials.yml or Credentials.php
+        if (false !== getenv('DOCKER_REVERSE_PROXY_IP')) {
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyHeaderMultiValue'] = 'first';
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyIP'] = getenv('DOCKER_REVERSE_PROXY_IP');
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxySSL'] = '*';
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['trustedHostsPattern'] = '(.*)\.dmk\.dev';
+        } else {
+            // fallback, disable ssl on dev environment
+            $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
+            $GLOBALS['TYPO3_CONF_VARS']['HTTP']['verify'] = false;
+        }
 
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] .= ',127.0.0.1';
 
