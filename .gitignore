@@ -19,8 +19,32 @@
 /.ssh
 /.viminfo
 
+# qs files
+.php_cs.cache
+
+### composer files
+/bin
 /vendor
+
+### typo3 src and extensions
+/htdocs/typo3
+/htdocs/typo3_src
+/htdocs/typo3conf/ext
+/htdocs/typo3conf/ext/*
+/htdocs/index.php
 
 ### ignore the var folder, but allow to committ the translation labels
 /var/*
 !/var/labels
+
+### typo3 files
+/htdocs/typo3conf/ENABLE_INSTALL_TOOL
+/htdocs/typo3conf/Credentials.php
+/htdocs/.htaccess
+/htdocs/MAINTENACE_MODE
+
+### the following folder are inserted via NFS Mount or symlinkes as shared dirs (deployer) in all environments.
+### therefore they can't be kept in git as they are inserted in different way in the environments
+/htdocs/fileadmin
+/htdocs/typo3temp
+/htdocs/uploads
