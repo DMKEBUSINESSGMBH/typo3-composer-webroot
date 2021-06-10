@@ -27,5 +27,5 @@
 
 ### allow unsafe inline scripts in typo3 backend
 <IfModule mod_headers.c>
-	Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval';"
+	Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval'; img-src 'self' data:;"
 </IfModule>
