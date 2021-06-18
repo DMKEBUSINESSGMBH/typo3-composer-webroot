@@ -7,6 +7,7 @@ call_user_func(
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyIP'] = getenv('DOCKER_REVERSE_PROXY_IP');
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxySSL'] = '*';
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['trustedHostsPattern'] = '(.*)\.dmk\.dev';
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] .= ','.getenv('DOCKER_REVERSE_PROXY_IP');
         } else {
             // fallback, disable ssl on dev environment
             $GLOBALS['TYPO3_CONF_VARS']['BE']['lockSSL'] = '0';
