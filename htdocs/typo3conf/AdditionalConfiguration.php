@@ -25,9 +25,9 @@ call_user_func(
         // Load Config Files
         foreach (array(
             'Credentials',
-            $applicationContext->isProduction() ? 'ConfigurationProduction' : '',
-            $applicationContext->isTesting() ? 'ConfigurationTesting' : '',
-            $applicationContext->isDevelopment() ? 'ConfigurationDevelopment' : '',
+            $applicationContext->isProduction() && null === $applicationContext->getParent() ? 'ConfigurationProduction' : '',
+            $applicationContext->isTesting() && null === $applicationContext->getParent() ? 'ConfigurationTesting' : '',
+            $applicationContext->isDevelopment() && null === $applicationContext->getParent() ? 'ConfigurationDevelopment' : '',
             // includes for example "ConfigurationProductionStaging"
             // if a parent context was set like TYPO3_CONTEXT="Production/Staging"
             $applicationContext->getParent() !== null ? 'Configuration' . str_replace('/', '', (string) $applicationContext) : '',
