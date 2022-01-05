@@ -15,9 +15,13 @@ return [
     'DB' => [
         'Connections' => [
             'Default' => [
-                'charset' => 'utf8',
-                'driver' => 'mysqli',
                 'port' => 3306,
+                'driver' => 'mysqli',
+                'charset' => 'utf8mb4',
+                'tableoptions' => [
+                     'charset' => 'utf8mb4',
+                     'collate' => 'utf8mb4_unicode_ci',
+                ],
             ],
         ],
     ],
