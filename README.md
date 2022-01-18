@@ -10,7 +10,7 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot 10.4.x-dev
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot 11.5.x-dev
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
@@ -20,9 +20,9 @@ The installation process should look like this:
     Created project in my-project-webroot
     Loading composer repositories with package information
     Installing dependencies
-      - Installing typo3/cms-composer-installers (dev-master)
+      - Installing typo3/cms-composer-installers
 
-      - Installing typo3/minimal (v10.4.0)
+      - Installing typo3/cms-core (v11.5.0)
 
     Writing lock file
     Generating autoload files
@@ -52,7 +52,7 @@ add the new project remote
 
 and push the project to the repo
 
-    $ git push --set-upstream origin master
+    $ git push --set-upstream origin main
 
 ### Specific DocRoot
 
@@ -92,7 +92,7 @@ Be sure, that there is a composer.json in the repository like this one:
 
 Now you can install the Extension with the require command:
 
-    composer require dmk/mksearch:dev-master
+    composer require dmk/mksearch
 
 Finally install the extension with the TYPO3 Extension Manager in the TYPO3 Backend,
 add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3conf/PackageStates.php
