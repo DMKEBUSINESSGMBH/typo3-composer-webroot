@@ -122,6 +122,7 @@ return [
     ],
     'SYS' => [
         'belogErrorReporting' => 0,
+        'cookieSecure' => 1,
         'debugExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
         'devIPmask' => 'XXX.XXX.XXX.XXX',
         'displayErrors' => -1,
