@@ -81,7 +81,8 @@
         "typo3/cms": {
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "web-dir": "./htdocs"
-        }
+        },
+        "composer-exit-on-patch-failure": true
     },
     "scripts": {
         "post-autoload-dump": [
