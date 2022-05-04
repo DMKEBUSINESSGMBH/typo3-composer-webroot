@@ -48,3 +48,6 @@
 /htdocs/fileadmin
 /htdocs/typo3temp
 /htdocs/uploads
+
+### auto generated
+/htdocs/_assets
