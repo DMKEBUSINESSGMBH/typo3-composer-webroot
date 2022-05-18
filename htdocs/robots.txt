@@ -16,6 +16,7 @@ Disallow: /uploads/
 Disallow: /*.php
 Disallow: /*.tss
 Disallow: /*.tsc
+Disallow: /*.typoscript
 Disallow: /*.csv
 Disallow: /*.xls
 Disallow: /*.xlsx
