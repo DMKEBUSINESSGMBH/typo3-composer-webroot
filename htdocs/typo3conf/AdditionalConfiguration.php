@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3_MODE') || die('Access denied.');
+defined('TYPO3') || die('Access denied.');
 
 // check Credentials
 if (!is_readable(dirname(__FILE__) . '/Credentials.php')) {
