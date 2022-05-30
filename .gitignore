@@ -25,6 +25,7 @@
 ### composer files
 /bin
 /vendor
+/htdocs/typo3conf/autoload-tests/
 
 ### typo3 src and extensions
 /htdocs/typo3
