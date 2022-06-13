@@ -75,6 +75,11 @@
         "allow-plugins": {
             "typo3/class-alias-loader": true,
             "typo3/cms-composer-installers": true
+        },
+        "preferred-install": {
+            "dmk/*": "source",
+            "digedag/*": "source",
+            "*": "dist"
         }
     },
     "extra": {
