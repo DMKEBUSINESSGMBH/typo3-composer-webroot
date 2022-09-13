@@ -1,0 +1,3 @@
+<IfModule mod_headers.c>
+    Header set Content-Security-Policy "default-src 'self'; script-src 'none'; style-src 'none'; object-src 'none';"
+</IfModule>

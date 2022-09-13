@@ -126,5 +126,8 @@ to the git and commit and push the changes.
       * default is Production. So you normally only have to set the context on CLI in Production/Staging environment. All other environments should be fine.
   * when the site is hosted on a Mittwald server it might be necessary to remove $GLOBALS['TYPO3_CONF_VARS']['BE']['fileCreateMask'] and $GLOBALS['TYPO3_CONF_VARS']['BE']['folderCreateMask'] from LocalConfiguration.php and use the default values.
   * think about using Redis as caching backend
-
+  * the htaccess files come with CSP (Content-Security-Policy) header. There are separate header for BE and FE.
+    There is also a separate policy for all asset folder which are usually the root folders 
+    of the file storages. Please put this file into the neccessary folders. The policy for the FE might need to be adjusted.
+    You might want to switch to report-only mode first and keep track of policy violations.
 
