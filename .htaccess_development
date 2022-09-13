@@ -60,7 +60,7 @@ Options -MultiViews
 	Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 	# Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
-	Header set Content-Security-Policy "default-src 'self'; img-src 'self' data:; frame-ancestors 'none'; object-src 'none';"
+	Header set Content-Security-Policy "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self';"
 
 	Header set Referrer-Policy "same-origin"
 	Header set Permissions-Policy "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"
