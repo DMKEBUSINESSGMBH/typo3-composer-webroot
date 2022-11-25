@@ -138,5 +138,6 @@ return [
         'reverseProxyHeaderMultiValue' => 'first',
         'sitename' => 'DMK TYPO3',
         'systemLocale' => 'de_DE.utf8',
+        'UTF8filesystem' => true,
     ],
 ];
