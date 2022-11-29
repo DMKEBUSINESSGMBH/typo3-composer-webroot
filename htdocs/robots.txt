@@ -13,6 +13,9 @@ Disallow: /typo3temp/
 Disallow: /uploads/
 
 # Dateien nach Endung ausschließen (php, Typoscript, ...)
+Disallow: /*.sql
+Disallow: /*.sql.gz
+Disallow: /*.dump
 Disallow: /*.php
 Disallow: /*.tss
 Disallow: /*.tsc
@@ -23,6 +26,11 @@ Disallow: /*.xlsx
 
 # Ausschließen, dass Seiten ohne realurl indiziert werden (duplicate content!)
 Disallow: /*?id=*
+Disallow: /*&id=*
+
+# Ausschließen der Default Sprache
+Disallow: /*?L=0*
+Disallow: /*&L=0*
 
 # Zugriff auf die Extension und TMPFiles, welche die CSS und JS Dateien beinhalten, erlauben
 #(Google MobileFriendlyTest - Sichtbarkeit Styles + Scripts: https://www.google.com/webmasters/tools/mobile-friendly/).
