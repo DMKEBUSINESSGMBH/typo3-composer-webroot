@@ -9,7 +9,7 @@ SetEnv TYPO3_CONTEXT Development
 # ------------------------------------------------------------------------------
 <IfModule mod_setenvif.c>
 	<IfModule mod_headers.c>
-		<FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
+		<FilesMatch "\.(avifs?|bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
 			SetEnvIf Origin ":" IS_CORS
 			Header set Access-Control-Allow-Origin "*" env=IS_CORS
 		</FilesMatch>
@@ -38,7 +38,7 @@ Options -MultiViews
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
 	Header set X-UA-Compatible "IE=edge"
-	<FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff|woff2|xml|xpi)$">
+	<FilesMatch "\.(appcache|avifs?|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff2?|xml|xpi)$">
 		Header unset X-UA-Compatible
 	</FilesMatch>
 </IfModule>
@@ -71,6 +71,17 @@ Options -MultiViews
 # ------------------------------------------------------------------------------
 <IfModule mod_mime.c>
 
+	# Security configuration
+	RemoveType .html .htm
+	<FilesMatch ".+\.html?$">
+		AddType text/html .html .htm
+	</FilesMatch>
+
+	RemoveType .svg .svgz
+	<FilesMatch ".+\.svgz?$">
+		AddType image/svg+xml .svg .svgz
+	</FilesMatch>
+
 	# Data interchange
 	AddType application/atom+xml                        atom
 	AddType application/json                            json map topojson
@@ -91,8 +102,10 @@ Options -MultiViews
 
 	AddType audio/mp4                                   f4a f4b m4a
 	AddType audio/ogg                                   oga ogg opus
+	AddType image/avif                                  avif
+	AddType image/avif-sequence                         avifs
 	AddType image/bmp                                   bmp
-	AddType image/svg+xml                               svg svgz
+	AddType image/jxl                                   jxl
 	AddType image/webp                                  webp
 	AddType video/mp4                                   f4v f4p m4v mp4
 	AddType video/ogg                                   ogv
@@ -101,11 +114,11 @@ Options -MultiViews
 	AddType image/x-icon                                cur ico
 
 	# Web fonts
-	AddType application/font-woff                       woff
-	AddType application/font-woff2                      woff2
+	AddType font/woff                                   woff
+	AddType font/woff2                                  woff2
 	AddType application/vnd.ms-fontobject               eot
-	AddType application/x-font-ttf                      ttc ttf
-	AddType font/opentype                               otf
+	AddType font/ttf                                    ttc ttf
+	AddType font/otf                                    otf
 
 	# Other
 	AddType application/octet-stream                    safariextz
@@ -167,7 +180,9 @@ AddDefaultCharset utf-8
 	RewriteRule ^typo3conf/.*\.(html|htm)$ - [L]
 	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ - [L]
 
-	# Block access to all hidden files and directories
+	# Block access to all hidden files and directories with the exception of
+	# the visible content from within the `/.well-known/` hidden directory (RFC 5785).
+	RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
 	RewriteCond %{SCRIPT_FILENAME} -d [OR]
 	RewriteCond %{SCRIPT_FILENAME} -f
 	RewriteRule (?:^|/)\. - [F]
@@ -198,7 +213,7 @@ AddDefaultCharset utf-8
 # Access block for files
 # Apache < 2.3
 <IfModule !mod_authz_core.c>
-	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$">
+	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*~)$">
 		Order allow,deny
 		Deny from all
 		Satisfy All
@@ -206,7 +221,7 @@ AddDefaultCharset utf-8
 </IfModule>
 # Apache ≥ 2.3
 <IfModule mod_authz_core.c>
-	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$#">
+	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*~)$#">
 		Require all denied
 	</If>
 </IfModule>
@@ -220,12 +235,14 @@ AddDefaultCharset utf-8
 # | Compression                                                                |
 # ------------------------------------------------------------------------------
 <IfModule mod_deflate.c>
+	# Force compression for mangled `Accept-Encoding` request headers
 	<IfModule mod_setenvif.c>
 		<IfModule mod_headers.c>
 			SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
 			RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
 		</IfModule>
 	</IfModule>
+
 	# Compress all output labeled with one of the following media types.
 	#
 	# (!) For Apache versions below version 2.3.7 you don't need to
@@ -245,6 +262,7 @@ AddDefaultCharset utf-8
 			application/rss+xml \
 			application/schema+json \
 			application/vnd.geo+json \
+			application/geo+json \
 			application/vnd.ms-fontobject \
 			application/x-font-ttf \
 			application/x-javascript \
@@ -253,6 +271,8 @@ AddDefaultCharset utf-8
 			application/xml \
 			font/eot \
 			font/opentype \
+			font/otf \
+			font/ttf \
 			image/bmp \
 			image/svg+xml \
 			image/vnd.microsoft.icon \
@@ -304,7 +324,7 @@ FileETag None
 # ------------------------------------------------------------------------------
 <IfModule mod_expires.c>
 
-	ExpiresActive on
+	ExpiresActive On
 	ExpiresDefault                                      "access plus 1 month"
 
 	ExpiresByType text/css                              "access plus 1 year"
@@ -313,6 +333,7 @@ FileETag None
 	ExpiresByType application/ld+json                   "access plus 0 seconds"
 	ExpiresByType application/schema+json               "access plus 0 seconds"
 	ExpiresByType application/vnd.geo+json              "access plus 0 seconds"
+	ExpiresByType application/geo+json                  "access plus 0 seconds"
 	ExpiresByType application/xml                       "access plus 0 seconds"
 	ExpiresByType text/xml                              "access plus 0 seconds"
 
@@ -332,9 +353,13 @@ FileETag None
 	ExpiresByType text/cache-manifest                   "access plus 0 seconds"
 
 	ExpiresByType audio/ogg                             "access plus 1 month"
+	ExpiresByType image/apng                            "access plus 1 month"
+	ExpiresByType image/avif                            "access plus 1 month"
+	ExpiresByType image/avif-sequence                   "access plus 1 month"
 	ExpiresByType image/bmp                             "access plus 1 month"
 	ExpiresByType image/gif                             "access plus 1 month"
 	ExpiresByType image/jpeg                            "access plus 1 month"
+	ExpiresByType image/jxl                             "access plus 1 month"
 	ExpiresByType image/png                             "access plus 1 month"
 	ExpiresByType image/svg+xml                         "access plus 1 month"
 	ExpiresByType image/webp                            "access plus 1 month"
@@ -346,14 +371,18 @@ FileETag None
 	ExpiresByType application/rdf+xml                   "access plus 1 hour"
 	ExpiresByType application/rss+xml                   "access plus 1 hour"
 
+	ExpiresByType font/collection                       "access plus 1 month"
 	ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
 	ExpiresByType font/eot                              "access plus 1 month"
 	ExpiresByType font/opentype                         "access plus 1 month"
+	ExpiresByType font/otf                              "access plus 1 month"
 	ExpiresByType application/x-font-ttf                "access plus 1 month"
+	ExpiresByType font/ttf                              "access plus 1 month"
 	ExpiresByType application/font-woff                 "access plus 1 month"
 	ExpiresByType application/x-font-woff               "access plus 1 month"
 	ExpiresByType font/woff                             "access plus 1 month"
 	ExpiresByType application/font-woff2                "access plus 1 month"
+	ExpiresByType font/woff2                            "access plus 1 month"
 
 	ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
 </IfModule>
