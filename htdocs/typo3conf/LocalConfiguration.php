@@ -117,6 +117,11 @@ return [
     ],
     'MAIL' => [
         'defaultMailFromAddress' => 'noreply@tld.de',
+        'validators' => [
+            // more strict than the default \Egulias\EmailValidator\Validation\RFCValidation
+            // which allows emails like "Mohnblume880 @gmail.com"
+            \Egulias\EmailValidator\Validation\NoRFCWarningsValidation::class,
+        ],
         'transport' => 'sendmail',
         'transport_sendmail_command' => '/usr/sbin/sendmail -t -i',
     ],
