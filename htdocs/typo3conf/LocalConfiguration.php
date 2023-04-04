@@ -8,6 +8,8 @@ return [
         'lockIP' => '4',
         'lockSSL' => true,
         'loginSecurityLevel' => 'rsa',
+        // require MFA for all admins
+        'requireMfa' => 3,
         'sessionTimeout' => '36000',
         'versionNumberInFilename' => true,
         'warning_email_addr' => 'example@example.com',

@@ -49,5 +49,6 @@ call_user_func(
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['extensionmanager']['offlineMode'] = 0;
 
         $GLOBALS['TYPO3_CONF_VARS']['BE']['debug'] = 1;
+        $GLOBALS['TYPO3_CONF_VARS']['BE']['requireMfa'] = 0;
     }
 );
