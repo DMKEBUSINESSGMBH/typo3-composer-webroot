@@ -130,7 +130,6 @@ return [
     'SYS' => [
         'belogErrorReporting' => 0,
         'cookieSecure' => 1,
-        'debugExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
         'devIPmask' => 'XXX.XXX.XXX.XXX',
         'displayErrors' => -1,
         'encryptionKey' => '[the key should be written in the credentials.php]',
@@ -141,7 +140,6 @@ return [
         'exceptionalErrors' => 5621,
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
-        'productionExceptionHandler' => 'tx_mktools_util_ExceptionHandler',
         'reverseProxyHeaderMultiValue' => 'first',
         'sitename' => 'DMK TYPO3',
         'systemLocale' => 'de_DE.utf8',
