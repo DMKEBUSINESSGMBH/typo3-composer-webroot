@@ -39,8 +39,9 @@
 !/var/labels
 
 ### typo3 files
-/htdocs/typo3conf/ENABLE_INSTALL_TOOL
-/htdocs/typo3conf/Credentials.php
+/var/transient/ENABLE_INSTALL_TOOL
+/config/ENABLE_INSTALL_TOOL
+/config/system/credentials.php
 /htdocs/.htaccess
 /htdocs/MAINTENACE_MODE
 

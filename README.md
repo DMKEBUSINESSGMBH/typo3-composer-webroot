@@ -10,7 +10,7 @@ with [Composers](https://getcomposer.org/).
 
 Create a new TYPO3 Project using Composer
 
-    $ composer create-project dmk/typo3-composer-webroot my-project-webroot 11.5.x-dev
+    $ composer create-project dmk/typo3-composer-webroot my-project-webroot 12.4.x-dev
 
 This creates the required Folders for TYPO3,
 for example the fileadmin, typo3conf, etc.
@@ -22,7 +22,7 @@ The installation process should look like this:
     Installing dependencies
       - Installing typo3/cms-composer-installers
 
-      - Installing typo3/cms-core (v11.5.0)
+      - Installing typo3/cms-core (v12.4.0)
 
     Writing lock file
     Generating autoload files
@@ -95,20 +95,20 @@ Now you can install the Extension with the require command:
     composer require dmk/mksearch
 
 Finally install the extension with the TYPO3 Extension Manager in the TYPO3 Backend,
-add the composer.json, composer.lock, typo3conf/LocalConfiguration.php, typo3conf/PackageStates.php
+add the composer.json, composer.lock, config/system/settings.php.
 to the git and commit and push the changes.
 
 ### Customization
 
-  * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the LocalConfiguration.php.
+  * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the settings.php.
       * don't forget to create the adress
       * best practise is to have a mailing list, where everyone, who is involved in the project, is added
   * Replace `fromEmail` `noreply@domain.de` in the extension configuration for rn_base.
-  * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the LocalConfiguration.php.
-  * Replace $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = 'XXX.XXX.XXX.XXX' in the LocalConfiguration.php. 
+  * Replace $GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'] `noreply@tld.de` in the settings.php.
+  * Replace $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] = 'XXX.XXX.XXX.XXX' in the settings.php. 
   * Replace `XXX.XXX.XXX.XXX` in the `.htaccess*` files with the IP that can access the System in maintenance mode.
   * Use .htaccess_* as .htaccess file for your environments. If needed add authentication
-  * Create `htdocs/typo3conf/Credentials.php` with all the security critical data like database credentials.  
+  * Create `config/system/credentials.php` with all the security critical data like database credentials.  
     A example is given in Credentials.php.inst in the repo root.
   * Create an encryption key and insert the key in the Credentials.php (don't store security critical data in git).
   * Optionaly enable some improvements in the extension configuration of MKTOOLS.
@@ -124,7 +124,7 @@ to the git and commit and push the changes.
   * Do not forget to set the application context for the CLI. This includes setting it for the scheduler cron command: `TYPO3_CONTEXT="Production/Staging" ! test -e $pathToHtdocs/MAINTENACE_MODE && $pathToHtdocs/typo3/sysext/core/bin/typo3 scheduler:run`. Addtionally you need to set it globally like descriped [here](https://unix.stackexchange.com/questions/21598/how-do-i-set-a-user-environment-variable-permanently-not-session). Both is required to have the correct context in any case.
       * the context in the WEB is set through the .htaccess file of the environment
       * default is Production. So you normally only have to set the context on CLI in Production/Staging environment. All other environments should be fine.
-  * when the site is hosted on a Mittwald server it might be necessary to remove $GLOBALS['TYPO3_CONF_VARS']['BE']['fileCreateMask'] and $GLOBALS['TYPO3_CONF_VARS']['BE']['folderCreateMask'] from LocalConfiguration.php and use the default values.
+  * when the site is hosted on a Mittwald server it might be necessary to remove $GLOBALS['TYPO3_CONF_VARS']['BE']['fileCreateMask'] and $GLOBALS['TYPO3_CONF_VARS']['BE']['folderCreateMask'] from settings.php and use the default values.
   * think about using Redis as caching backend
   * the htaccess files come with CSP (Content-Security-Policy) header. There are separate header for BE and FE.
     There is also a separate policy for all asset folder which are usually the root folders 

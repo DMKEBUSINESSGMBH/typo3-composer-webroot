@@ -1,12 +1,10 @@
 <?php
 
-defined('TYPO3') || die('Access denied.');
-
 // check Credentials
-if (!is_readable(dirname(__FILE__) . '/Credentials.php')) {
+if (!is_readable(dirname(__FILE__) . '/credentials.php')) {
     exit(
-        'FATAL ERROR: Credentials missed for TYPO3 configuration! <br />Please add Credentials.php in ' .
-        dirname(__FILE__) . ' based on ' . dirname(__FILE__) . '/Credentials.php.dist'
+        'FATAL ERROR: Credentials missed for TYPO3 configuration! <br />Please add credentials.php in ' .
+        dirname(__FILE__) . ' based on ' . dirname(__FILE__) . '../../credentials.php.dist'
     );
 }
 
@@ -25,12 +23,12 @@ call_user_func(
         // having a parent context means we are in a subcontext like Production/Staging
         // and not just Production etc.
         $environmentConfigurationKey = $applicationContext->getParent() !== null ?
-            str_replace('/', '', (string) $applicationContext) :
+            str_replace('/', '-', (string) $applicationContext) :
             (string) $applicationContext;
         foreach (array(
-            'Credentials',
-            'Configuration' . $environmentConfigurationKey,
-            'Credentials',
+            'credentials',
+            'settings-' . strtolower($environmentConfigurationKey),
+            'credentials',
         ) as $confFile) {
             $confFile = empty($confFile) ? false : dirname(__FILE__) . '/' . $confFile . '.php';
             if ($confFile && is_readable($confFile)) {

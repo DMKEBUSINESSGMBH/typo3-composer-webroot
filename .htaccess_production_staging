@@ -37,10 +37,14 @@ Options -MultiViews
 # | Force IE to render pages in the highest available mode in the various      |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
+	# Force IE to render pages in the highest available mode
 	Header set X-UA-Compatible "IE=edge"
 	<FilesMatch "\.(appcache|avifs?|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svgz?|ttf|vcf|webapp|webm|webp|woff2?|xml|xpi)$">
 		Header unset X-UA-Compatible
 	</FilesMatch>
+
+	# Reducing MIME type security risks
+	Header set X-Content-Type-Options "nosniff"
 </IfModule>
 
 # ------------------------------------------------------------------------------
@@ -71,7 +75,6 @@ Options -MultiViews
 # | Proper MIME types for all files                                            |
 # ------------------------------------------------------------------------------
 <IfModule mod_mime.c>
-
 	# Security configuration
 	RemoveType .html .htm
 	<FilesMatch ".+\.html?$">
@@ -171,7 +174,7 @@ AddDefaultCharset utf-8
 
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ %{ENV:CWD}$1.$3 [L]
+	RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip|gz)$ %{ENV:CWD}$1.$3 [L]
 
 	# Access block for folders
 	RewriteRule _(?:recycler|temp)_/ - [F]
@@ -180,24 +183,27 @@ AddDefaultCharset utf-8
 	RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
 	RewriteRule ^typo3conf/.*\.(html|htm)$ - [L]
 	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ - [L]
+	RewriteRule ^fileadmin/(.*/)?_recycler_/ - [F]
 
-	# Block access to all hidden files and directories with the exception of
-	# the visible content from within the `/.well-known/` hidden directory (RFC 5785).
-	RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
-	RewriteCond %{SCRIPT_FILENAME} -d [OR]
-	RewriteCond %{SCRIPT_FILENAME} -f
-	RewriteRule (?:^|/)\. - [F]
+    # Block access to all hidden files and directories with the exception of
+    # the visible content from within the `/.well-known/` hidden directory (RFC 5785).
+    RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule (?:^|/)\. - [F]
 
-	# Stop rewrite processing, if we are in the typo3/ directory or any other known directory
-	# NOTE: Add your additional local storages here
-	RewriteRule ^(?:fileadmin/|typo3conf/|typo3temp/|uploads/) - [L]
+    # Stop rewrite processing, if we are in any other known directory
+    # NOTE: Add your additional local storages here
+    RewriteRule ^(?:fileadmin/|typo3conf/|typo3temp/|uploads/) - [L]
 
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond %{REQUEST_FILENAME} !-l
-	RewriteRule ^typo3/(.*)$ %{ENV:CWD}typo3/index.php [QSA,L]
+    # If the file/symlink/directory does not exist but is below /typo3/, redirect to the TYPO3 Backend entry point.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule ^typo3/(.*)$ %{ENV:CWD}typo3/index.php [QSA,L]
 
-	# Just by prefixing the environment variable, we can safely rewrite anything now
+	# If the file/symlink/directory does not exist => Redirect to index.php.
+    # For httpd.conf, you need to prefix each '%{REQUEST_FILENAME}' with '%{DOCUMENT_ROOT}'.
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-l
@@ -211,10 +217,12 @@ AddDefaultCharset utf-8
 	Options -Indexes
 </IfModule>
 
-# Access block for files
+# ------------------------------------------------------------------------------
+# | Block access to hidden files and directories.                              |
+# ------------------------------------------------------------------------------
 # Apache < 2.3
 <IfModule !mod_authz_core.c>
-	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*~)$">
+	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$">
 		Order allow,deny
 		Deny from all
 		Satisfy All
@@ -222,16 +230,15 @@ AddDefaultCharset utf-8
 </IfModule>
 # Apache ≥ 2.3
 <IfModule mod_authz_core.c>
-	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|rc|config|tss|tsc|tar|gz|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*~)$#">
+	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$#">
 		Require all denied
 	</If>
 </IfModule>
 
-# Block access to vcs directories
+# Block access to hidden directories
 <IfModule mod_alias.c>
-	RedirectMatch 404 /\.(?:git|svn|hg)/
+    RedirectMatch 404 /\..*$
 </IfModule>
-
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
 # ------------------------------------------------------------------------------
