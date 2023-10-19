@@ -16,8 +16,8 @@ call_user_func(
 
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['devIPmask'] .= ',127.0.0.1';
 
-        // 14327 = E_ALL & ~(E_STRICT | E_NOTICE | E_USER_DEPRECATED)
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = 14327;
+        //6135 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED)
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'] = 6135;
         //alles als Exception behandeln (Fehlerseite ausgeben, Logging)
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['exceptionalErrors'] = $GLOBALS['TYPO3_CONF_VARS']['SYS']['errorHandlerErrors'];
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '1';
