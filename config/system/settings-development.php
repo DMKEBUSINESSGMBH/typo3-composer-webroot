@@ -28,12 +28,12 @@ call_user_func(
 
         $GLOBALS['TYPO3_CONF_VARS']['MAIL'] = array_merge(
             $GLOBALS['TYPO3_CONF_VARS']['MAIL'],
-            array(
+            [
                 'transport' => 'smtp',
                 'transport_smtp_server' => 'mailhog:1025',
                 'defaultMailFromAddress' => $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'],
                 'defaultMailFromName' => $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'],
-            )
+            ]
         );
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::DEBUG;

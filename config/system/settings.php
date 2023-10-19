@@ -139,6 +139,10 @@ return [
         'errorHandlerErrors' => 6135,
         // 5621 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED | E_WARNING | E_USER_WARNING)
         'exceptionalErrors' => 5621,
+        'features' => [
+            'security.usePasswordPolicyForFrontendUsers' => true,
+            'unifiedPageTranslationHandling' => true,
+        ],
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
         'productionExceptionHandler' => \DMK\Mktools\ErrorHandler\ThrowableExceptionHandler::class,
