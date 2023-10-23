@@ -313,13 +313,13 @@ AddDefaultCharset utf-8
 # *) Set $TYPO3_CONF_VARS['BE']['compressionLevel'] = '9' for the Backend
 # *) Set $TYPO3_CONF_VARS['FE']['compressionLevel'] = '9' together with the TypoScript properties
 #    config.compressJs and config.compressCss for GZIP compression of Frontend JS and CSS files.
-<FilesMatch "\.js\.gzip$">
-	AddType "text/javascript" .gzip
+<FilesMatch "\.js\.gz">
+	AddType "text/javascript" .gz
 </FilesMatch>
-<FilesMatch "\.css\.gzip$">
-	AddType "text/css" .gzip
+<FilesMatch "\.css\.gz">
+	AddType "text/css" .gz
 </FilesMatch>
-AddEncoding gzip .gzip
+AddEncoding x-gzip .gz
 
 
 # ------------------------------------------------------------------------------
