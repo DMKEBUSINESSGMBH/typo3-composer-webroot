@@ -70,7 +70,8 @@
         "typo3/cms-workspaces": "^12.4",
 
         "dmk/mklog": "^12.4.x-dev",
-        "dmk/mksanitizedparameters": "^12.4.x-dev"
+        "dmk/mksanitizedparameters": "^12.4.x-dev",
+        "dmk/mktools": "^12.4.x-dev"
     },
     "minimum-stability": "stable",
     "config": {
