@@ -97,6 +97,6 @@
     "scripts": {
         "post-install-cmd": [
             "cp .htaccess_typo3 htdocs/typo3/.htaccess"
-        ],
+        ]
     }
 }
