@@ -17,13 +17,17 @@
         "issues": "https://github.com/DMKEBUSINESSGMBH/typo3-composer-webroot/issues"
     },
     "repositories": {
+        "packages": {
+            "type": "path",
+            "url": "packages/*"
+        },
         "typo3": {
             "type": "composer",
             "url": "https://composer.typo3.org/"
         }
     },
     "require": {
-        "helhum/typo3-console": "^7.0.2",
+        "helhum/typo3-console": "^8.0",
 
         "typo3/cms-backend": "^12.4",
         "typo3/cms-belog": "^12.4",
@@ -65,14 +69,15 @@
         "typo3/cms-wizard-sortpages": "^12.4",
         "typo3/cms-workspaces": "^12.4",
 
-        "dmk/mklog": "^11.0",
-        "dmk/mksanitizedparameters": "^11.0"
+        "dmk/mklog": "^12.4.x-dev",
+        "dmk/mksanitizedparameters": "^12.4.x-dev"
     },
     "minimum-stability": "stable",
     "config": {
         "sort-packages": true,
         "bin-dir": "bin",
         "allow-plugins": {
+            "helhum/typo3-console-plugin": true,
             "typo3/class-alias-loader": true,
             "typo3/cms-composer-installers": true
         },
