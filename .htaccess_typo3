@@ -24,3 +24,5 @@
 		Require ip xxx.xxx.xxx.xxx
 	</IfModule>
 </Files>
+
+Header unset Content-Security-Policy
