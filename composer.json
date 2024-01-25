@@ -95,14 +95,8 @@
         "composer-exit-on-patch-failure": true
     },
     "scripts": {
-        "post-autoload-dump": [
-            "@typo3-cms-scripts"
-        ],
         "post-install-cmd": [
             "cp .htaccess_typo3 htdocs/typo3/.htaccess"
         ],
-        "typo3-cms-scripts": [
-            "typo3cms install:fixfolderstructure"
-        ]
     }
 }
