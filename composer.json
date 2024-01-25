@@ -69,6 +69,7 @@
         "typo3/cms-wizard-sortpages": "^12.4",
         "typo3/cms-workspaces": "^12.4",
 
+        "dmk/mklib": "^12.4.x-dev",
         "dmk/mklog": "^12.4.x-dev",
         "dmk/mksanitizedparameters": "^12.4.x-dev",
         "dmk/mktools": "^12.4.x-dev"
