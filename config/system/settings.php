@@ -99,6 +99,9 @@ return [
     ],
     'FE' => [
         'activateContentAdapter' => false,
+        'cacheHash' => [
+            'enforceValidation' => true,
+        ],
         'compressionLevel' => 5,
         'debug' => false,
         'disableNoCacheParameter' => true,
