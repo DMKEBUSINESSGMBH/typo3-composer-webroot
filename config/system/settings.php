@@ -123,6 +123,7 @@ return [
     'MAIL' => [
         'defaultMailFromAddress' => 'noreply@tld.de',
         'validators' => [
+            \Egulias\EmailValidator\Validation\RFCValidation::class,
             // more strict than the default \Egulias\EmailValidator\Validation\RFCValidation
             // which allows emails like "Mohnblume880 @gmail.com"
             \Egulias\EmailValidator\Validation\NoRFCWarningsValidation::class,
