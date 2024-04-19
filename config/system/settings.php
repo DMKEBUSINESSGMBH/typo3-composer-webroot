@@ -147,6 +147,8 @@ return [
             'security.usePasswordPolicyForFrontendUsers' => true,
             'unifiedPageTranslationHandling' => true,
         ],
+        // Both masks are more strict than the TYPO3 defaults. When hosting on Mittwald please
+        // stick to the defaults of TYPO3 or you will get 403 HTTP errors.
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
         'productionExceptionHandler' => \DMK\Mktools\ErrorHandler\ThrowableExceptionHandler::class,
