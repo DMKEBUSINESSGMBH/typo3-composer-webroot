@@ -240,8 +240,6 @@ AddDefaultCharset utf-8
     RedirectMatch 404 /\..*$
 </IfModule>
 
-	RedirectMatch 404 /\.(?:git|svn|hg)/
-</IfModule>
 
 # Zugriff auf versteckte und co# ------------------------------------------------------------------------------
 # | Compression                                                                |
