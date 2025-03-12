@@ -134,11 +134,9 @@ return [
     'SYS' => [
         'belogErrorReporting' => 0,
         'cookieSecure' => 1,
-        'debugExceptionHandler' => \DMK\Mktools\ErrorHandler\ThrowableExceptionHandler::class,
         'devIPmask' => 'XXX.XXX.XXX.XXX',
         'displayErrors' => -1,
         'encryptionKey' => '[the key should be written in the credentials.php]',
-        'errorHandler' => \DMK\Mktools\ErrorHandler\ErrorHandler::class,
         // 6135 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED)
         'errorHandlerErrors' => 6135,
         // 5621 = E_ALL & ~(E_STRICT | E_NOTICE | E_DEPRECATED | E_USER_DEPRECATED | E_WARNING | E_USER_WARNING)
@@ -151,7 +149,6 @@ return [
         // stick to the defaults of TYPO3 or you will get 403 HTTP errors.
         'fileCreateMask' => '0660',
         'folderCreateMask' => '2770',
-        'productionExceptionHandler' => \DMK\Mktools\ErrorHandler\ThrowableExceptionHandler::class,
         'reverseProxyHeaderMultiValue' => 'first',
         'sitename' => 'DMK TYPO3',
         'systemLocale' => 'de_DE.utf8',
