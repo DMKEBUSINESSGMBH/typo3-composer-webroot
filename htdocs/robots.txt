@@ -34,7 +34,7 @@ Disallow: /*&L=0*
 
 # Zugriff auf die Extension und TMPFiles, welche die CSS und JS Dateien beinhalten, erlauben
 #(Google MobileFriendlyTest - Sichtbarkeit Styles + Scripts: https://www.google.com/webmasters/tools/mobile-friendly/).
-Allow: /typo3conf/ext/*/Resources/Public/
+Allow: /_assets/Public/
 Allow: /*.js
 Allow: /*.js.*
 Allow: /*.css

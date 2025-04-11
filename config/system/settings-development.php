@@ -1,6 +1,7 @@
 <?php
+
 call_user_func(
-    function () use (&$warningMail) {
+    static function () use (&$warningMail) : void {
         // the ip can be set in docker-compose.credentials.yml or Credentials.php
         if (false !== getenv('DOCKER_REVERSE_PROXY_IP')) {
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['reverseProxyHeaderMultiValue'] = 'first';

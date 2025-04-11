@@ -21,7 +21,7 @@ SetEnv TYPO3_CONTEXT Development
 # | Web fonts access                                                           |
 # ------------------------------------------------------------------------------
 <IfModule mod_headers.c>
-	<FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff|woff2)$">
+	<FilesMatch "\.(eot|font.css|otf|tt[cf]|woff2?)$">
 		Header set Access-Control-Allow-Origin "*"
 	</FilesMatch>
 </IfModule>
@@ -95,7 +95,7 @@ Options -MultiViews
 	AddType application/xml                             rdf xml
 
 	# JavaScript
-	AddType application/javascript                      js
+	AddType application/javascript                      js mjs
 
 	# Manifest files
 	AddType application/manifest+json                   webmanifest
@@ -134,6 +134,7 @@ Options -MultiViews
 	AddType text/vnd.rim.location.xloc                  xloc
 	AddType text/vtt                                    vtt
 	AddType text/x-component                            htc
+	AddType text/calendar                               ics
 
 </IfModule>
 
@@ -155,10 +156,6 @@ AddDefaultCharset utf-8
 	# Enable URL rewriting
 	RewriteEngine On
 
-	# Using mod_rewrite in .htaccess files without knowing the RewriteBase
-	# http://www.zeilenwechsel.de/it/articles/8/Using-mod_rewrite-in-.htaccess-files-without-knowing-the-RewriteBase.html
-	RewriteBase /
-
 	### WARTUNGSMODUS VIA .htaccess
 	RewriteCond %{DOCUMENT_ROOT}/MAINTENANCE_MODE -f
 	### statische Dateien weiter ausliefern
@@ -168,22 +165,24 @@ AddDefaultCharset utf-8
 	RewriteCond %{REQUEST_URI} !^/unavailable/
 	RewriteRule ^(.*) /unavailable/ [QSA,NC,L]
 
-	# Store the current location in an environment variable CWD
+	# Store the current location in an environment variable CWD to use
+	# mod_rewrite in .htaccess files without knowing the RewriteBase
 	RewriteCond $0#%{REQUEST_URI} ([^#]*)#(.*)\1$
 	RewriteRule ^.*$ - [E=CWD:%2]
 
+	# Rule for versioned static files, configured through:
+	# - $GLOBALS['TYPO3_CONF_VARS']['BE']['versionNumberInFilename']
+	# - $GLOBALS['TYPO3_CONF_VARS']['FE']['versionNumberInFilename']
+	# IMPORTANT: This rule has to be the very first RewriteCond in order to work!
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip|gz)$ %{ENV:CWD}$1.$3 [L]
+	RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gz)$ %{ENV:CWD}$1.$3 [L]
 
 	# Access block for folders
 	RewriteRule _(?:recycler|temp)_/ - [F]
-	RewriteRule ^fileadmin/templates/.*(\.txt|\.ts)$ - [F]
+	RewriteRule fileadmin/templates/.*\.(?:txt|ts)$ - [F]
 	RewriteRule ^(?:vendor|typo3_src|typo3temp/var) - [F]
 	RewriteRule (?:typo3conf/ext|typo3/sysext|typo3/ext)/[^/]+/(?:Configuration|Resources/Private|Tests?|Documentation|docs?)/ - [F]
-	RewriteRule ^typo3conf/.*\.(html|htm)$ - [L]
-	RewriteRule ^fileadmin/templates/.*\.(html|htm)$ - [L]
-	RewriteRule ^fileadmin/(.*/)?_recycler_/ - [F]
 
     # Block access to all hidden files and directories with the exception of
     # the visible content from within the `/.well-known/` hidden directory (RFC 5785).
@@ -192,15 +191,13 @@ AddDefaultCharset utf-8
     RewriteCond %{SCRIPT_FILENAME} -f
     RewriteRule (?:^|/)\. - [F]
 
-    # Stop rewrite processing, if we are in any other known directory
+    # Stop rewrite processing, if we are in any known directory
     # NOTE: Add your additional local storages here
     RewriteRule ^(?:fileadmin/|typo3conf/|typo3temp/|uploads/) - [L]
 
     # If the file/symlink/directory does not exist but is below /typo3/, redirect to the TYPO3 Backend entry point.
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_FILENAME} !-l
-    RewriteRule ^typo3/(.*)$ %{ENV:CWD}typo3/index.php [QSA,L]
+    RewriteRule ^typo3/(.*)$ %{ENV:CWD}index.php [QSA,L]
 
 	# If the file/symlink/directory does not exist => Redirect to index.php.
     # For httpd.conf, you need to prefix each '%{REQUEST_FILENAME}' with '%{DOCUMENT_ROOT}'.
@@ -222,7 +219,7 @@ AddDefaultCharset utf-8
 # ------------------------------------------------------------------------------
 # Apache < 2.3
 <IfModule !mod_authz_core.c>
-	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$">
+	<FilesMatch "(?i:^\.|^#.*#|^(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|^composer\.(?:json|lock)|^ext_conf_template\.txt|^ext_typoscript_constants\.txt|^ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc)|.*~)$">
 		Order allow,deny
 		Deny from all
 		Satisfy All
@@ -230,7 +227,7 @@ AddDefaultCharset utf-8
 </IfModule>
 # Apache ≥ 2.3
 <IfModule mod_authz_core.c>
-	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc))$#">
+	<If "%{REQUEST_URI} =~ m#(?i:/\.|/\x23.*\x23|/(?:ChangeLog|ToDo|Readme|License)(?:\.md|\.txt)?|/composer\.(?:json|lock)|/ext_conf_template\.txt|/ext_typoscript_constants\.txt|/ext_typoscript_setup\.txt|flexform[^.]*\.xml|locallang[^.]*\.(?:xml|xlf)|\.(?:bak|co?nf|cfg|ya?ml|ts|typoscript|tsconfig|dist|fla|in[ci]|log|sh|sql(?:\..*)?|sqlite(?:\..*)?|sw[op]|git.*|config|tss|tsc|tar|bz2|old|dump|properties|haml|sass|tmpl|tpl|jar)|.*(?:~|rc)|.*~)$#">
 		Require all denied
 	</If>
 </IfModule>
@@ -239,6 +236,7 @@ AddDefaultCharset utf-8
 <IfModule mod_alias.c>
     RedirectMatch 404 /\..*$
 </IfModule>
+
 # ------------------------------------------------------------------------------
 # | Compression                                                                |
 # ------------------------------------------------------------------------------

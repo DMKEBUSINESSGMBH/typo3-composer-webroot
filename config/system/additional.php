@@ -1,17 +1,17 @@
 <?php
 
 // check Credentials
-if (!is_readable(dirname(__FILE__) . '/credentials.php')) {
+if (!is_readable(__DIR__ . '/credentials.php')) {
     exit(
         'FATAL ERROR: Credentials missed for TYPO3 configuration! <br />Please add credentials.php in ' .
-        dirname(__FILE__) . ' based on ' . dirname(__FILE__) . '../../credentials.php.dist'
+        __DIR__ . ' based on ' . __DIR__ . '../../credentials.php.dist'
     );
 }
 
 call_user_func(
-    function () {
+    function (): void {
         // support SSL when behind a proxy
-        if (!empty($_SERVER['HTTP_X_FORWARDED_PROTOCOL']) && $_SERVER['HTTP_X_FORWARDED_PROTOCOL'] === 'https') {
+        if (!empty($_SERVER['HTTP_X_FORWARDED_PROTOCOL']) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTOCOL']) {
             $_SERVER['HTTPS'] = 1;
         }
 
@@ -25,12 +25,8 @@ call_user_func(
         $environmentConfigurationKey = $applicationContext->getParent() !== null ?
             str_replace('/', '-', (string) $applicationContext) :
             (string) $applicationContext;
-        foreach (array(
-            'credentials',
-            'settings-' . strtolower($environmentConfigurationKey),
-            'credentials',
-        ) as $confFile) {
-            $confFile = empty($confFile) ? false : dirname(__FILE__) . '/' . $confFile . '.php';
+        foreach (['credentials', 'settings-' . strtolower($environmentConfigurationKey), 'credentials'] as $confFile) {
+            $confFile = $confFile === '' || $confFile === '0' ? false : __DIR__ . '/' . $confFile . '.php';
             if ($confFile && is_readable($confFile)) {
                 require $confFile;
             }
@@ -38,7 +34,7 @@ call_user_func(
 
         // set the sitename, depending on TYPO3_CONTEXT
         if (!$applicationContext->isProduction() || $applicationContext->getParent()) {
-            $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] .= ' [' . (string) $applicationContext . ']';
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'] .= ' ['.$applicationContext.']';
         }
 
         $GLOBALS['TYPO3_CONF_VARS']['BE']['warning_email_addr'] = $warningMail;
@@ -54,6 +50,7 @@ call_user_func(
             $minLogLevel = \DMK\Mklog\Utility\SeverityUtility::getPsrLevelConstant($minLogLevel);
             $GLOBALS['TYPO3_CONF_VARS']['LOG']['writerConfiguration'][$minLogLevel][\DMK\Mklog\Logger\DevlogLogger::class] = [];
         }
+
         if (!empty($GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_enable'])) {
             $minLogLevel = $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_min_log_level']
                 ?: \DMK\Mklog\Utility\SeverityUtility::ALERT;
