@@ -100,6 +100,7 @@ to the git and commit and push the changes.
 
 ### Customization
 
+  * Check the suggested packages and consider installing them with `composer suggests`
   * Replace the `warning_email_addr` `example@example.com` in the `BE` Section in the settings.php.
       * don't forget to create the adress
       * best practise is to have a mailing list, where everyone, who is involved in the project, is added
