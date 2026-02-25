@@ -39,6 +39,9 @@ call_user_func(
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['min_log_level'] = \DMK\Mklog\Utility\SeverityUtility::DEBUG;
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['gelf_enable'] = 0;
+        // due to the low log level and therefore many messages the default limits are met too often
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['rate_limiter_per_message_limit'] = 200;
+        $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['mklog']['rate_limiter_all_messages_limit'] = 1000;
 
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['verboseMayday'] = 1;
         $GLOBALS['TYPO3_CONF_VARS']['EXTENSIONS']['rn_base']['dieOnMayday'] = 1;
