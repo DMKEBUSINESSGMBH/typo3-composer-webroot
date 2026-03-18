@@ -65,7 +65,9 @@ Options -MultiViews
 	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
 	# Prevent XSS, clickjacking, code injection attacks --- disable it for external fonts!
-	Header set Content-Security-Policy "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self';"
+	# This should only be set in the FE. Determining if we are in the BE is not so easy because the path /typo3 is only
+	# virtual. Therefore we use THE_REQUEST where the initial path is found even after rewrites.
+	Header set Content-Security-Policy "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self';" "expr=%{THE_REQUEST} !~ m#\s/typo3[/\s]#"
 
 	Header set Referrer-Policy "same-origin"
 	Header set Permissions-Policy "geolocation=(), midi=(), camera=(), usb=(), magnetometer=(), accelerometer=(), vr=(), speaker=(), ambient-light-sensor=(), gyroscope=(), microphone=()"

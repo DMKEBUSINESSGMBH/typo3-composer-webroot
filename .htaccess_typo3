@@ -24,6 +24,3 @@
 		Require ip xxx.xxx.xxx.xxx
 	</IfModule>
 </Files>
-
-### TYPO3 handles CSP in the backend
-Header unset Content-Security-Policy
