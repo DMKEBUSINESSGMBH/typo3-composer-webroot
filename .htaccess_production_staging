@@ -236,7 +236,7 @@ AddDefaultCharset utf-8
 
 # Block access to hidden directories
 <IfModule mod_alias.c>
-    RedirectMatch 404 /\..*$
+    RedirectMatch 404 /\.(?!(well-known)).*$
 </IfModule>
 
 # ------------------------------------------------------------------------------
